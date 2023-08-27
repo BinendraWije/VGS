@@ -1,0 +1,353 @@
+.form-input:focus,
+.form-textarea:focus,
+.form-multiselect:focus,
+.form-select:focus,
+.form-checkbox:focus,
+.form-radio:focus {
+    @apply ring-0;
+}
+
+/* Hamburger button */
+.hamburger svg > *:nth-child(1),
+.hamburger svg > *:nth-child(2),
+.hamburger svg > *:nth-child(3) {
+    transform-origin: center;
+    transform: rotate(0deg);
+}
+
+/*hero begin stuff */
+.heroimage{
+max-width: none;
+max-height: 95vh;
+object-fit: cover;
+object-position: 100% 10%;
+
+}
+.herocontent{
+    display: contents;  
+}
+.herocontentbody{
+    display: flex; 
+    position: absolute;
+    bottom: 0;
+    width: 75vw;
+    flex-direction: column;
+    padding: 4rem;
+    padding-left: calc(13vw);   
+}
+.herocontent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.60) 100%);
+}
+
+.herocontentdescription{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+    
+
+}
+.CTAbutton{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 40%;
+    border: 2px solid;
+    border-radius: 10px;
+    color: #EEB531;
+    padding:.5rem;
+    transition: all 0.5s  ease-in-out;
+    font-weight: 900;
+}
+.CTAbutton:hover{
+    scale: 1.15;
+    
+}
+.CTAmain{
+    background-color: #EEB531;
+    color: #2E2E2E;
+}
+.CTAmain:hover{
+    background-color: #ffff;
+    color: #2E2E2E;
+}
+.featuretitle{
+    color: #2E2E2E;    
+    text-transform:uppercase;
+}
+/*hero end stuff */
+
+/*feature begin stuff*/
+.postslider{
+    --items_per_screen : 4;
+    --slider_index : 0; 
+    width: 90vw;    
+    transform: translateX(calc(var(--slider_index) * -100%));
+    transition: transform 250ms ease-in-out;
+}
+.postholder{
+    flex: 0 0 calc(100% / var(--items_per_screen));
+    max-width: calc(100% / var(--items_per_screen));
+}
+.postholder{
+    color: #2E2E2E;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+    min-width: 20rem;
+}
+.posttitle{
+    color: #2E2E2E;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+}
+.postdescription{
+    font-size: 13px;
+}
+.postdetailsholder{
+    height: 5rem;
+}
+.leftbuttonactive{
+    display: none;
+}
+.leftbuttonholder:hover .leftbutton{
+    display: none;
+    
+}
+
+.leftbuttonholder:hover .leftbuttonactive{
+    display: flex;    
+}
+
+.rightbuttonactive{
+    display: none;
+}
+.rightbuttonholder:hover .rightbutton{
+    display: none;
+    
+}
+
+.rightbuttonholder:hover .rightbuttonactive{
+    display: flex;  
+}
+/*feature end stuff*/
+
+
+
+/*feature2 begin stuff*/
+
+.forumdescriptionsection{
+    max-width: 15rem;
+}
+.featuretitle2{
+    color: #ffffff;    
+    text-transform:uppercase;
+}
+
+.forumpostsholder{
+    display: grid;
+    gap:1.5rem;
+    grid-template-areas: 
+    'one'
+    'two'
+    'three'
+    'four'
+    'five'
+    'six'
+        ; 
+    padding-block:2rem;
+    margin-inline: auto;   
+}
+
+.forumpostsholder :nth-child(1){
+    grid-area: one;
+}
+.forumpostsholder :nth-child(2){
+    grid-area: two;
+}
+.forumpostsholder :nth-child(3){
+    grid-area: three;
+}
+.forumpostsholder :nth-child(4){
+    grid-area: four;  
+}
+.forumpostsholder :nth-child(5){
+    grid-area: five;
+}
+.forumpostsholder :nth-child(6){
+    grid-area: six;   
+
+}
+
+.forumpostone{
+    background-color: #EEB531;
+    width: auto;
+}
+.forumposttitle{
+    font-size: 1em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+}
+.forumpostdescription{
+    font-size: .75em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@media (min-width:60em){
+    .forumpostsholder{
+        grid-template-areas: 
+        'one one two four'
+        'one one three four'
+        'five six six four'       
+            ;
+    }
+}
+/*feature2 end stuff*/
+
+
+
+
+
+.hamburger svg > *:nth-child(1) {
+    transition: y 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 0.1s ease-in;
+}
+
+.hamburger svg > *:nth-child(2) {
+    transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger svg > *:nth-child(3) {
+    transition: y 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), width 0.1s 0.25s ease-in;
+}        
+
+.hamburger.active svg > *:nth-child(1) {
+    opacity: 0;
+    y: 11;
+    transform: rotate(225deg);
+    transition: y 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.1s 0.12s ease-out;
+}
+    
+.hamburger.active svg > *:nth-child(2) {
+    transform: rotate(225deg);
+    transition: transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+    
+.hamburger.active svg > *:nth-child(3) {
+    y: 11;
+    transform: rotate(135deg);
+    transition: y 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.1s ease-out;   
+}
+
+/* Pulsing animation */
+@keyframes pulseLoop {
+    0% { opacity: 0; transform: scale(0.1) translateZ(0); }
+    40% { opacity: 1; }
+    60% { opacity: 1; }
+    100% { opacity: 0; transform: scale(2) translateZ(0); }
+}
+.pulse {
+    transform: scale(0.1);
+    opacity: 0;
+    transform-origin: center;
+    animation: pulseLoop 8000ms linear infinite;                                   
+}
+.pulse-1 {
+    animation-delay: -2000ms;
+}
+.pulse-2 {
+    animation-delay: -4000ms;
+}
+.pulse-3 {
+    animation-delay: -6000ms;
+}
+
+/* Custom AOS distance */
+@media screen {
+    html:not(.no-js) body [data-aos=fade-up] {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-down] {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-right] {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-left] {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-up-right] {
+        -webkit-transform: translate3d(-10px, 10px, 0);
+        transform: translate3d(-10px, 10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-up-left] {
+        -webkit-transform: translate3d(10px, 10px, 0);
+        transform: translate3d(10px, 10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-down-right] {
+        -webkit-transform: translate3d(-10px, -10px, 0);
+        transform: translate3d(-10px, -10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-down-left] {
+        -webkit-transform: translate3d(10px, -10px, 0);
+        transform: translate3d(10px, -10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-in-up] {
+        -webkit-transform: translate3d(0, 10px, 0) scale(.6);
+        transform: translate3d(0, 10px, 0) scale(.6);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-in-down] {
+        -webkit-transform: translate3d(0, -10px, 0) scale(.6);
+        transform: translate3d(0, -10px, 0) scale(.6);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-in-right] {
+        -webkit-transform: translate3d(-10px, 0, 0) scale(.6);
+        transform: translate3d(-10px, 0, 0) scale(.6);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-in-left] {
+        -webkit-transform: translate3d(10px, 0, 0) scale(.6);
+        transform: translate3d(10px, 0, 0) scale(.6);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-out-up] {
+        -webkit-transform: translate3d(0, 10px, 0) scale(1.2);
+        transform: translate3d(0, 10px, 0) scale(1.2);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-out-down] {
+        -webkit-transform: translate3d(0, -10px, 0) scale(1.2);
+        transform: translate3d(0, -10px, 0) scale(1.2);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-out-right] {
+        -webkit-transform: translate3d(-10px, 0, 0) scale(1.2);
+        transform: translate3d(-10px, 0, 0) scale(1.2);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-out-left] {
+        -webkit-transform: translate3d(10px, 0, 0) scale(1.2);
+        transform: translate3d(10px, 0, 0) scale(1.2);
+    }
+}
+
+@media (max-width: 1000px) {
+    .postslider{--items_per_screen : 2;
+    }
+}
