@@ -26,7 +26,7 @@ function rightbutton(){
   
   const [posts, setPosts] = useState([])
  useEffect(()=>{
-fetch('mydb1.123456789012.us-east-1.rds.amazonaws.com:3306/posts')
+fetch('vgsdb.c4vldm6bcjuo.eu-north-1.rds.amazonaws.com:3306/posts')
 .then(res => res.json())
 .then(data => setPosts(data))
 .catch(err => console.log(err));
