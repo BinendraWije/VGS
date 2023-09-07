@@ -22,6 +22,7 @@ app.get('/posts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.posts";
     db.query(sql,(err,data)=>{
         if(err) return res.json(err);
+        console.log(data);
         return res.json(data);
 
     })
