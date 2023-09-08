@@ -10,7 +10,7 @@ app.use(cors({
 
 
 const db = mysql.createConnection({
-    host:"13.50.5.212",
+    host:"vgsdb.c4vldm6bcjuo.eu-north-1.rds.amazonaws.com",
     port:"3306",
     user: "root",
     password: "Jainasalwaysright11!",
