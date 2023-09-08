@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors({
-   origin: '*',
+   origin: 'http://13.50.5.212',
    optionsSuccessStatus: 200
 }));
 
