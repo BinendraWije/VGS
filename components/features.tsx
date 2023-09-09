@@ -26,9 +26,9 @@ function rightbutton(){
   
   const [posts, setPosts] = useState([])
  useEffect(()=>{
-fetch('http://localhost:3306/posts',{
+fetch('http://localhost:3000/posts',{
   headers:{
-    'Access-Control-Allow-Origin': 'http://13.50.5.212'
+    'Access-Control-Allow-Origin': '*'
   }
 })
 .then(res => res.json())
