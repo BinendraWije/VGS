@@ -16,7 +16,14 @@ const db = mysql.createConnection({
     password: "Jainasalwaysright11!",
     database: "vgsdb"
 })
-
+db.connect(function(err){
+   if(err){
+   console.log("couldn't connect");
+   return  
+   }
+   console.log("connected to database");
+   
+});
 app.get('/',(req,res)=>{
     return res.json("from Backend")
 })
