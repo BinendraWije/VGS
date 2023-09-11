@@ -26,7 +26,7 @@ function rightbutton(){
   
   const [posts, setPosts] = useState([])
  useEffect(()=>{
-fetch('http://localhost:3000/posts')
+fetch('http://16.171.1.234:3306/posts')
 .then(res => res.json())
 .then(data => setPosts(data))
 .catch(err => console.log(err));
