@@ -3,17 +3,14 @@ const mysql = require('mysql');
 const cors = require('cors');
 
 const app = express();
-app.use(cors({
-   origin: 'http://13.50.5.212',
-   optionsSuccessStatus: 200
-}));
+app.use(cors());
 
 
 const db = mysql.createConnection({
-    host:"vgsdb.c4vldm6bcjuo.eu-north-1.rds.amazonaws.com",
+    host:"16.170.240.192",
     port:"3306",
-    user: "root",
-    password: "Jainasalwaysright11!",
+    user: "main",
+    password: "Newpass11",
     database: "vgsdb"
 })
 db.connect(function(err){
