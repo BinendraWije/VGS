@@ -35,7 +35,7 @@ app.get('/Admin',(req,res)=>{
          return <div>HELLO ADMIN</div>
 
     })
-})
+
 app.get('/forumposts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.forumposts";
     db.query(sql,(err,data)=>{
