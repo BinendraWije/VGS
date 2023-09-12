@@ -32,7 +32,7 @@ app.get('/posts',(req,res)=>{
     })
 })
 app.get('/Admin',(req,res)=>{
-         return <div>HELLO ADMIN<div>
+         return <div>HELLO ADMIN</div>
 
     })
 })
