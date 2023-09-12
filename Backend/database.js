@@ -21,9 +21,6 @@ db.connect(function(err){
    console.log("connected to database");
    
 });
-app.get('/',(req,res)=>{
-    return res.json("from Backend")
-})
 
 app.get('/posts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.posts";
