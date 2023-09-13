@@ -41,6 +41,15 @@ app.get('/forumposts',(req,res)=>{
     })
 })
 
+app.post('/createuser',(req,res)=>{
+const q = "INSERT INTO users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
+const values = [
+    req.body.user_name,
+    req.body.user_pwd,
+    req.body.user_role,
+    ]
+})
+
 app.listen(3306, ()=>{
     console.log("listening")
 })
