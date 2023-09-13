@@ -4,17 +4,26 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
-
+app.use(express.json());
 
 const db = mysql.createConnection({
-    host:"localhost",
+    host:"16.170.240.192",
+    port:"3306",
+    user: "main",
+    password: "Newpass11",
+    database: "vgsdb"
+   /* host:"localhost",
     user: "root",
     password: "Jainasalwaysright11!",
-    database: "vgsdb"
+    database: "vgsdb"*/
 })
 
 app.get('/',(req,res)=>{
     return res.json("from Backend")
+})
+
+app.get('/Admin',(req,res)=>{
+    return <div>HEllO GAGAADSDADA</div>
 })
 
 app.get('/posts',(req,res)=>{
@@ -35,7 +44,16 @@ app.get('/forumposts',(req,res)=>{
     })
 })
 
-app.listen(8081, ()=>{
+app.post('/createuser',(req,res)=>{
+const q = "INSERT INTO users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
+const values = [
+    req.body.user_name,
+    req.body.user_pwd,
+    req.body.user_role,
+    ]
+})
+
+app.listen(3306, ()=>{
     console.log("listening")
 })
 
