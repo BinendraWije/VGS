@@ -12,15 +12,15 @@ const db = mysql.createConnection({
     user: "main",
     password: "Newpass11",
     database: "vgsdb"
-   /* host:"localhost",
-    user: "root",
-    password: "Jainasalwaysright11!",
-    database: "vgsdb"*/
 })
-
-app.get('/',(req,res)=>{
-    return res.json("from Backend")
-})
+db.connect(function(err){
+   if(err){
+   console.log("couldn't connect");
+   return  
+   }
+   console.log("connected to database");
+   
+});
 
 app.get('/Admin',(req,res)=>{
     return <div>HEllO GAGAADSDADA</div>
@@ -30,6 +30,7 @@ app.get('/posts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.posts";
     db.query(sql,(err,data)=>{
         if(err) return res.json(err);
+        console.log(data);
         return res.json(data);
 
     })
