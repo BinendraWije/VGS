@@ -1,40 +1,80 @@
-## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+# Free Tailwind dashboard template
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+![Mosaic TailwindCSS template preview](https://github.com/cruip/tailwind-dashboard-template/assets/2683512/d252e308-8869-4b70-bce8-bb44071f8b2e)
 
-> Free React Admin Dashboard made with Material-UI components and React.
+**Mosaic Lite** is a responsive dashboard template built on top of TailwindCSS and fully coded in React. It comes with several pre-coded charts (built with Chart.js 3) and widgets, and it's a great starting for anyone who wants to create a user interface for SaaS products, administrator dashboards, modern web apps, and more.
 
-![preview](public/assets/preview.jpg)
+Use it for whatever you want, and be sure to reach us out on [Twitter](https://twitter.com/Cruip_com) if you build anything cool/useful with it.
 
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **6** Demo pages                                      | **50+** demo pages                                                |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ Next.js version                                                 |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
+Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
 
-## Page demo
+## Live demo
 
-- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
+Check the live demo here 👉️ [https://mosaic.cruip.com/](https://mosaic.cruip.com/)
 
-## Getting started
+## Mosaic Pro
 
-- Recommended `node js 16.x` and `npm 6+`. (suggestion v16.15.0)
-- Install dependencies: `npm install` / `yarn install`
-- Start the project: `npm run start` / `yarn start`
+[![Mosaic Pro](https://user-images.githubusercontent.com/2683512/151177026-3d063355-976d-4fdb-a5ed-9c1501c58af2.png)](https://cruip.com/mosaic/)
 
-## License
+## Design files
 
-Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
+If you need the design files, you can download them from Figma's Community 👉 https://bit.ly/3sigqHe
 
-## Contact us
+## Table of contents
 
-Email Us: support@minimals.cc
+* [Usage](#usage)
+  * [Project setup](#project-setup)
+  * [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
+  * [Compiles and minifies for production](#compiles-and-minifies-for-production)
+  * [Customize configuration](#customize-configuration)
+* [Support notes](#support-notes)            
+* [Credits](#credits)
+* [Terms and License](#terms-and-license)
+* [About Us](#about-us)
+* [Stay in the loop](#stay-in-the-loop)
+
+## Usage
+
+This project was bootstrapped with [Vite](https://vitejs.dev/).
+
+### Project setup
+```
+npm install
+```
+
+#### Compiles and hot-reloads for development
+```
+npm run dev
+```
+
+#### Compiles and minifies for production
+```
+npm run build
+```
+
+#### Customize configuration
+See [Configuration Reference](https://vitejs.dev/guide/).
+
+### Support notes
+We are shipping our templates with a very basic React configuration to let you quickly get into the development process, but we don't discourage you from using any other configuration or framework built on the top of React. So, please note that any request dealing with React (e.g. extra features, customisations, et cetera) is to be considered out of the support scope.
+
+For more information about what support covers, please see our (FAQs)[https://cruip.com/faq/].
+
+## Credits
+
+- [Nucleo](https://nucleoapp.com/)
+
+## Terms and License
+
+- Released under the [GPL](https://www.gnu.org/licenses/gpl-3.0.html).
+- Copyright 2020 [Cruip](https://cruip.com/).
+- Use it for personal and commercial projects, but please don’t republish, redistribute, or resell the template.
+- Attribution is not required, although it is really appreciated.
+
+## About Us
+
+We're an Italian developer/designer duo creating high-quality design/code resources for developers, makers, and startups.
+
+## Stay in the loop
+
+If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe).

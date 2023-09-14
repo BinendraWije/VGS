@@ -1,74 +1,60 @@
-### v1.7.0
+# CHANGELOG.md
 
-###### Feb 21, 2023
+## [2.0.0] - 2023-06-01
 
-- Upgrade some dependencies to the latest versions
+- Dark version added
 
----
+## [1.7.4] - 2023-04-11
 
-### v1.6.0
+- Update dependencies
 
-###### Oct 17, 2022
+## [1.7.3] - 2023-02-13
 
-- Upgrade and restructure the directory.
-- Upgrade some dependencies to the latest versions
+- Further sidebar color improvements
 
----
+## [1.7.2] - 2023-02-13
 
-### v1.5.0
+- Update dependencies
+- Improve sidebar icons color logic
 
-###### Jul 04, 2022
+## [1.7.0] - 2022-08-30
 
-- Support react 18.
-- Upgrade some dependencies to the latest versions
+- Update sidebar
+- Fix mobile menu issue
 
----
+## [1.6.0] - 2022-07-15
 
-### v1.4.0
+- Replace Sass with CSS files
+- Update dependencies
+- Update React to v18
 
-###### Apr 12, 2022
+## [1.3.1] - 2022-01-27
 
-- Update `src/components`.
-- Update `src/sections`.
-- Update `src/pages`.
-- Update `src/layouts`.
-- Update `src/theme`.
-- Upgrade some dependencies to the latest versions
+- Fix tailwind.config.js file
 
----
+## [1.3.0] - 2022-01-25
 
-### v1.3.0
+- Replace CRA (Create React App) with Vite
+- Remove Craco
+- Update dependencies
 
-###### Feb 21, 2022
+## [1.2.0] - 2021-12-13
 
-- Support react-script v5.0.0
-- Source code improvement
-- Upgrade some dependencies to the latest versions
+- Update Tailwind 3
+- Several improvements
 
----
+## [1.1.1] - 2021-11-23
 
-### v1.2.0
+- Alignment issue## [1.1.1] - 2021-11-23
 
-###### Sep 18, 2021
+- Alignment issue
 
-- Support MIU v5.0.0 official release
-- Upgrade some dependencies to the latest versions
-- Update `src/theme/typography.js`
-- Upgrade some dependencies to the latest versions
+## [1.1.0] - 2021-11-15
 
----
+- Update dependencies
+- Enable Tailwind JIT
+- Add expandable / collapsible sidebar feature
 
-### v1.1.0
+## [1.0.0] - 2021-04-20
 
-###### Jul 23, 2021
-
-- Support MUI v5.0.0-beta.1
-- Upgrade some dependencies to the latest versions
-
----
-
-### v1.0.0
-
-###### Jun 28, 2021
-
-Initial release.
+First release
