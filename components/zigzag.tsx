@@ -8,7 +8,7 @@ export default function Zigzag() {
   const [forumposts, setForumPosts] = useState([])
   
   useEffect(()=>{
-  fetch('http://16.171.1.234:3306/forumposts')
+  fetch('http://13.49.145.29:3306/forumposts')
   .then(res => res.json())
   .then(data => setForumPosts(data))
   .catch(err => console.log(err));
