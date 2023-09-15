@@ -86,7 +86,7 @@ function UserDashboard() {
       const response = await axios.post(CREATE_USER_URL,
         JSON.stringify({ 
           user_name: user,
-          user_pwd: bcryptjs.hash(pwd,20),
+          user_pwd: await bcryptjs.hash(pwd,20),
           user_role: userType   
 
         }),{
