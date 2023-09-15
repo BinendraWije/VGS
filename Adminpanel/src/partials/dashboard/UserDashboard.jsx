@@ -64,14 +64,12 @@ function UserDashboard() {
     const result = PWD_REGEX.test(pwd);
     console.log(result);
     console.log(pwd);
-    setValidName(result);
-    const match = pwd === matchPwd;
-    setValidMatch(match);
-    }, [pwd, matchPwd]) 
+    setValidName(result);  
+    }, [pwd]) 
 
   useEffect(()=>{
     setErrMsg('');
-  }, [user,pwd,matchPwd])
+  }, [user,pwd])
 
 
   const submitHandler = async (e)=>{
