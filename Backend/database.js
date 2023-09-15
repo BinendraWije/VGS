@@ -48,6 +48,11 @@ const values = [
     req.body.user_pwd,
     req.body.user_role,
     ]
+db.query(q,[values], (err,data)=>{
+        if(err) return res.json(err);
+        return res.json("user successfully created");
+
+    })
 })
 
 app.listen(3306, ()=>{
