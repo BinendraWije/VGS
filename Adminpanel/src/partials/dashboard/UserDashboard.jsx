@@ -10,7 +10,7 @@ import Image03 from '../../images/user-36-07.jpg';
 import Image04 from '../../images/user-36-08.jpg';
 import Image05 from '../../images/user-36-09.jpg';
 import axios from '../../utils/axios' 
-import bcryptjs from 'bcryptjs';
+import bcrypt from 'bcryptjs';
 // ----------------------------------------------------------------------
 // -------Regex constants and URLS-------------------------------------------------
 
@@ -83,8 +83,7 @@ function UserDashboard() {
       
     }
     try{
-      const hash = await bcryptjs.hash(pwd,20);
-      console.log(hash);
+      const hash = await bcrypt.hash(pwd,20);    
       const response = await axios.post(CREATE_USER_URL,
         JSON.stringify({ 
           user_name: user,
