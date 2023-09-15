@@ -83,17 +83,22 @@ function UserDashboard() {
       
     }
     try{
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
-            user_name: user,
-            user_pwd: pwd,
-            user_role: userType })
-      };
-      fetch('http://13.49.145.29:3306/createuser', requestOptions)
-          .then(response => response.json())
-          .then( console.log("successfully created user"));   
+      const response = await axios.post(CREATE_USER_URL,
+        JSON.stringify({ 
+          user_name: user,
+          user_pwd: pwd,
+          user_role: userType   
+
+        }),{
+          headers: {'Content-Type':'application/json',
+          'Access-Control-Allow-Origin':'http://13.49.145.29'},
+          withCredentials: false
+        });
+        console.log(response.data);
+        console.log(response.accessToken);
+        console.log(JSON.stringify(response))
+        setSuccess(true);
+        // clear input fields   
     }
     catch(err){
       if(!err?.response){
