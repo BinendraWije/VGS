@@ -83,12 +83,12 @@ function UserDashboard() {
       
     }
     try{
-      pwd = await bcryptjs.hash(pwd,20);
-      console.log(pwd);
+      const hash = await bcryptjs.hash(pwd,20);
+      console.log(hash);
       const response = await axios.post(CREATE_USER_URL,
         JSON.stringify({ 
           user_name: user,
-          user_pwd: pwd,
+          user_pwd: hash,
           user_role: userType   
 
         }),{
