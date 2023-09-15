@@ -10,7 +10,7 @@ import Image03 from '../../images/user-36-07.jpg';
 import Image04 from '../../images/user-36-08.jpg';
 import Image05 from '../../images/user-36-09.jpg';
 import axios from '../../utils/axios' 
-
+import bcrypt from 'bcrypt';
 // ----------------------------------------------------------------------
 // -------Regex constants and URLS-------------------------------------------------
 
@@ -86,12 +86,13 @@ function UserDashboard() {
       const response = await axios.post(CREATE_USER_URL,
         JSON.stringify({ 
           user_name: user,
-          user_pwd: pwd,
+          user_pwd: bcrypt.hash(pwd,20),
           user_role: userType   
 
         }),{
           headers: {'Content-Type':'application/json',
           'Access-Control-Allow-Origin':'*'},
+          // add credentials later once users have been created add token as well
           withCredentials: false
         });
         console.log(response.data);
@@ -155,6 +156,14 @@ function UserDashboard() {
     },
   ];
 
+  const [users, setUsers] = useState([])
+  useEffect(()=>{
+ fetch('http://13.49.145.29:3306/users')
+ .then(res => res.json())
+ .then(data => setUsers(data))
+ .catch(err => console.log(err));
+ 
+  },[])
   return (
     <>
       {/* Create a User section */}

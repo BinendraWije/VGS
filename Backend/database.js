@@ -32,6 +32,15 @@ app.get('/posts',(req,res)=>{
     })
 })
 
+app.get('/users',(req,res)=>{
+    const sql = "SELECT * FROM vgsdb.users";
+    db.query(sql,(err,data)=>{
+        if(err) return res.json(err);
+        console.log(data);
+        return res.json(data);
+
+    })
+})
 app.get('/forumposts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.forumposts";
     db.query(sql,(err,data)=>{
