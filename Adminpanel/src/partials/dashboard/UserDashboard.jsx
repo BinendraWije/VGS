@@ -91,8 +91,9 @@ function UserDashboard() {
 
         }),{
           headers: {'Content-Type':'application/json',
-          'Access-Control-Allow-Origin':'*'},
-          withCredentials: true
+          'Access-Control-Allow-Origin':'*',},
+          // change it to true once you build up a user base
+          withCredentials: false
         });
         console.log(response.data);
         console.log(response.accessToken);
