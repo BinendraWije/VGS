@@ -22,10 +22,6 @@ db.connect(function(err){
    
 });
 
-app.get('/Admin',(req,res)=>{
-    return <div>HEllO GAGAADSDADA</div>
-})
-
 app.get('/posts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.posts";
     db.query(sql,(err,data)=>{
