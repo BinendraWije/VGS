@@ -64,7 +64,7 @@ function UserDashboard() {
     const result = PWD_REGEX.test(pwd);
     console.log(result);
     console.log(pwd);
-    setValidName(result);  
+    setValidPwd(result);  
     }, [pwd]) 
 
   useEffect(()=>{
