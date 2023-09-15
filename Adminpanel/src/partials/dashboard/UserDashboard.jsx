@@ -177,7 +177,7 @@ function UserDashboard() {
 
                 User Type: 
 
-                <select className='mx-1' value={userType} onChange={(e)=>setUserType(e.target.value)} id="usertype" required  onFocus={()=>setUserTypeFocus(true)} onBlur={()=>setUserTypeFocus(false)}>
+                <select className='mx-1' onChange={(e)=>setUserType(e.target.value)} id="usertype" required  onFocus={()=>setUserTypeFocus(true)} onBlur={()=>setUserTypeFocus(false)}>
 
                 <option value="Admin">Admin</option>
 
