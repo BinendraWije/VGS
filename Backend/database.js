@@ -42,7 +42,7 @@ app.get('/forumposts',(req,res)=>{
 })
 
 app.post('/createuser',(req,res)=>{
-const q = "INSERT INTO users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
+const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
 const values = [
     req.body.user_name,
     req.body.user_pwd,
