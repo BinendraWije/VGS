@@ -91,8 +91,7 @@ function UserDashboard() {
 
         }),{
           headers: {'Content-Type':'application/json',
-          'Access-Control-Allow-Origin':'*',},
-          withCredentials: true
+          'Access-Control-Allow-Origin':'*',}          
         });
         console.log(response.data);
         console.log(response.accessToken);
