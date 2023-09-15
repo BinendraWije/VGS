@@ -91,7 +91,7 @@ function UserDashboard() {
           user_role: userType   
 
         }),{
-          headers: {'Content-Type':'application/json'},
+          headers: {'Content-Type':'application/json','Access-Control-Allow-Origin':'http://13.49.145.29'},
           withCredentials: true
         });
         console.log(response.data);
