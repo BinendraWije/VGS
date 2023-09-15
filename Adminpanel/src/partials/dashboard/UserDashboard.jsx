@@ -170,7 +170,7 @@ function UserDashboard() {
                 <input type="text" id="username" ref={userRef} autoComplete='off' onChange={(e)=>setUser(e.target.value)} required onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} /></label>
 
                 <label className='mx-1' htmlFor="pwd"> Password: <span className={validPwd ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validPwd || !pwd ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="password" id="pwd" onChange={(e)=>setUser(e.target.value)} required onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} /></label>
+                <input type="password" id="pwd" onChange={(e)=>setPwd(e.target.value)} required onFocus={()=>setPwdFocus(true)} onBlur={()=>setPwdFocus(false)} /></label>
               
                 <label  className='mx-1' htmlFor='usertype'>
 
