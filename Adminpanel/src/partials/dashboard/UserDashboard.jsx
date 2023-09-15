@@ -157,14 +157,14 @@ function UserDashboard() {
     },
   ];
 
-  const [users, setUsers] = useState([])
+ /* const [users, setUsers] = useState([])
   useEffect(()=>{
  fetch('http://13.49.145.29:3306/users')
  .then(res => res.json())
  .then(data => setUsers(data))
  .catch(err => console.log(err));
  
-  },[])
+  },[])*/
   return (
     <>
       {/* Create a User section */}
