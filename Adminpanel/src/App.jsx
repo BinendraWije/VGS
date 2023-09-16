@@ -8,7 +8,7 @@ import {
 import './css/style.css';
 
 import './charts/ChartjsConfig';
-import bcrypt from 'bcryptjs';
+
 // Import pages
 import Dashboard from './pages/Dashboard';
 import UsersPage from './pages/UsersPage';
