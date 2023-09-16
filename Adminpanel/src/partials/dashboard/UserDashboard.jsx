@@ -11,7 +11,7 @@ import Image04 from '../../images/user-36-08.jpg';
 import Image05 from '../../images/user-36-09.jpg';
 import axios from '../../utils/axios' 
 import bcrypt from 'bcryptjs';
-import randomBytes  from 'randombytes'
+
 
 // ----------------------------------------------------------------------
 // -------Regex constants and URLS-------------------------------------------------
