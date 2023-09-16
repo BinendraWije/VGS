@@ -10,7 +10,7 @@ import Image03 from '../../images/user-36-07.jpg';
 import Image04 from '../../images/user-36-08.jpg';
 import Image05 from '../../images/user-36-09.jpg';
 import axios from '../../utils/axios' 
-
+import bcrypt from 'bcryptjs';
 // ----------------------------------------------------------------------
 // -------Regex constants and URLS-------------------------------------------------
 
@@ -24,9 +24,8 @@ const CREATE_USER_URL = '/createuser';
 // ----------------------------------------------------------------------
 
 function UserDashboard() {
+  var bcrypts = dcodeIO.bcrypt;
 
-  var bcrypt = require('bcryptjs');
-  var bcrypt = dcodeIO.bcrypt;
   const sectionstyle = {
     marginBottom: "1rem",
     padding: "1rem",
@@ -85,7 +84,7 @@ function UserDashboard() {
       
     }
     try{
-      const hash = await bcrypt.hash(pwd,20);    
+      const hash = await bcrypts.hash(pwd,20);    
       const response = await axios.post(CREATE_USER_URL,
         JSON.stringify({ 
           user_name: user,
