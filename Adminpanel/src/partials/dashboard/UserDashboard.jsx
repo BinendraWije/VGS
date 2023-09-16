@@ -89,6 +89,7 @@ function UserDashboard() {
         if(err){
           console.log(err);
         }
+        console.log(hash);
         return hash 
       });    
       const response = await axios.post(CREATE_USER_URL,
