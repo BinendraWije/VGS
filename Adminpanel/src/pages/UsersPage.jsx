@@ -6,6 +6,7 @@ import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
 import Banner from '../partials/Banner';
 import UserDashboard from '../partials/dashboard/UserDashboard';
 import '../utils/adminpanel.css'; 
+import bcrypt from 'bcryptjs';
 
 
 
