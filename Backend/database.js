@@ -59,7 +59,9 @@ const values = [
     ]
 db.query(q,[values], (err,data)=>{
         if(err) return res.json(err);
-        return res.json("user successfully created" + values);
+        console.log(values);
+        console.log(req.body.user_pwd);
+        return res.json("user successfully created");
 
     })
 })
