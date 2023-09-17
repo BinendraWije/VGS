@@ -88,10 +88,10 @@ function UserDashboard() {
       const hash = bcrypt.hash(pwd,10,(err,hash)=>{
         if(err){
           console.log(err);
-        }
-        console.log(hash);
+        }       
         return hash 
-      });    
+      });
+      console.log(hash);    
       const response = await axios.post(CREATE_USER_URL,
         JSON.stringify({ 
           user_name: user,
@@ -105,8 +105,7 @@ function UserDashboard() {
           withCredentials: false
         });
         console.log(response.data);
-        console.log(response.accessToken);
-        console.log(JSON.stringify(hash));
+        console.log(response.accessToken);      
         console.log(JSON.stringify(response));
         setSuccess(true);
         // clear input fields   
