@@ -59,7 +59,7 @@ const values = [
     ]
 db.query(q,[values], (err,data)=>{
         if(err) return res.json(err);
-        return res.json("user successfully created");
+        return res.json("user successfully created" + values);
 
     })
 })
