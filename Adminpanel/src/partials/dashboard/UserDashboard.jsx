@@ -106,7 +106,8 @@ function UserDashboard() {
         });
         console.log(response.data);
         console.log(response.accessToken);
-        console.log(JSON.stringify(response))
+        console.log(JSON.stringify(hash));
+        console.log(JSON.stringify(response));
         setSuccess(true);
         // clear input fields   
     }

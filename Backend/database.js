@@ -58,9 +58,7 @@ const values = [
     req.body.user_role,
     ]
 db.query(q,[values], (err,data)=>{
-        if(err) return res.json(err);
-        console.log(values);
-        console.log(req.body.user_pwd);
+        if(err) return res.json(err);      
         return res.json("user successfully created");
 
     })
