@@ -54,6 +54,12 @@ function UserDashboard() {
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
 
+  useEffect(()=>{
+    if(success){
+    setTimeout(setSuccess(false), 2000);    
+    }
+  }, [success])
+
 
   useEffect(()=>{
     const result = USER_REGEX.test(user);
@@ -180,7 +186,7 @@ function UserDashboard() {
             <p id="uidnote" className={success ? "successmsg" : "offscreen"}>
               <FontAwesomeIcon icon={faCheck}/>  
                 User Successfully created!                            
-                        </p>                        
+                        </p>                                                
             </div>
             <div className="formholder min-w-full">
              <p ref={errRef} className={errMsg ? "errmsg":"offscreen"}>{errMsg}</p> 

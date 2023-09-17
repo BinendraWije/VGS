@@ -45,7 +45,7 @@
     color: #000;
     padding: 0.25rem;
     position: relative;
-    bottom: -10px;
+    bottom: .75rem;
 }
 
 .successmsg > svg {
