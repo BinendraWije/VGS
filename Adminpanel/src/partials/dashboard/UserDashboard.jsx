@@ -56,9 +56,8 @@ function UserDashboard() {
 
   useEffect(()=>{
     if(success){
-    setTimeout(2000);
-    setSuccess(false);    
-    }
+    setTimeout(()=>{setSuccess(false);},10000);
+           }
   }, [success])
 
 
