@@ -10,7 +10,7 @@ import Image03 from '../../images/user-36-07.jpg';
 import Image04 from '../../images/user-36-08.jpg';
 import Image05 from '../../images/user-36-09.jpg';
 import axios from '../../utils/axios' 
-import {bcrypt} from 'bcryptjs';
+import bcrypt from 'bcryptjs';
 
 
 // ----------------------------------------------------------------------
