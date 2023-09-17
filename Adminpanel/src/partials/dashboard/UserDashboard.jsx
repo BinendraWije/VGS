@@ -85,7 +85,7 @@ function UserDashboard() {
       
     }
     try{
-      const hash = await bcrypt.hash(pwd,20,(err,hash)=>{
+      const hash = bcrypt.hash(pwd,10,(err,hash)=>{
         if(err){
           console.log(err);
         }
