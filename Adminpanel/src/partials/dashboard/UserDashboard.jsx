@@ -176,6 +176,12 @@ function UserDashboard() {
       <header className="py-4 border-b border-slate-100 dark:border-slate-700">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Create New Users</h2>
         </header>
+        <div className="successfailnotification">
+            <p id="uidnote" className={success ? "successmsg" : "offscreen"}>
+              <FontAwesomeIcon icon={faCheck}/>  
+                User Successfully created!                            
+                        </p>                        
+            </div>
             <div className="formholder min-w-full">
              <p ref={errRef} className={errMsg ? "errmsg":"offscreen"}>{errMsg}</p> 
              <form onSubmit={submitHandler}>
