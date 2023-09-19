@@ -1,8 +1,9 @@
 const express = require('express');
 const userSchema =require('../Model/register_user_schema.js');
 const validateRequestSchema = require('../Middleware/validate_schema_requests.js');
+const dbconnection = require('./Config/databaseconfig.js');
 
-
+const db = dbconnection.dbconnection()
 
 const createUserRouter = express.Router();
 createUserRouter.post('/createuser',
@@ -18,7 +19,7 @@ const values = [
     req.body.user_pwd,
     req.body.user_role,
     ]
-db.query(q,[values], (err,data)=>{
+    db.query(q,[values], (err,data)=>{
         if(err) return res.json(err);      
         return res.json("user successfully created");
 
