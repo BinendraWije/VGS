@@ -1,6 +1,6 @@
-//import { createUserRouter } from '../Backend/Routes/createUser.js';
 
-const createuserrouter = require('./Routes/createUser.js');
+const createUserRouter = require('./Routes/createUser.js');
+
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -14,7 +14,7 @@ const db = mysql.createConnection({
     port: process.env.MYSQL_PORT,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+    database: process.env.MYSQL_HOST
 })
 db.connect(function(err){
    if(err){
@@ -53,7 +53,7 @@ app.get('/forumposts',(req,res)=>{
     })
 });
 
-app.use(createuserrouter);
+app.use(createUserRouter.createUserRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")

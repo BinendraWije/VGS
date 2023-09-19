@@ -24,4 +24,4 @@ db.query(q,[values], (err,data)=>{
     })
 })
 
-export {createUserRouter as createUserRouter}
+module.exports =  { createUserRouter } ;
