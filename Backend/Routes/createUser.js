@@ -1,9 +1,7 @@
 const express = require('express');
 const userSchema =require('../Model/register_user_schema.js');
 const validateRequestSchema = require('../Middleware/validate_schema_requests.js');
-const dbconnection = require('../Config/databaseconfig.js');
 
-const db = dbconnection.db
 
 const createUserRouter = express.Router();
 createUserRouter.post('/createuser',
