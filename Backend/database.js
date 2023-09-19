@@ -1,4 +1,3 @@
-import {body,validationResult} from 'express-validator';
 import { createUserRouter } from './Routes/createUser';
 
 const express = require('express');
