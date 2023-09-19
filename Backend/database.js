@@ -10,11 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_HOST
+    host: "16.170.240.192", 
+    port: "3306",
+    user: "main",
+    password: "Newpass11",
+    database: "vgsdb"
 })
 db.connect(function(err){
    if(err){
