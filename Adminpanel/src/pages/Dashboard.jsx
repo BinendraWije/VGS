@@ -101,8 +101,7 @@ function Dashboard() {
           </div>
         </main>
 
-        <Banner />
-
+    
       </div>
     </div>
   );

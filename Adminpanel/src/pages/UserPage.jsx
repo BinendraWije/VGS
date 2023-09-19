@@ -110,6 +110,8 @@ export default function UserPage() {
         console.log(response.data);
         console.log(response.accessToken);
         console.log(JSON.stringify(response))
+        setUser('')
+        setPwd('')        
         setSuccess(true);
         // clear input fields   
     }
@@ -147,10 +149,10 @@ export default function UserPage() {
              <p ref={errRef} className={errMsg ? "errmsg":"offscreen"}>{errMsg}</p> 
              <form onSubmit={submitHandler}>
                 <label htmlFor="username"> Username: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !user ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="text" id="username" ref={userRef} autoComplete='off' onChange={(e)=>setUser(e.target.value)} required onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} /></label>
+                <input type="text" id="username" ref={userRef} autoComplete='off' onChange={(e)=>setUser(e.target.value)} required onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} value={user}/></label>
 
                 <label htmlFor="pwd"> Password: <span className={validPwd ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validPwd || !pwd ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="password" id="pwd" onChange={(e)=>setUser(e.target.value)} required onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} /></label>
+                <input type="password" id="pwd" onChange={(e)=>setUser(e.target.value)} required onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} value={pwd}/></label>
               
                 <label htmlFor='usertype'>
 

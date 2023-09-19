@@ -1,3 +1,6 @@
+import {body,validationResult} from 'express-validator';
+import { createUserRouter } from './Routes/createUser';
+
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -48,21 +51,9 @@ app.get('/forumposts',(req,res)=>{
         return res.json(data);
 
     })
-})
+});
 
-app.post('/createuser',(req,res)=>{
-const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
-const values = [
-    req.body.user_name,
-    req.body.user_pwd,
-    req.body.user_role,
-    ]
-db.query(q,[values], (err,data)=>{
-        if(err) return res.json(err);      
-        return res.json("user successfully created");
-
-    })
-})
+app.use(createUserRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")

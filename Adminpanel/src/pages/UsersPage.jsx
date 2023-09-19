@@ -64,8 +64,7 @@ function UsersPage() {
           </div>
         </main>
 
-        <Banner />
-
+        
       </div>
     </div>
   );
