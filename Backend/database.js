@@ -1,4 +1,4 @@
-import { createUserRouter } from '../Backend/Routes/createUser';
+import { createUserRouter } from '../Backend/Routes/createUser.js';
 
 const express = require('express');
 const mysql = require('mysql');
