@@ -12,6 +12,14 @@ app.use(express.json());
 
 const db = dbconnection.db
 
+db.connect(function(err){
+    if(err){
+    console.log("couldn't connect" + err);
+    return  
+    }
+    console.log("connected to database");
+    
+ });
 
 app.get('/posts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.posts";
