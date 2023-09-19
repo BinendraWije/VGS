@@ -10,9 +10,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const db = dbconnection.db
+
 dbconnection.dbconnection();
 
-const db = dbconnection.db
 
 app.get('/posts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.posts";
