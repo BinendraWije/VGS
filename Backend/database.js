@@ -58,6 +58,7 @@ app.use(createUserRouter.createUserRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")
+    console.log(process.env) 
 })
 
  
