@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { userSchema } from './Model/register_user_schema';
-import {validateRequestSchema} from './Middleware/validate_schema_requests';
+import { userSchema } from './Model/register_user_schema.js';
+import {validateRequestSchema} from './Middleware/validate_schema_requests.ts';
 import {body,validationResult} from 'express-validator';
 
 
