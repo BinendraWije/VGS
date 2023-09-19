@@ -1,5 +1,6 @@
-import { createUserRouter } from '../Backend/Routes/createUser.js';
+//import { createUserRouter } from '../Backend/Routes/createUser.js';
 
+const createuserrouter = require('./Routes/createUser.js');
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -52,7 +53,7 @@ app.get('/forumposts',(req,res)=>{
     })
 });
 
-app.use(createUserRouter);
+app.use(createuserrouter);
 
 app.listen(3306, ()=>{
     console.log("listening")
