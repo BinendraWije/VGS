@@ -57,8 +57,7 @@ app.get('/forumposts',(req,res)=>{
 app.use(createUserRouter.createUserRouter);
 
 app.listen(3306, ()=>{
-    console.log("listening")
-    console.log(process.env.MYSQL_HOST) 
+    console.log("listening")    
 })
 
  
