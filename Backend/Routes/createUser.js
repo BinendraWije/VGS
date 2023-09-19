@@ -6,7 +6,7 @@ const validateRequestSchema = require('../Middleware/validate_schema_requests.js
 
 const createUserRouter = express.Router();
 createUserRouter.post('/createuser',
-userSchema.userSchema,
+userSchema.user_schema,
 validateRequestSchema.validateRequestSchema,
 (req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
