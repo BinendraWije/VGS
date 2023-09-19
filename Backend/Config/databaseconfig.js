@@ -17,4 +17,6 @@ const dbconnection =() =>{db.connect(function(err){
    
 })};
 
-module.exports =  { db, dbconnection } ;
+exports.dbconnection = dbconnection;
+exports.db = db;
+// module.exports =  { db, dbconnection } ;
