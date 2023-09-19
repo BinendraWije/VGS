@@ -5,13 +5,19 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
-const dbconnection = require('./Config/databaseconfig.js');
+const db = require('./Config/databaseconfig.js').db;
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = dbconnection.dbconnection();
-
+db.connect(function(err){
+    if(err){
+    console.log("couldn't connect" + err);
+    return  
+    }
+    console.log("connected to database");
+    
+ });
 
 app.get('/posts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.posts";
