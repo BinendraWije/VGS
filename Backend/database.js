@@ -4,7 +4,7 @@ const createUserRouter = require('./Routes/createUser.js');
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
-require("dotenv").config();
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
