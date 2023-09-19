@@ -1,13 +1,13 @@
-import { Router } from "express";
-import { userSchema } from '../Model/register_user_schema.js';
-import {validateRequestSchema} from '../Middleware/validate_schema_requests.js';
+const express = require('express');
+const userSchema =require('../Model/register_user_schema.js');
+const validateRequestSchema = require('../Middleware/validate_schema_requests.js');
 
 
 
-const createUserRouter = Router();
+const createUserRouter = express.Router();
 createUserRouter.post('/createuser',
-userSchema,
-validateRequestSchema,
+userSchema.userSchema,
+validateRequestSchema.validateRequestSchema,
 (req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
 
