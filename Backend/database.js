@@ -4,7 +4,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
-const { db } = require('../Config/databaseconfig.js');
+const { db } = require('./Config/databaseconfig.js');
 const app = express();
 app.use(cors());
 app.use(express.json());
