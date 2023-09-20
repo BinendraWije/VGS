@@ -6,11 +6,11 @@ createUserRouter.post('/createuser',(req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
 console.log(req.body.user_name);
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
-db.query(findDuplicatesquery,[req.body.user_name], (err,data)=>{
+db.query(findDuplicatesquery,[req.body.user_name], (err,data1)=>{
     if(err) return res.json(err);
-    console.log(data);      
-    if(data.length != 0){
-        return res.json(data);      //conflict
+    console.log(data1);      
+    if(data1.length != 0){
+        return res.json(data1.length);      //conflict
 
     }else{
 
