@@ -6,14 +6,17 @@ const cors = require('cors');
 require('dotenv').config();
 const { db } = require('./Config/databaseconfig.js');
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
 db.connect(function(err){
     if(err){
+    console.log(process.env.MYSQL_HOST);
     console.log("couldn't connect" + err);
     return  
     }
+    console.log(process.env.MYSQL_HOST);
     console.log("connected to database");
     
  });
