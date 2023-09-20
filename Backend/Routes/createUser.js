@@ -12,7 +12,10 @@ const duplicateSearch = db.query(findDuplicatesquery,req.body.user_name, (err,da
     if(data) return true;
 })
 
-if(duplicateSearch) return res.sendStatus(409) //conflict
+if(duplicateSearch){
+     return res.sendStatus(409)
+      //conflict
+}else{
 const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
 const values = [
     req.body.user_name,
@@ -24,6 +27,7 @@ db.query(q,[values], (err,data)=>{
         return res.json("user successfully created");
 
     })
+}
 })
 
 module.exports =  { createUserRouter } ;
