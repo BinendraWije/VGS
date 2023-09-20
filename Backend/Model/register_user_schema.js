@@ -1,4 +1,4 @@
-const {body, params, query} = require('express-validator');
+const {body, param, query} = require('express-validator');
 
 const user_schema = [
 
