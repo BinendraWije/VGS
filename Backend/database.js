@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-db.getConnection(function(err){
+db.connect(function(err){
     if(err){
     console.log("couldn't connect" + err);
     return  
