@@ -9,7 +9,7 @@ const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[req.body.user_name], (err,data)=>{
     if(err) return res.json(err);
     console.log(data);      
-    if(data){
+    if(data.length != 0){
         return res.sendStatus(409)      //conflict
 
     }else{
