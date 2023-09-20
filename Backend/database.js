@@ -12,12 +12,9 @@ app.use(express.json());
 
 db.connect(function(err){
     if(err){
-    console.log(process.env.MYSQL_HOST,process.env.MYSQL_USER,process.env.MYSQL_PASSWORD,process.env.MYSQL_PORT,process.env.MYSQL_DATABASE);
-    console.log(db);
     console.log("couldn't connect" + err);
     return  
     }
-    console.log(process.env.MYSQL_HOST);
     console.log("connected to database");
     
  });
