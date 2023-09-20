@@ -1,10 +1,10 @@
-const {check} = require('express-validator');
+const {body, params, query} = require('express-validator');
 
 const user_schema = [
 
-check('user_name').notEmpty(),
-check('user_pwd').notEmpty(),
-check('user_role').notEmpty()
+body('user_name').exists({checkFalsy: true}),
+body('user_pwd').exists({checkFalsy: true}),
+body('user_role').exists({checkFalsy: true})
 
 ];
 
