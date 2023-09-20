@@ -1,5 +1,8 @@
 
 const {createUserRouter} = require('./Routes/createUser.js');
+const {getAllPostsRouter} = require('./Routes/Allposts.js');
+const {getAllUsersRouter} = require('./Routes/allUsers.js');
+const {getAllForumPostsRouter} = require('./Routes/allForumposts.js');
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -19,34 +22,13 @@ db.connect(function(err){
     
  });
 
-app.get('/posts',(req,res)=>{
-    const sql = "SELECT * FROM vgsdb.posts";
-    db.query(sql,(err,data)=>{
-        if(err) return res.json(err);
-        console.log(data);
-        return res.json(data);
+ // Frontend Routes
+app.use(getAllPostsRouter);
+app.use(getAllForumPostsRouter);
 
-    })
-})
 
-app.get('/users',(req,res)=>{
-    const sql = "SELECT * FROM vgsdb.users";
-    db.query(sql,(err,data)=>{
-        if(err) return res.json(err);
-        console.log(data);
-        return res.json(data);
-
-    })
-})
-app.get('/forumposts',(req,res)=>{
-    const sql = "SELECT * FROM vgsdb.forumposts";
-    db.query(sql,(err,data)=>{
-        if(err) return res.json(err);
-        return res.json(data);
-
-    })
-});
-
+// Adminpanel Routes
+app.use(getAllUsersRouter);
 app.use(createUserRouter);
 
 app.listen(3306, ()=>{
