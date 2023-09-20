@@ -1,8 +1,8 @@
 const express = require('express');
-const expressvalidator = require('express-validator');
+const {check, validationResult} = require('express-validator');
 
 const validateRequestSchema = (req,res,next) => {
-    const errors = expressvalidator.validationResult(req);
+    const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
     }
