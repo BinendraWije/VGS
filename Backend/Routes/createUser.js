@@ -10,6 +10,7 @@ db.query(findDuplicatesquery,[req.body.user_name], (err,data1)=>{
     if(err) return res.json(err);
     console.log(data1);      
     if(data1.length != 0){
+        console.log(data1.length);
         return res.json(data1.length);      //conflict
 
     }else{
