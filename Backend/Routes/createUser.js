@@ -6,6 +6,8 @@ const db = require('../Config/databaseconfig.js').db
 
 const createUserRouter = express.Router();
 createUserRouter.post('/createuser',
+userSchema.user_schema,
+validateRequestSchema.validateRequestSchema,
 (req,res)=>{
     console.log('heere in th createroute');
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
