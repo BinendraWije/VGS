@@ -1,4 +1,3 @@
-const express = require('express');
 const {check, validationResult} = require('express-validator');
 
 const validateRequestSchema = (req,res,next) => {

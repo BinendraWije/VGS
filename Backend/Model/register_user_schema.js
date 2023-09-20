@@ -1,10 +1,10 @@
-const {check} = require('express-validator');
+const {body} = require('express-validator');
 
 const user_schema = [
 
-check('user_name').exists({checkFalsy: true}),
-check('user_pwd').exists({checkFalsy: true}),
-check('user_role').exists({checkFalsy: true})
+body('user_name').exists({checkFalsy: true}),
+body('user_pwd').exists({checkFalsy: true}),
+body('user_role').exists({checkFalsy: true})
 
 ];
 

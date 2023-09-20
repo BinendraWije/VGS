@@ -1,11 +1,10 @@
 
-const createUserRouter = require('./Routes/createUser.js');
-
+const {createUserRouter} = require('./Routes/createUser.js');
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
-const db = require('./Config/databaseconfig.js').db;
+const { db } = require('../Config/databaseconfig.js');
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -47,7 +46,7 @@ app.get('/forumposts',(req,res)=>{
     })
 });
 
-app.use(createUserRouter.createUserRouter);
+app.use(createUserRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")    
