@@ -3,6 +3,7 @@ const {createUserRouter} = require('./Routes/createUser.js');
 const {getAllPostsRouter} = require('./Routes/Allposts.js');
 const {getAllUsersRouter} = require('./Routes/allUsers.js');
 const {getAllForumPostsRouter} = require('./Routes/allForumposts.js');
+const {searchUserRouter} = require('./Routes/searchByUsername.js');
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -30,6 +31,7 @@ app.use(getAllForumPostsRouter);
 // Adminpanel Routes
 app.use(getAllUsersRouter);
 app.use(createUserRouter);
+app.use(searchUserRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")    
