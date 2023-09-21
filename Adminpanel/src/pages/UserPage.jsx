@@ -119,7 +119,7 @@ export default function UserPage() {
       if(!err?.response){
         setErrMsg('No server Response');
       } else if (err.response?.status === 409){
-        setErrMsg(err);
+        setErrMsg("bleeep bllooop");
       } else{
         setErrMsg('Registration Failed')
       }
