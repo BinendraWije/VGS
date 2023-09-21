@@ -10,10 +10,12 @@ const user = req.body.user_name;
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[user], async (err,results)=>{
     if(err) return res.json(err);         
-    if(results.length = 0 ) return res.sendStatus(401); //Unauthorized
+    if(results.length == 0 ) return res.sendStatus(401); //Unauthorized
+    console.log(req.body.user_pwd);
+    console.log(results[0].user_pwd);
     // evaluate password
     const match = await bcrypt.compare(req.body.user_pwd, results[0].user_pwd);
-    if(match ){
+    if(match){
         // create JWT
         res.json({'success': `User ${user} is loggedin!`});
     }else{
