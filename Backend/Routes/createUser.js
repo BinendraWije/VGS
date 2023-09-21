@@ -4,12 +4,14 @@ const { db } = require('../Config/databaseconfig.js');
 const createUserRouter = express.Router();
 createUserRouter.post('/createuser',(req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
-const usernameforduplicatechecking = (req.body.user_name).toString();
+console.log(req.body.user_name);
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
-const [duplicate] = db.query(findDuplicatesquery,[usernameforduplicatechecking])
-    if(duplicate[0] != undefined){
+db.query(findDuplicatesquery,[req.body.user_name], (err,data1)=>{
+    if(err) return res.json(err);
+    console.log(data1);      
+    if(data1.length != 0){
         console.log(data1.length);
-        return res.sendStatus(409)   //conflict
+        return res.render(data1);      //conflict
 
     }else{
 
@@ -29,5 +31,7 @@ const [duplicate] = db.query(findDuplicatesquery,[usernameforduplicatechecking])
 
      
 
+
+})
 
 module.exports =  { createUserRouter } ;
