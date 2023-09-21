@@ -7,7 +7,7 @@ if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'messa
 console.log(req.body.user_name);
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 const [duplicateUsername] = db.query(findDuplicatesquery,[req.body.user_name])
-    if(duplicateUsername[0] != undefined){
+    if(duplicateUsername[0] != "undefined" || undefined || null){
         return res.sendStatus(409);      // conflict
 
     }else{
