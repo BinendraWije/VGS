@@ -115,7 +115,7 @@ function UserDashboard() {
       if(!err?.response){
         setErrMsg('No server Response');
       } else if (err.response?.status === 409){
-        setErrMsg(err.response);
+        setErrMsg(JSON.stringify(err.response));
       } else{
         setErrMsg('Registration Failed')
       }
