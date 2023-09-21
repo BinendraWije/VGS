@@ -7,11 +7,7 @@ if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'messa
 console.log(req.body.user_name);
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 const [duplicateUsername] = db.query(findDuplicatesquery,[req.body.user_name])
-    if(duplicateUsername[0] != "undefined" || undefined || null){
-        return res.sendStatus(409);      // conflict
-
-    }else{
-
+    if(duplicateUsername[0] == undefined){
         const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
         const values = [
             req.body.user_name,
@@ -23,6 +19,9 @@ const [duplicateUsername] = db.query(findDuplicatesquery,[req.body.user_name])
                 return res.json("user successfully created");
         
             })
+
+    }else{
+        return res.sendStatus(409);      // conflict        
     };
 })
 
