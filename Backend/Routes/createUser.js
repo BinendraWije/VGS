@@ -11,7 +11,7 @@ db.query(findDuplicatesquery,[req.body.user_name], (err,data1)=>{
     console.log(data1);      
     if(data1.length != 0){
         console.log(data1.length);
-        return res.render(data1);      //conflict
+        return res.send(data1 + err);      //conflict
 
     }else{
 
