@@ -12,21 +12,20 @@ db.query(findDuplicatesquery,[req.body.user_name], (err,data1)=>{
         return res.sendStatus(409);    
 
     }
-
-        const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
-        const values = [
-            req.body.user_name,
-            req.body.user_pwd,
-            req.body.user_role,
-            ]
-        db.query(q,[values], (err,data)=>{
-                if(err) return res.json(err);      
-                return res.json("user successfully created");
-        
-            })
-    
+  
 })
 
+const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
+const values = [
+    req.body.user_name,
+    req.body.user_pwd,
+    req.body.user_role,
+    ]
+db.query(q,[values], (err,data)=>{
+        if(err) return res.json(err);      
+        return res.json("user successfully created");
+
+    })
      
 
 
