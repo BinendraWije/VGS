@@ -1,6 +1,6 @@
 const express = require('express');
 const { db } = require('../Config/databaseconfig.js');
-const {bcrypt} = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 const signInRouter = express.Router();
 signInRouter.post('/auth', async (req,res)=>{

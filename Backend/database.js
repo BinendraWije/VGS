@@ -4,6 +4,7 @@ const {getAllPostsRouter} = require('./Routes/Allposts.js');
 const {getAllUsersRouter} = require('./Routes/allUsers.js');
 const {getAllForumPostsRouter} = require('./Routes/allForumposts.js');
 const {signInRouter} = require('./Routes/Signin.js');
+const bcrypt = require('bcryptjs');
 
 const express = require('express');
 const mysql = require('mysql');
