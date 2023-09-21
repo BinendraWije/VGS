@@ -6,8 +6,15 @@ createUserRouter.post('/createuser',(req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
 console.log(req.body.user_name);
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
-const [duplicateUsername] = db.query(findDuplicatesquery,[req.body.user_name])
-    if(duplicateUsername[0] == undefined){
+db.query(findDuplicatesquery,[(req.body.user_name).toString()], (err,data1)=>{
+    if(err) return res.json(err);
+    console.log(data1);      
+    if(data1.length != 0){
+        console.log(data1.length);
+        return res.sendStatus(409)   //conflict
+
+    }else{
+
         const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
         const values = [
             req.body.user_name,
@@ -19,12 +26,12 @@ const [duplicateUsername] = db.query(findDuplicatesquery,[req.body.user_name])
                 return res.json("user successfully created");
         
             })
-
-    }else{
-        return res.sendStatus(409);      // conflict        
     };
 })
 
+     
 
+
+})
 
 module.exports =  { createUserRouter } ;
