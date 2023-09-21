@@ -2,12 +2,12 @@ const express = require('express');
 const { db } = require('../Config/databaseconfig.js');
 
 const createUserRouter = express.Router();
-createUserRouter.post('/createuser',(req,res)=>{
+createUserRouter.post('/createuser', async (req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
 
 // Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
-db.query(findDuplicatesquery,[req.body.user_name], (err,results)=>{
+db.query(findDuplicatesquery,[req.body.user_name], async (err,results)=>{
     if(err) return res.json(err);         
     if(results.length > 0 ){
         return res.sendStatus(409);    
@@ -23,7 +23,7 @@ const values = [
       req.body.user_pwd,
       req.body.user_role,
       ]
-db.query(q,[values], (err,data)=>{
+db.query(q,[values], async (err,data)=>{
           if(err) return res.json(err);      
           return res.json("user successfully created");
   
