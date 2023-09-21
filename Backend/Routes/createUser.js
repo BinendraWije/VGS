@@ -9,7 +9,7 @@ if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'messa
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[req.body.user_name], (err,results)=>{
     if(err) return res.json(err);         
-    if(results.length > 0 || results[0] != undefined || results != undefined){
+    if(results.length > 0 ){
         return res.sendStatus(409);    
 
     }
@@ -17,13 +17,13 @@ db.query(findDuplicatesquery,[req.body.user_name], (err,results)=>{
 
   // inserting into the database
 
-  const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
-  const values = [
+const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
+const values = [
       req.body.user_name,
       req.body.user_pwd,
       req.body.user_role,
       ]
-  db.query(q,[values], (err,data)=>{
+db.query(q,[values], (err,data)=>{
           if(err) return res.json(err);      
           return res.json("user successfully created");
   
