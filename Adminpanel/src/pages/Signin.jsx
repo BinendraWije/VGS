@@ -66,7 +66,7 @@ const handleSubmit = async (e)=>{
     setUser('')
     setPwd('')
     setSuccess(true);
-    <Navigate to ='/'/>
+    return <Navigate to ='/'/>
     
   } catch (err) {
     if(!err?.response){
