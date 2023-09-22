@@ -4,17 +4,28 @@ const {getAllPostsRouter} = require('./Routes/Allposts.js');
 const {getAllUsersRouter} = require('./Routes/allUsers.js');
 const {getAllForumPostsRouter} = require('./Routes/allForumposts.js');
 const {signInRouter} = require('./Routes/Signin.js');
+const {signOutRouter} = require('./Routes/Signout.js');
+const { refreshTokenRouter } = require('./Routes/refreshtoken.js');
 const bcrypt = require('bcryptjs');
+const { verifyJWT } = require('./Middleware/verifyJWT.js');
+const  cookieParser = require('cookie-parser');
 
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
 const { db } = require('./Config/databaseconfig.js');
+
 const app = express();
 
+// Cross Origin Resource Sharing
 app.use(cors());
+
+// middleware for json data
 app.use(express.json());
+
+// middleware for cookies
+app.use(cookieParser());
 
 db.connect(function(err){
     if(err){
@@ -31,9 +42,13 @@ app.use(getAllForumPostsRouter);
 
 
 // Adminpanel Routes
+app.use(signInRouter);
+app.use(refreshTokenRouter);
+app.use(signOutRouter);
+app.use(verifyJWT);
 app.use(getAllUsersRouter);
 app.use(createUserRouter);
-app.use(signInRouter);
+
 
 app.listen(3306, ()=>{
     console.log("listening")    

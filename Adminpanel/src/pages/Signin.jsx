@@ -66,6 +66,8 @@ const handleSubmit = async (e)=>{
     setUser('')
     setPwd('')
     setSuccess(true);
+    <Navigate to ='/'/>
+    
   } catch (err) {
     if(!err?.response){
       setErrMsg('No server response');

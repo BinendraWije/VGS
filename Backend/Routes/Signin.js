@@ -1,6 +1,10 @@
 const express = require('express');
 const { db } = require('../Config/databaseconfig.js');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+
 
 const signInRouter = express.Router();
 signInRouter.post('/auth', async (req,res)=>{
@@ -17,6 +21,29 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
     const match = await bcrypt.compare(req.body.user_pwd, results[0].user_pwd);
     if(match){
         // create JWT
+        const accessToken = jwt.sign(
+            {"user_name": req.body.user_name},
+            process.env.ACCESS_TOKEN_SECRET,
+            {expiresIn: '5m'}
+        );
+
+        const refreshToken = jwt.sign(
+            {"user_name": req.body.user_name},
+            process.env.REFRESH_TOKEN_SECRET,
+            {expiresIn: '1d'}
+        );
+        //Updating the refresh token to the current user's profile in DB
+
+        const refreshtokenquery = "UPDATE vgsdb.users SET refresh_token = ? WHERE user_name = ?";
+      
+        db.query(refreshtokenquery,[refreshToken,req.body.user_name], async (err,data)=>{
+                  if(err) return res.json(err);      
+                  return res.json("refresh token inserted successfully");
+          
+              });
+        
+        res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'None',secure:true, maxAge: 24 * 60 * 60 * 1000});
+        res.json({ accessToken });
         res.json({'success': `User ${user} is loggedin!`});
     }else{
         res.sendStatus(401);
