@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../utils/adminpanel.css';
 import AuthContext from '../context/AuthProvider';
 import axios from '../utils/axios';
@@ -27,7 +27,7 @@ import {
   TablePagination,
 } from '@mui/material';
 
-
+const navigate = useNavigate();
 const LOGIN_URL = "/auth";
 
 function Signin() {
@@ -68,7 +68,7 @@ const handleSubmit = async (e)=>{
     setPwd('')
     setSuccess(true);
     console.log("I'm outisde success");
-    return <Navigate to ="/"/>
+    navigate("/");
     
   } catch (err) {
     if(!err?.response){
