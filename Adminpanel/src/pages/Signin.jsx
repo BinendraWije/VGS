@@ -27,13 +27,14 @@ import {
   TablePagination,
 } from '@mui/material';
 
-const navigate = useNavigate();
+
 const LOGIN_URL = "/auth";
 
 function Signin() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef();
   const errRef = useRef();
+  const navigate = useNavigate();
 
   const[user, setUser] = useState('');
   const[pwd, setPwd] = useState('');
