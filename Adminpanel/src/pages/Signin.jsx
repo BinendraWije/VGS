@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../utils/adminpanel.css';
 import AuthContext from '../context/AuthProvider';
 import axios from '../utils/axios';
@@ -29,7 +29,7 @@ import {
 
 
 const LOGIN_URL = "/auth";
-
+const navigate = useNavigate();
 function Signin() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef();
@@ -67,8 +67,10 @@ const handleSubmit = async (e)=>{
     setUser('')
     setPwd('')
     setSuccess(true);
+    console.log("I'm outside success");
     if(success){
-    return <Navigate to="/"/>
+    console.log("I'm inside success");
+    navigate("/");
     }
   } catch (err) {
     if(!err?.response){
