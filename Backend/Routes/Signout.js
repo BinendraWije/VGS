@@ -8,7 +8,7 @@ signOutRouter.get('/signout', async (req,res)=>{
     // On client(front end), also delete the accessToken
 
 const cookies = req.cookies;
-if(!cookies?.jwt) return res.sendStatus(204); // No content to send back;
+if(!cookies && cookies.jwt) return res.sendStatus(204); // No content to send back;
   const refreshToken = cookies.jwt;
 
 // Searching for a user based on refresh_token exists
