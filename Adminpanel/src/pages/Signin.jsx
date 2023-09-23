@@ -68,8 +68,7 @@ const handleSubmit = async (e)=>{
     setUser('')
     setPwd('')
     setSuccess(true);
-    console.log("I'm outisde success");
-    navigate("/");
+    //  navigate("/");
     
   } catch (err) {
     if(!err?.response){
