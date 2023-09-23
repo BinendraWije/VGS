@@ -1,8 +1,9 @@
 const express = require('express');
 const { db } = require('../Config/databaseconfig.js');
+const verifyRoles = require('../Middleware/verifyRoles.js');
 
 const getAllUsersRouter = express.Router();
-getAllUsersRouter.get('/users',(req,res)=>{
+getAllUsersRouter.get('/users',verifyRoles("Admin"),(req,res)=>{
     const sql = "SELECT * FROM vgsdb.users";
     db.query(sql,(err,data)=>{
         if(err) return res.json(err);

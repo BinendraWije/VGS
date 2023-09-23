@@ -15,14 +15,20 @@ const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[user], async (err,results)=>{
     if(err) return res.json(err);         
     if(results.length == 0 ) return res.sendStatus(401); //Unauthorized
-    console.log(req.body.user_pwd);
-    console.log(results[0].user_pwd);
+    
     // evaluate password
     const match = await bcrypt.compare(req.body.user_pwd, results[0].user_pwd);
     if(match){
         // create JWT
+        // gettin the user role from the results
+        const userrole = results[0].user_role;
+
         const accessToken = jwt.sign(
-            {"user_name": req.body.user_name},
+            {"UserInfo":{
+                "user_name": req.body.user_name,
+                "user_role" : userrole
+                }
+            },
             process.env.ACCESS_TOKEN_SECRET,
             {expiresIn: '5m'}
         );
