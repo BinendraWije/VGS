@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 import '../utils/adminpanel.css';
-import AuthContext from '../context/AuthProvider';
+import useAuth from '../hooks/useAuth';
 import axios from '../utils/axios';
 
 // @mui
@@ -31,7 +31,7 @@ import {
 const LOGIN_URL = "/auth";
 
 function Signin() {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   const userRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();

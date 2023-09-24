@@ -13,6 +13,8 @@ import './charts/ChartjsConfig';
 import Dashboard from './pages/Dashboard';
 import UsersPage from './pages/UsersPage';
 import Signin from './pages/Signin';
+import RequireAuth from './components/RequireAuth';
+
 function App() {
 
   const location = useLocation();
@@ -26,9 +28,14 @@ function App() {
   return (
     <>
       <Routes>
+        {/* public routes  */}
         <Route exact path="/signin" element={<Signin />} />
+
+        {/* protected routes  */}
+        <Route element ={<RequireAuth/>}>
         <Route exact path="/" element={<Dashboard />} />
         <Route exact path="/users" element={<UsersPage />} />
+        </Route>
       </Routes>
     </>
   );
