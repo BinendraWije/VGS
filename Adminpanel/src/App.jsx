@@ -33,8 +33,8 @@ function App() {
 
         {/* protected routes  */}
         <Route element = {<RequireAuth />} >
-        <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/users" element={<UsersPage />} />
+          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/users" element={<UsersPage />} />
         </Route>
       </Routes>
     </>
