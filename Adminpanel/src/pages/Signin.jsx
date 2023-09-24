@@ -65,8 +65,8 @@ const handleSubmit = async (e)=>{
       })
     console.log(JSON.stringify(response?.data))        
     const accessToken = response?.data?.accessToken;
-    const roles = response?.data?.user_role;
-    setAuth({user, pwd, roles, accessToken});
+    const user_role = response?.data?.user_role;
+    setAuth({user, pwd, user_role, accessToken});
     setUser('')
     setPwd('')
     setSuccess(true);
