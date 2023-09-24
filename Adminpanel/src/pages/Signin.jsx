@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../utils/adminpanel.css';
 import useAuth from '../hooks/useAuth';
 import axios from '../utils/axios';
@@ -32,14 +32,16 @@ const LOGIN_URL = "/auth";
 
 function Signin() {
   const { setAuth } = useAuth();
+
+  const location = useLocation();
+  const navigate = useNavigate();
   const userRef = useRef();
   const errRef = useRef();
-  const navigate = useNavigate();
+
 
   const[user, setUser] = useState('');
   const[pwd, setPwd] = useState('');
   const[errMsg, setErrMsg] = useState('');
-  const[success, setSuccess] = useState(false);
 
   useEffect(()=>{
     userRef.current.focus();
@@ -68,7 +70,7 @@ const handleSubmit = async (e)=>{
     setUser('')
     setPwd('')
     setSuccess(true);
-    navigate("/");
+    navigate(from, {replace : true});
     
   } catch (err) {
     if(!err?.response){

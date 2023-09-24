@@ -32,7 +32,7 @@ function App() {
         <Route exact path="/signin" element={<Signin />} />
 
         {/* protected routes  */}
-        <Route element={<RequireAuth />}>
+        <Route element={<RequireAuth allowedRoles={['Admin','Moderator']} />}>
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/users" element={<UsersPage />} />
         </Route>
