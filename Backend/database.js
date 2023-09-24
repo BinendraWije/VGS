@@ -6,6 +6,7 @@ const {getAllForumPostsRouter} = require('./Routes/allForumposts.js');
 const {signInRouter} = require('./Routes/Signin.js');
 const {signOutRouter} = require('./Routes/Signout.js');
 const { refreshTokenRouter } = require('./Routes/refreshtoken.js');
+const verifyRoles = require('../Middleware/verifyRoles.js');
 const bcrypt = require('bcryptjs');
 const { verifyJWT } = require('./Middleware/verifyJWT.js');
 const  cookieParser = require('cookie-parser');
