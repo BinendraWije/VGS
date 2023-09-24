@@ -24,13 +24,13 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
         const user_role = results[0].user_role;
 
         const accessToken = jwt.sign(
-            {"UserInfo":{
+            {"UserInfo": {
                 "user_name": req.body.user_name,
                 "user_role" : user_role
                 }
             },
             process.env.ACCESS_TOKEN_SECRET,
-            {expiresIn: '5m'}
+            {expiresIn: '1h'}
         );
 
         const refreshToken = jwt.sign(
@@ -50,7 +50,7 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
         
         res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'None',secure:true, maxAge: 24 * 60 * 60 * 1000});
         res.json({ user_role, accessToken });
-        res.json({'success': `User ${user} is loggedin!`});
+        // res.json({'success': `User ${user} is loggedin!`});
     }else{
         res.sendStatus(401);
     }
