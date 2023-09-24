@@ -70,7 +70,7 @@ const handleSubmit = async (e)=>{
     setUser('')
     setPwd('')
     setSuccess(true);
-    navigate(from, {replace : true});
+    // navigate(from, {replace : true});
     
   } catch (err) {
     if(!err?.response){
