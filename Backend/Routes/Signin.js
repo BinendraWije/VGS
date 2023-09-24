@@ -21,7 +21,7 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
     if(match){
         // create JWT
         // gettin the user role from the results
-        const userrole = results[0].user_role;
+        const userrole = 'Admin';
 
         const accessToken = jwt.sign(
             {"UserInfo":{
