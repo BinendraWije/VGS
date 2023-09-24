@@ -14,7 +14,6 @@ import Dashboard from './pages/Dashboard';
 import UsersPage from './pages/UsersPage';
 import Signin from './pages/Signin';
 import RequireAuth from './components/RequireAuth';
-import Layout from './components/Layout';
 
 function App() {
 
@@ -29,7 +28,6 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Layout />}>
         {/* public routes  */}
         <Route exact path="/signin" element={<Signin />} />
 
@@ -37,7 +35,6 @@ function App() {
         <Route element = {<RequireAuth />} >
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/users" element={<UsersPage />} />
-        </Route>
         </Route>
       </Routes>
     </>
