@@ -21,17 +21,17 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
         process.env.REFRESH_TOKEN_SECRET,
         (err, decoded) => {
             if(err || results[0].user_name !== decoded.user_name ) return res.sendStatus(403); // Forbidden
-            const userrole = results[0].user_role;
+            const user_role = results[0].user_role;
             const accessToken = jwt.sign(
                 {"UserInfo":{
                     "user_name": decoded.user_name,
-                    "user_role": userrole
+                    "user_role": user_role
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,
                 {expiresIn: '5m'}
             );
-            res.json({ accessToken })
+            res.json({ user_role, accessToken })
 
         }
 
