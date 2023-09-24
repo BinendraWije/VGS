@@ -50,7 +50,6 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
         
         res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'None',secure:true, maxAge: 24 * 60 * 60 * 1000});
         res.json({ user_role, accessToken });
-        // res.json({'success': `User ${user} is loggedin!`});
     }else{
         res.sendStatus(401);
     }
