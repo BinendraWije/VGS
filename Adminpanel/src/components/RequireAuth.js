@@ -1,14 +1,15 @@
 import { useLocation, Navigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import App from "../App";
+import ThemeProvider from "../utils/ThemeContext";
+
 
 const RequireAuth = () => {
 
     const { auth } = useAuth();
     const location = useLocation();
 
-    return(
-        auth?.user ? <App /> : <Navigate to ="/signin" state={{ from: location }} replace />
+    return (
+        auth?.user ? <ThemeProvider></ThemeProvider> : <Navigate to ="/signin" state={{ from: location }} replace />
      );
 }
 
