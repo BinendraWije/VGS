@@ -21,12 +21,12 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
     if(match){
         // create JWT
         // gettin the user role from the results
-        const userrole = 'Admin';
+        const user_role = results[0].user_role;
 
         const accessToken = jwt.sign(
             {"UserInfo":{
                 "user_name": req.body.user_name,
-                "user_role" : userrole
+                "user_role" : user_role
                 }
             },
             process.env.ACCESS_TOKEN_SECRET,
@@ -49,7 +49,7 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
               });
         
         res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'None',secure:true, maxAge: 24 * 60 * 60 * 1000});
-        res.json({ accessToken });
+        res.json({ user_role, accessToken });
         res.json({'success': `User ${user} is loggedin!`});
     }else{
         res.sendStatus(401);
