@@ -103,7 +103,7 @@ function UserDashboard() {
           headers: {'Content-Type':'application/json',
           'Access-Control-Allow-Origin':'*'},
           // add credentials later once users have been created add token as well
-          withCredentials: true
+          withCredentials: false
         });
         console.log(response.data);
         console.log(response.accessToken);      
