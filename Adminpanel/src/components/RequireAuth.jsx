@@ -9,7 +9,7 @@ const RequireAuth = () => {
     const location = useLocation();
 
     return (
-        auth?.user ? <ThemeProvider></ThemeProvider> : <Navigate to ="/signin" state={{ from: location }} replace />
+        auth?.user ? <ThemeProvider/> : <Navigate to ="/signin" state={{ from: location }} replace />
      );
 }
 
