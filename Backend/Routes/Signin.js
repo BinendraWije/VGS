@@ -43,9 +43,9 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
         const refreshtokenquery = "UPDATE vgsdb.users SET refresh_token = ? WHERE user_name = ?";
       
         db.query(refreshtokenquery,[refreshToken,req.body.user_name], async (err,data)=>{
-                  if(err) return res.json(err);      
+                  if(err){ return res.json(err);}else{      
                   return res.json("refresh token inserted successfully");
-          
+                  }
               });
         
         res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'None',secure:true, maxAge: 24 * 60 * 60 * 1000});
