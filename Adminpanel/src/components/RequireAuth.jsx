@@ -7,7 +7,7 @@ const RequireAuth = ({ allowedRoles }) => {
     const location = useLocation();
 
     console.log("I'm here on the adminpanel after checking the userroles");
-    if(auth && auth.user_role && auth.user_role.find(user_role => allowedRoles?.includes(user_role))){
+    if(auth && auth.user_role && allowedRoles.includes(user_role)){
         console.log("found the userroles");
         return <Outlet />    
     }else{
