@@ -100,8 +100,7 @@ function UserDashboard() {
           user_role: userType   
 
         }),{
-          headers: {'Content-Type':'application/json',
-          'Access-Control-Allow-Origin':'*'},
+          headers: {'Content-Type':'application/json'},
           // add credentials later once users have been created add token as well
           withCredentials: false
         });
