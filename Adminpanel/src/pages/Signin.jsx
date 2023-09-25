@@ -61,7 +61,7 @@ const handleSubmit = async (e)=>{
         user_pwd: pwd
       }),{
         headers: {'Content-Type':'application/json'},
-        withCredentials: false
+        withCredentials: true
       })
     console.log(JSON.stringify(response?.data))        
     const accessToken = response?.data?.accessToken;
@@ -70,7 +70,7 @@ const handleSubmit = async (e)=>{
     setAuth({user, pwd, user_role, accessToken});
     setUser('')
     setPwd('')
-    navigate("/");
+    navigate(from, {replace : true});
     
   } catch (err) {
     if(!err?.response){

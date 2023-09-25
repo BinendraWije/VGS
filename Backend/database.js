@@ -15,11 +15,17 @@ const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
 const { db } = require('./Config/databaseconfig.js');
+const corsOptions = require('./Config/CORSoptions.js');
+const credentials = require('./Middleware/credentials.js');
 
 const app = express();
 
+//Setting Credentials
+app.use(credentials);
+
+
 // Cross Origin Resource Sharing
-app.use(cors());
+app.use(cors(corsOptions));
 
 // middleware for json data
 app.use(express.json());
