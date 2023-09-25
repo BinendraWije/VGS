@@ -37,6 +37,7 @@ function Signin() {
   const navigate = useNavigate();
   const userRef = useRef();
   const errRef = useRef();
+  const from = location.state?.from?.pathname || "/";
 
 
   const[user, setUser] = useState('');
@@ -70,7 +71,7 @@ const handleSubmit = async (e)=>{
     setAuth({user, pwd, user_role, accessToken});
     setUser('')
     setPwd('')
-    navigate('/');
+    navigate(from, {replace : true});
     
   } catch (err) {
     if(!err?.response){
