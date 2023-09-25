@@ -70,7 +70,7 @@ const handleSubmit = async (e)=>{
     setAuth({user, pwd, user_role, accessToken});
     setUser('')
     setPwd('')
-    navigate(from, {replace : true});
+    navigate("/");
     
   } catch (err) {
     if(!err?.response){
