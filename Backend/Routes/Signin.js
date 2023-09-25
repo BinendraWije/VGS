@@ -49,8 +49,8 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
       
         db.query(refreshtokenquery,[refreshToken,req.body.user_name], async (err,data)=>{
                   if(err){ return res.json(err);}else{      
-                  return res.json("refresh token inserted successfully");
-                  }
+                  console.log("succesfully created refresh token");
+                  } 
               });
 
         console.log("I'm here after saving the refreshtoken ");
