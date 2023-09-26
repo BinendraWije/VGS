@@ -12,9 +12,9 @@ const RequireAuth = ({ allowedRoles }) => {
     }else{ 
       return  <Navigate to = "/signin" state={{ from: location }} replace />  
     }*/
-
+      console.log(auth.accessToken);
       if(auth.user_role && allowedRoles.includes(auth.user_role)){
-        if(auth.accessToken){
+        if(auth.accessToken){          
           return  <Outlet />
         }else{
           return <Navigate to="/unauthorized" state={{ from: location }} replace />

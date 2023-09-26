@@ -6,9 +6,10 @@ require('dotenv').config();
 const refreshTokenRouter = express.Router();
 refreshTokenRouter.get('/refreshtoken', async (req,res)=>{
 const cookies = req.cookies;
-if(!cookies && !cookies.jwt) return res.sendStatus(401); // unauthorized;
+console.log(cookies);
+if(!cookies?.jwt) return res.sendStatus(401); // unauthorized;
  const refreshToken = cookies.jwt;
-
+console.log(refreshToken);
 // Searching for a user based on refresh_token exists
 const findUserFromToken = "SELECT * FROM vgsdb.users WHERE `refresh_token` = ?";
 db.query(findUserFromToken,[refreshToken], async (err,results)=>{
