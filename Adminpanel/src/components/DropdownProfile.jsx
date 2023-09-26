@@ -95,7 +95,7 @@ function DropdownProfile({
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
                 onClick={() => {
                   setDropdownOpen(!dropdownOpen);
-                  signOut;
+                  signOut();
                 
                 }}
               >
