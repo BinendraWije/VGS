@@ -29,7 +29,7 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,
-                {expiresIn: '1h'}
+                {expiresIn: '10s'}
             );
             res.json({ user_role, accessToken })
 
