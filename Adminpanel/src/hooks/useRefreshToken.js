@@ -8,6 +8,7 @@ const refresh = async () => {
         withCredentials:true
     })
     setAuth(prev => {
+        console.log("getting the previous accesstoken")
         console.log(JSON.stringify(prev));
         console.log(response.data.accessToken)
         return {...prev,
