@@ -1,14 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../utils/Transition';
+import { useNavigate } from 'react-router-dom';
 
 import UserAvatar from '../images/user-avatar-32.png';
+import useLogout from '../hooks/useLogout';
 
 function DropdownProfile({
   align
 }) {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const logout = useLogout();
+   const signOut = async ()=>{
+      await logout();
+      navigate('/signin');
+   } 
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -84,8 +93,12 @@ function DropdownProfile({
             <li>
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
-                to="/signin"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                to=""
+                onClick={() => {
+                  setDropdownOpen(!dropdownOpen);
+                  signOut;
+                
+                }}
               >
                 Sign Out
               </Link>
