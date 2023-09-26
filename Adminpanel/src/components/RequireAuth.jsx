@@ -12,14 +12,18 @@ const RequireAuth = ({ allowedRoles }) => {
     }else{ 
       return  <Navigate to = "/signin" state={{ from: location }} replace />  
     }*/
-    return (
-      auth?.user_role?.allowedRoles?.includes(auth.user_role)
-          ? <Outlet />
-          : auth?.accessToken //changed from user to accessToken to persist login after refresh
-              ? <Navigate to="/unauthorized" state={{ from: location }} replace />
-              : <Navigate to="/login" state={{ from: location }} replace />
-  );
-   
+
+      if(auth.user_role && allowedRoles.includes(auth.user_role)){
+        if(auth.accessToken){
+          return  <Outlet />
+        }else{
+          return <Navigate to="/unauthorized" state={{ from: location }} replace />
+        }
+      }else {
+        return <Navigate to="/login" state={{ from: location }} replace />
+      } 
+  
+  
      
 } 
 
