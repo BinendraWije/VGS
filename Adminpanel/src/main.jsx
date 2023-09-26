@@ -7,14 +7,15 @@ import { AuthProvider } from './context/AuthProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <AuthProvider>
+    
     <Router>
+    <AuthProvider>
       <ThemeProvider>
         <Routes>
           <Route path='/*' element = {<App/>} />
         </Routes>
       </ThemeProvider>
+      </AuthProvider>
     </Router>
-    </AuthProvider>
   </React.StrictMode>
 );
