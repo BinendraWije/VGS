@@ -15,7 +15,7 @@ const PersistLogin = () => {
                 
             }
             catch(err){
-                console.log(err);
+                console.error(err);
 
             }
             finally {
@@ -36,7 +36,7 @@ const PersistLogin = () => {
         <>
         {isLoading
             ? <p>Loading....</p>
-            : <Outlet/>
+            : <Outlet />  
         
         
         }        
