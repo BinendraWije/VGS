@@ -10,11 +10,14 @@ const refresh = async () => {
     setAuth(prev => {
         console.log(JSON.stringify(prev));
         console.log(response.data.accessToken)
-        return {...prev, accessToken:response.data.accessToken}
+        return {...prev,
+            user_role: response.data.user_role,
+            accessToken:response.data.accessToken}
     });
     return response.data.accessToken;
  }
  return refresh;
+
 }
 
 export default useRefreshToken;

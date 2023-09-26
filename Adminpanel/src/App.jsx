@@ -14,6 +14,7 @@ import Dashboard from './pages/Dashboard';
 import UsersPage from './pages/UsersPage';
 import Signin from './pages/Signin';
 import RequireAuth from './components/RequireAuth';
+import PersistLogin from './components/PersistLogin';
 
 function App() {
 
@@ -32,9 +33,11 @@ function App() {
         <Route exact path="/signin" element={<Signin />} />
 
         {/* protected routes  */}
+        <Route element={<PersistLogin />}>
         <Route element={<RequireAuth allowedRoles={['Admin','Moderator']} />}>
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/users" element={<UsersPage />} />
+        </Route>
         </Route>
       </Routes>
     </>
