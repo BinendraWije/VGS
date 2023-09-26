@@ -31,7 +31,7 @@ import {
 const LOGIN_URL = "/auth";
 
 function Signin() {
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -89,6 +89,14 @@ const handleSubmit = async (e)=>{
 
 }
 
+const togglePersist = () => {
+  setPersist(prev => !prev);
+}
+
+useEffect(()=>{
+  localStorage.setItem("persist", persist);
+}, [persist])
+
   return (
     <div className="flex h-screen overflow-hidden">
   
@@ -110,6 +118,10 @@ const handleSubmit = async (e)=>{
             <label htmlFor="pwd">Password: </label>
             <input type="password" id="pwd" autoComplete='off' onChange={(e)=>setPwd(e.target.value)} value={pwd} required/>
           <button>Sign in</button>
+          <div className="persistCheck">
+            <input type="checkbox" id="persist" onChange={togglePersist} checked={persist}/>
+            <label htmlFor='persist'> Trust This Device </label>
+            </div> 
           </form>
           </Card>
          </div>
