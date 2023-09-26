@@ -20,7 +20,7 @@ const RequireAuth = ({ allowedRoles }) => {
           return <Navigate to="/unauthorized" state={{ from: location }} replace />
         }
       }else {
-        return <Navigate to="/sigin" state={{ from: location }} replace />
+        return <Navigate to="/signin" state={{ from: location }} replace />
       } 
   
   
