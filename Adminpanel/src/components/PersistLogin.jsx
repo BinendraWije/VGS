@@ -43,3 +43,5 @@ const PeristLogin = () => {
         </>
     )
 }
+
+export default PersistLogin;
