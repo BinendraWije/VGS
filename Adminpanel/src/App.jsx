@@ -13,6 +13,7 @@ import './charts/ChartjsConfig';
 import Dashboard from './pages/Dashboard';
 import UsersPage from './pages/UsersPage';
 import Signin from './pages/Signin';
+import Unauthorized from './pages/Unauthorized';
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
 
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         {/* public routes  */}
         <Route exact path="/signin" element={<Signin />} />
+        <Route exact path="/unauthorized" element={<Unauthorized />} />
 
         {/* protected routes  */}
         <Route element={<PersistLogin />}>
