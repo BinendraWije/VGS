@@ -4,13 +4,14 @@ import useAxiosCookiereq from "../hooks/useAxiosCookiereq";
 
 
 
-
 const useRefreshToken = () => {
-const axiosCookie = useAxiosCookiereq();
 const { setAuth } = useAuth();
+const axioscookie = useAxiosCookiereq();
+
 const refresh = async () => {
-    const response = await axiosCookie.get('/refreshtoken',{
-        withCredentials:true       
+    const response = await axioscookie.get('/refreshtoken',{
+        withCredentials:true,
+        
     })
     setAuth(prev => {
         console.log("getting the previous accesstoken")

@@ -3,7 +3,7 @@ import { axiosCookie } from "../utils/axios";
 
 const useAxiosCookiereq = () => {
   
-  const axiosCookie = axiosCookie.interceptors.request.use(
+  const axioscookie = axiosCookie.interceptors.request.use(
     (config) => {
       config.withCredentials = true
       return config
@@ -13,7 +13,7 @@ const useAxiosCookiereq = () => {
     }
   )
 
-return axiosCookie;
+return axioscookie;
 }
 
 export default useAxiosCookiereq;
