@@ -7,8 +7,6 @@ const refreshTokenRouter = express.Router();
 refreshTokenRouter.get('/refreshtoken', async (req,res)=>{
 const cookies = req.cookies;
 console.log(cookies);
-console.log(req);
-console.log(req.headers);
 if(!cookies?.jwt) return res.sendStatus(401); // unauthorized;
  const refreshToken = cookies.jwt;
 console.log(refreshToken);
