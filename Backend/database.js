@@ -50,7 +50,7 @@ app.use(getAllForumPostsRouter);
 
 // Adminpanel Routes
 app.use(signInRouter);
-app.use(handleRefreshTokenrouter);
+app.use(refreshTokenRouter);
 app.use(signOutRouter);
 app.use(verifyJWT);
 app.use(getAllUsersRouter);
