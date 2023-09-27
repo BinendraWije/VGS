@@ -61,8 +61,8 @@ const handleSubmit = async (e)=>{
         user_name: user,
         user_pwd: pwd
       }),{
-        headers: {'Content-Type':'application/json'},
-        withCredentials: true
+        withCredentials: true,
+        headers: {'Content-Type':'application/json'}       
       })
     console.log(JSON.stringify(response?.data))        
     const accessToken = response?.data?.accessToken;
