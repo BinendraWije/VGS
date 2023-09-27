@@ -48,7 +48,7 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
                 }
               });
         
-        res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'None', secure: true, domain: 'http://13.49.145.29:3306', maxAge: 24 * 60 * 60 * 1000});
+        res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax', secure: true, origin: 'http://13.49.145.29:3306', maxAge: 24 * 60 * 60 * 1000});
         res.json({ user_role, accessToken }); 
     }else{
         res.sendStatus(401);
