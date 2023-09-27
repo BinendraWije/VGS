@@ -3,9 +3,10 @@ import useAuth from "./useAuth"
 import useAxiosCookiereq from "../hooks/useAxiosCookiereq";
 
 
-const axiosCookie = useAxiosCookiereq();
+
 
 const useRefreshToken = () => {
+const axiosCookie = useAxiosCookiereq();
 const { setAuth } = useAuth();
 const refresh = async () => {
     const response = await axiosCookie.get('/refreshtoken',{
