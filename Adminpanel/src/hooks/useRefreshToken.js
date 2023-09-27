@@ -9,7 +9,7 @@ const { setAuth } = useAuth();
 const axioscookie = useAxiosCookiereq();
 
 const refresh = async () => {
-    const response = await axioscookie.get('/refreshtoken',{
+    const response = await axioscookie.get('/refresh',{
         withCredentials:true,
         
     })

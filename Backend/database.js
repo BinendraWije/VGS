@@ -17,6 +17,7 @@ require('dotenv').config();
 const { db } = require('./Config/databaseconfig.js');
 const corsOptions = require('./Config/CORSoptions.js');
 const credentials = require('./Middleware/credentials.js');
+const { handleRefreshTokenrouter } = require('./Routes/refreshtokenroute.js');
 
 const app = express();
 
@@ -49,7 +50,7 @@ app.use(getAllForumPostsRouter);
 
 // Adminpanel Routes
 app.use(signInRouter);
-app.use(refreshTokenRouter);
+app.use(handleRefreshTokenrouter);
 app.use(signOutRouter);
 app.use(verifyJWT);
 app.use(getAllUsersRouter);
