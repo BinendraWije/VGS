@@ -5,10 +5,7 @@ const useRefreshToken = () => {
 const { setAuth } = useAuth();
 const refresh = async () => {
     const response = await axios.get('/refreshtoken',{
-        withCredentials:true,
-        crossDomain: true,
-        sameSite: "None",
-        secure: true
+        withCredentials:true      
     })
     setAuth(prev => {
         console.log("getting the previous accesstoken")
