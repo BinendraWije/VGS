@@ -43,8 +43,7 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
         const refreshtokenquery = "UPDATE vgsdb.users SET refresh_token = ? WHERE user_name = ?";
       
         db.query(refreshtokenquery,[refreshToken,req.body.user_name], async (err,data)=>{
-                  if(err){ return res.json(err);}else{      
-                console.log("I'm here after setting the cookie with the refreshtoken ");
+                  if(err){ return res.json(err);}else{                    
                 }
               });
         
