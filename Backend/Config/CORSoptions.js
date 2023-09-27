@@ -8,7 +8,6 @@ const corsOptions = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    exposedHeaders: ['set-cookie'],
     optionsSuccessStatus: 200
 }
 
