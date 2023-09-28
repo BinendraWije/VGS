@@ -81,13 +81,7 @@ function UserDashboard() {
     setErrMsg('');
   }, [user,pwd])
 
-  useEffect(()=>{
-    const userresponse = axios.get(GET_USERS_URL);
 
-    console.log(userresponse.data);
-    
- 
-  },[]);
 
 
   const submitHandler = async (e)=>{
@@ -135,6 +129,19 @@ function UserDashboard() {
  
   const [users, setUsers] = useState([])
 
+  useEffect(()=>{
+    const fetchpost = async () =>{
+
+      try{
+    const  userresponse = await axios.get(GET_USERS_URL);
+    console.log(userresponse.data);
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    fetchpost();
+  },[]);
 
 
  
