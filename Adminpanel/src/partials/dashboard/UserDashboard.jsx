@@ -130,15 +130,11 @@ function UserDashboard() {
  
 
   useEffect(()=>{
-    const usersresponse = axios.get(GET_USERS_URL,{
-      headers: {'Content-Type':'application/json'},
-      // add credentials later once users have been created add token as well
-      withCredentials: false
-    });
-    console.log(usersresponse);
-    setUsers(usersresponse);
+    axios.get(GET_USERS_URL)
+    .then(res=> console.log(res.data)).catch(err =>console.log(err))
+    .finally(setUsers(res.data));
  
-  },[users]);
+  },[]);
 
 
   return (
