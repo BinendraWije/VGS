@@ -132,7 +132,6 @@ function UserDashboard() {
   useEffect(()=>{
     axios.get(GET_USERS_URL)
     .then(res=> console.log(res.data)).catch(err =>console.log(err))
-    .finally(setUsers(res.data));
  
   },[]);
 
@@ -230,7 +229,7 @@ function UserDashboard() {
             </thead>
             {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-100 dark:divide-slate-700">
-              {
+             {/* 
                 users.map(user => {
                   return (
                     <tr key={user.id}>
@@ -254,7 +253,7 @@ function UserDashboard() {
                     </tr>
                   )
                 })
-              }
+              */}
             </tbody>
           </table>
 
