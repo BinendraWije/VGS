@@ -165,14 +165,14 @@ function UserDashboard() {
     },
   ];
 
- /* const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([])
   useEffect(()=>{
  fetch('http://13.49.145.29:3306/users')
  .then(res => res.json())
  .then(data => setUsers(data))
  .catch(err => console.log(err));
  
-  },[])*/
+  },[users])
   return (
     <>
       {/* Create a User section */}
@@ -267,25 +267,25 @@ function UserDashboard() {
             {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-100 dark:divide-slate-700">
               {
-                customers.map(customer => {
+                users.map(user => {
                   return (
-                    <tr key={customer.id}>
+                    <tr key={user.id}>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
+                            <img className="rounded-full"  width="40" height="40" alt={user.user_name} />
                           </div>
-                          <div className="font-medium text-slate-800 dark:text-slate-100">{customer.name}</div>
+                          <div className="font-medium text-slate-800 dark:text-slate-100">{user.user_name}</div>
                         </div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-left">{customer.email}</div>
+                        <div className="text-left">{user.user_role}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-left font-medium text-green-500">{customer.spent}</div>
+                        <div className="text-left font-medium text-green-500"></div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-lg text-center">{customer.location}</div>
+                        <div className="text-lg text-center"></div>
                       </td>
                     </tr>
                   )
