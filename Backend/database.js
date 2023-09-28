@@ -52,7 +52,7 @@ app.use(getAllForumPostsRouter);
 app.use(signInRouter);
 app.use(refreshTokenRouter);
 app.use(signOutRouter);
-app.use(verifyJWT);
+// app.use(verifyJWT);
 app.use(getAllUsersRouter);
 app.use(createUserRouter);
 
