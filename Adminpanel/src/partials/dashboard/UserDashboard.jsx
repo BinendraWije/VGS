@@ -21,6 +21,8 @@ const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}
 
 
 const CREATE_USER_URL = '/createuser';
+const GET_USERS_URL = '/users';
+
 // ------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
@@ -125,15 +127,19 @@ function UserDashboard() {
  
   const [users, setUsers] = useState([])
 
+ 
+
   useEffect(()=>{
- fetch('http://13.49.145.29:3306/users')
- .then(res => res.json())
- .then(data => setUsers(data))
- .catch(err => console.log(err));
+    const usersresponse = axios.get(GET_USERS_URL,{
+      headers: {'Content-Type':'application/json'},
+      // add credentials later once users have been created add token as well
+      withCredentials: false
+    });
+    console.log(usersresponse);
+    setUsers(usersresponse);
  
   },[users]);
 
-  console.log(users);
 
   return (
     <>
