@@ -3,7 +3,7 @@ const { db } = require('../Config/databaseconfig.js');
 const { verifyRoles } = require('../Middleware/verifyRoles.js');
 
 const editUserRouter = express.Router();
-editUserRouter.post('/edituser/:username', verifyRoles('Admin'), async (req,res)=>{
+editUserRouter.post('/edituser/:username', async (req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
 
 // Checking if username exists
