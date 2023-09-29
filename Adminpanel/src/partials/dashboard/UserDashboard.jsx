@@ -29,7 +29,7 @@ const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}
 
 const CREATE_USER_URL = '/createuser';
 const GET_USERS_URL = '/users';
-const DELETE_USER_URL = '/deleteuser'
+const DELETE_USER_URL = '/deleteuser';
 // ------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
@@ -168,10 +168,8 @@ try{
     catch(err){
       if(!err?.response){
         setErrMsg('No server Response');
-      } else if (err.response?.status === 409){
-        setErrMsg(' Username taken');
       } else{
-        setErrMsg('Registration Failed')
+        setErrMsg('Delete Failed')
       }
       errRef.current.focus();
     }
@@ -303,7 +301,7 @@ try{
               </button>
             </li>
             <li>
-              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={e=> deleteHandler(e, user.user_name)}>
+              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={(e)=> deleteHandler(e, user.user_name)}>
                 Delete
               </button>
             </li>

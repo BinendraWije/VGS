@@ -53,11 +53,10 @@ app.use(getAllForumPostsRouter);
 app.use(signInRouter);
 app.use(refreshTokenRouter);
 app.use(signOutRouter);
-app.use(deleteUserRouter);
 // app.use(verifyJWT);
 app.use(getAllUsersRouter);
 app.use(createUserRouter);
-
+app.use(deleteUserRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")    
