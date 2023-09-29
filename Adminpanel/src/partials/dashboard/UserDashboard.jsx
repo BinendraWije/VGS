@@ -30,6 +30,7 @@ const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}
 const CREATE_USER_URL = '/createuser';
 const GET_USERS_URL = '/users';
 const DELETE_USER_URL = '/deleteuser/';
+const EDIT_USER_URL = '/edituser/';
 // ------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
@@ -62,6 +63,9 @@ function UserDashboard() {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [editUsername, setEditUsername] = useState('');
+
 
   useEffect(()=>{
     if(success){
@@ -89,7 +93,7 @@ function UserDashboard() {
   }, [user,pwd])
 
 
-
+/////////////////// CREATE USER FUNCTION //////////////////////////////
 
   const submitHandler = async (e)=>{
     e.preventDefault();
@@ -133,6 +137,8 @@ function UserDashboard() {
     }
   }
 
+
+/////////////////// GET ALL USERS FUNCTION //////////////////////////////
  
   const [users, setUsers] = useState([])
   const fetchpost = async () =>{
@@ -151,11 +157,12 @@ function UserDashboard() {
     fetchpost();
   },[]);
 
+/////////////////// DELETE USER FUNCTION //////////////////////////////
 
   const deleteHandler = async (e, user_name)=>{
     e.preventDefault();
     const user = user_name;
-    console.log(user);
+    
 try{
     await axios.delete(DELETE_USER_URL + user,
      {
@@ -176,23 +183,96 @@ try{
   }
 
 
+/////////////////// EDIT USER FUNCTION //////////////////////////////
+
+const editUser =  async (e, user_name, user_role) => {
+  e.preventDefault();
+  const user = user_name;
+  const userrole = user_role;
+  setUser(user);
+  setPwd('**********');
+  setUserType(userrole);
+  setEditUsername(user);
+  setEditMode(true);
+}
+/// set the current user info onto the create user form
+
+/// set all the titles and add button text based off of whether or not youre in the edit function or not 
+
+const editSubmitHandler = async (e) =>{
+  e.preventDefault();
+
+ // if button enabled with JS Hack
+ const v1 = USER_REGEX.test(user);
+ const v2 = PWD_REGEX.test(pwd);
+ if(!v1 || !v2){
+   setErrMsg("Invalid Entry");
+   
+ }
+
+  try{  
+    const hash = await bcrypt.hash(pwd,10);
+    console.log(hash);      
+    const response = await axios.post(EDIT_USER_URL + editUsername,
+      JSON.stringify({ 
+        user_name: user,
+        user_pwd: hash,
+        user_role: userType   
+
+      }),{
+        headers: {'Content-Type':'application/json'},
+        // add credentials later once users have been created add token as well
+        withCredentials: false
+      });
+      console.log(response.data);
+      console.log(response.accessToken);      
+      console.log(JSON.stringify(response));
+      setSuccess(true);
+      // clear input fields   
+
+  }catch(err){
+    if(!err?.response){
+      setErrMsg('No server Response');
+    } else{
+      setErrMsg('Edit Failed')
+    }
+    errRef.current.focus();
+  }
+  setEditMode(false);
+  fetchpost();
+}
+  
+
   return (
     <>
       {/* Create a User section */}
     <div className="col-span-full xl:col-span-12 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
      <div className='testcard min-w-full flex flex-col col-span-full xl:col-span-12' style={sectionstyle}>
       <header className="py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Create New Users</h2>
+        {editMode ?
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Edit User</h2>  
+          :
+          <h2 className="font-semibold text-slate-800 dark:text-slate-100">Create New Users</h2>   }
         </header>
+        {editMode ?
         <div className="successfailnotification">
+            <p id="uidnote" className={success ? "successmsg" : "offscreen"}>
+              <FontAwesomeIcon icon={faCheck}/>  
+                User Successfully edited!                            
+                        </p>                                                
+            </div>
+            :
+            <div className="successfailnotification">
             <p id="uidnote" className={success ? "successmsg" : "offscreen"}>
               <FontAwesomeIcon icon={faCheck}/>  
                 User Successfully created!                            
                         </p>                                                
             </div>
+            
+            }
             <div className="formholder min-w-full">
              <p ref={errRef} className={errMsg ? "errmsg":"offscreen"}>{errMsg}</p> 
-             <form onSubmit={submitHandler}>
+             <form onSubmit={editMode? editSubmitHandler : submitHandler}>
                 <label className='mx-1' htmlFor="username"> Username: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !user ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
                 <input type="text" id="username" ref={userRef} autoComplete='off' onChange={(e)=>setUser(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} /></label>
                
@@ -213,14 +293,21 @@ try{
 
                 </label>
                
-             
+             {editMode ? 
              <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white mx-2" disabled={!validName && !validPwd}>
                  <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
                      <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                  </svg>
-                 <span className="hidden xs:block ml-2">Create User</span>
+                 <span className="hidden xs:block ml-2">Edit User</span>
              </button>                
-           
+              : 
+              <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white mx-2" disabled={!validName && !validPwd}>
+              <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
+                  <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
+              </svg>
+              <span className="hidden xs:block ml-2">Create User</span>
+          </button>    
+           }
               </form> 
             </div>
             <div className="errholder">
@@ -291,7 +378,7 @@ try{
    {/* Menu button */}
    <EditMenu align="right" className="relative inline-flex">
             <li>
-              <button className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0">
+              <button className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0" onClick={(e)=>editUser(e, user.user_name, user.user_role)}>
                 Edit
               </button>
             </li>
