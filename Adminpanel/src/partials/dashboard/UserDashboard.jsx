@@ -29,7 +29,7 @@ const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}
 
 const CREATE_USER_URL = '/createuser';
 const GET_USERS_URL = '/users';
-const DELETE_USER_URL = '/deleteuser/'
+const DELETE_USER_URL = '/deleteuser'
 // ------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
@@ -152,13 +152,14 @@ function UserDashboard() {
   },[]);
 
 
-  const deleteHandler = async (e, user_name)=>{
-    e.preventDefault();
+  const deleteHandler = async (user_name)=>{  
     const user = user_name;
-    console.log(DELETE_USER_URL+user);
 try{
-    await axios.delete(DELETE_USER_URL + user,
-     {  headers: {'Content-Type':'application/json'},
+    await axios.delete(DELETE_USER_URL,
+      JSON.stringify({ 
+        user_name: user,
+        }),{
+        headers: {'Content-Type':'application/json'},
         // add credentials later once users have been created add token as well
         withCredentials: false
       });
@@ -173,6 +174,7 @@ try{
       }
       errRef.current.focus();
     }
+    window.location.reload()
   }
 
 
@@ -301,7 +303,7 @@ try{
               </button>
             </li>
             <li>
-              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={e=> deleteHandler(e, user.user_name)}>
+              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={()=> deleteHandler(user.user_name)}>
                 Delete
               </button>
             </li>
