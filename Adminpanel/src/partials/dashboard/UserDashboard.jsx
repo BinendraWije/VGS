@@ -16,7 +16,7 @@ import Image07 from '../../images/avatar_10.jpg';
 import Image08 from '../../images/avatar_12.jpg';
 import Image09 from '../../images/avatar_13.jpg';
 import Image10 from '../../images/avatar_15.jpg';
-import Image11 from '../../images/avatars/';
+
 import axios from '../../utils/axios' 
 import bcrypt from 'bcryptjs';
 
