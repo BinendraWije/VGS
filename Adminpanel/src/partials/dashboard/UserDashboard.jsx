@@ -135,28 +135,27 @@ function UserDashboard() {
 
  
   const [users, setUsers] = useState([])
-
   const fetchpost = async () =>{
 
-    try{
-  const  userresponse = await axios.get(GET_USERS_URL);
-  setUsers(userresponse.data);
-  console.log(userresponse.data);
+      try{
+    const  userresponse = await axios.get(GET_USERS_URL);
+    setUsers(userresponse.data);
+    console.log(userresponse.data);
+      }
+      catch(err){
+        console.log(err)
+      }
     }
-    catch(err){
-      console.log(err)
-    }
-  }
-
   useEffect(()=>{
   
     fetchpost();
   },[]);
 
 
-  const deleteHandler = async (user_name)=>{  
+  const deleteHandler = async (e,user_name)=>{
+    e.preventDefault();
     const user = user_name;
-  try{
+try{
     await axios.post(DELETE_USER_URL,
       JSON.stringify({ 
         user_name: user,
@@ -176,7 +175,6 @@ function UserDashboard() {
       }
       errRef.current.focus();
     }
-    fetchpost();
   }
 
 
