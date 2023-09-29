@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import EditMenu from '../../components/DropdownEditMenu';
+import { Link } from 'react-router-dom';
 
 
 import Image01 from '../../images/avatar_1.jpg';
