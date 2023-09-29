@@ -193,7 +193,7 @@ const editUser =  async (e, user_name, user_role) => {
   const userrole = user_role;
   setUser(user);
   userRef.current.value = user;
-  pwdRef.current = "*********";
+  pwdRef.current.value = "*********";
   setUserType(userrole);
   userTypeRef.current = userrole;
   setEditUsername(user);
