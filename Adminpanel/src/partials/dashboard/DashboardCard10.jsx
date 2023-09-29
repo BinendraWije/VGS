@@ -1,10 +1,15 @@
 import React from 'react';
 
-import Image01 from '../../images/user-36-05.jpg';
-import Image02 from '../../images/user-36-06.jpg';
-import Image03 from '../../images/user-36-07.jpg';
-import Image04 from '../../images/user-36-08.jpg';
-import Image05 from '../../images/user-36-09.jpg';
+import Image01 from '../../images/avatar_1.jpg';
+import Image02 from '../../images/avatar_3.jpg';
+import Image03 from '../../images/avatar_4.jpg';
+import Image04 from '../../images/avatar_6.jpg';
+import Image05 from '../../images/avatar_8.jpg';
+import Image06 from '../../images/avatar_9.jpg';
+import Image07 from '../../images/avatar_10.jpg';
+import Image08 from '../../images/avatar_12.jpg';
+import Image09 from '../../images/avatar_13.jpg';
+import Image10 from '../../images/avatar_15.jpg';
 
 function DashboardCard10() {
 
