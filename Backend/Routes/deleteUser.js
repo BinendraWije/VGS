@@ -11,7 +11,10 @@ console.log(req.params.username);
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[req.params.username], async (err,results)=>{
     console.log(results);
-    if(err) return res.json(err);
+    if(err){ 
+        return res.json(err);
+    }else{
+        console.log("we're in the else section")
     if(results > 0){
     // deleting if username exists
     console.log("We foud him");
@@ -21,7 +24,7 @@ db.query(findDuplicatesquery,[req.params.username], async (err,results)=>{
     return res.json(results)
 })
     }      
- 
+}
 })
 
 
