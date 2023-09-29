@@ -43,6 +43,8 @@ function UserDashboard() {
   };
 
   const userRef = useRef();
+  const pwdRef = useRef();
+  const userTypeRef = useRef();
   const errRef = useRef();
   
   const [user,setUser] = useState('');
@@ -190,8 +192,10 @@ const editUser =  async (e, user_name, user_role) => {
   const user = user_name;
   const userrole = user_role;
   setUser(user);
-  setPwd('**********');
+  userRef.current = user;
+  pwdRef.current = "*********";
   setUserType(userrole);
+  userType.current = userrole;
   setEditUsername(user);
   setEditMode(true);
 }
@@ -277,13 +281,13 @@ const editSubmitHandler = async (e) =>{
                 <input type="text" id="username" ref={userRef} autoComplete='off' onChange={(e)=>setUser(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} /></label>
                
                 <label className='mx-1' htmlFor="pwd"> Password: <span className={validPwd ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validPwd || !pwd ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="password" id="pwd" onChange={(e)=>setPwd(e.target.value)} required onFocus={()=>setPwdFocus(true)} onBlur={()=>setPwdFocus(false)} aria-invalid={validPwd ? "false" : "true"} aria-describedby="pwdnote" /></label>
+                <input type="password" id="pwd" ref={pwdRef} onChange={(e)=>setPwd(e.target.value)} required onFocus={()=>setPwdFocus(true)} onBlur={()=>setPwdFocus(false)} aria-invalid={validPwd ? "false" : "true"} aria-describedby="pwdnote" /></label>
               
                 <label  className='mx-1' htmlFor='usertype'>
 
                 User Type: 
 
-                <select className='mx-1' value={userType} onChange={(e)=>setUserType(e.target.value)} id="usertype" required  onFocus={()=>setUserTypeFocus(true)} onBlur={()=>setUserTypeFocus(false)}>
+                <select className='mx-1' value={userType}  ref={userTypeRef} onChange={(e)=>setUserType(e.target.value)} id="usertype" required  onFocus={()=>setUserTypeFocus(true)} onBlur={()=>setUserTypeFocus(false)}>
 
                 <option value="Admin">Admin</option>
 
