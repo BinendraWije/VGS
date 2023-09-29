@@ -4,11 +4,16 @@ import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-import Image01 from '../../images/user-36-05.jpg';
-import Image02 from '../../images/user-36-06.jpg';
-import Image03 from '../../images/user-36-07.jpg';
-import Image04 from '../../images/user-36-08.jpg';
-import Image05 from '../../images/user-36-09.jpg';
+import Image01 from '../../images/avatar_1.jpg';
+import Image02 from '../../images/avatar_3.jpg';
+import Image03 from '../../images/avatar_4.jpg';
+import Image04 from '../../images/avatar_6.jpg';
+import Image05 from '../../images/avatar_8.jpg';
+import Image06 from '../../images/avatar_9.jpg';
+import Image07 from '../../images/avatar_10.jpg';
+import Image08 from '../../images/avatar_12.jpg';
+import Image09 from '../../images/avatar_13.jpg';
+import Image10 from '../../images/avatar_15.jpg';
 import axios from '../../utils/axios' 
 import bcrypt from 'bcryptjs';
 
@@ -229,13 +234,13 @@ function UserDashboard() {
                   <div className="font-semibold text-left">Name</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Email</div>
+                  <div className="font-semibold text-left">Role</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Spent</div>
+                  <div className="font-semibold text-left">Status</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-center">Country</div>
+                  <div className="font-semibold text-center"></div>
                 </th>
               </tr>
             </thead>
@@ -260,7 +265,24 @@ function UserDashboard() {
                         <div className="text-left font-medium text-green-500"></div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-lg text-center"></div>
+   {/* Menu button */}
+   <EditMenu align="right" className="relative inline-flex">
+            <li>
+              <Link className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0">
+                Option 1
+              </Link>
+            </li>
+            <li>
+              <Link className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0">
+                Option 2
+              </Link>
+            </li>
+            <li>
+              <Link className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0">
+                Remove
+              </Link>
+            </li>
+          </EditMenu>
                       </td>
                     </tr>
                   )
