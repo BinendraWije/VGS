@@ -152,11 +152,11 @@ function UserDashboard() {
   },[]);
 
 
-  const deleteHandler = async (user_name)=>{
-    
+  const deleteHandler = async (e, user_name)=>{
+    e.preventDefault();
     const user = user_name;
 try{
-    await axios.post(DELETE_USER_URL,
+    await axios.delete(DELETE_USER_URL,
       JSON.stringify({ 
         user_name: user,
         }),{
@@ -303,7 +303,7 @@ try{
               </button>
             </li>
             <li>
-              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={deleteHandler(user.user_name)}>
+              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={e=> deleteHandler(e, user.user_name)}>
                 Delete
               </button>
             </li>
