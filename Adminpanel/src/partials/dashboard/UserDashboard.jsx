@@ -303,7 +303,7 @@ try{
               </button>
             </li>
             <li>
-              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={deleteHandler(user.user_name)}>
+              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={deleteHandler(e,user.user_name)}>
                 Delete
               </button>
             </li>
