@@ -13,6 +13,7 @@ db.query(findDuplicatesquery,[req.params.username], async (err,results)=>{
     if(err) return res.json(err);
     if(results > 0){
     // deleting if username exists
+    console.log("We foud him");
     const Deleteuserquery = "DELETE FROM vgsdb.users WHERE `user_name` = ?";
     db.query(Deleteuserquery,[req.params.username], async (err,results)=>{
     if(err) return res.json(err);         

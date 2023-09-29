@@ -172,6 +172,7 @@ try{
       }
       errRef.current.focus();
     }
+    fetchpost();
   }
 
 
