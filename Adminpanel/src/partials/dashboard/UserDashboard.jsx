@@ -368,7 +368,7 @@ const editSubmitHandler = async (e) =>{
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={require('../../images/avatars/' + user.user_image +'.jpg')}  width="40" height="40" alt={user.user_name} />
+                            <img className="rounded-full" src={new URL('../../images/avatars/' + user.user_image +'.jpg', import.meta.url).href}  width="40" height="40" alt={user.user_name} />
                           </div>
                           <div className="font-medium text-slate-800 dark:text-slate-100">{user.user_name}</div>
                         </div>
