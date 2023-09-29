@@ -4,6 +4,7 @@ const { verifyRoles } = require('../Middleware/verifyRoles.js');
 
 const deleteUserRouter = express.Router();
 deleteUserRouter.delete('/deleteuser', async (req,res)=>{
+console.log("We're in the delete function it has fired");
 console.log(req.body.user_name);
 // Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
