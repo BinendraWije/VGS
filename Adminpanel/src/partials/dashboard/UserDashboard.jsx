@@ -29,7 +29,7 @@ const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}
 
 const CREATE_USER_URL = '/createuser';
 const GET_USERS_URL = '/users';
-
+const DELETE_USER_URL = '/deleteuser'
 // ------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
@@ -136,23 +136,49 @@ function UserDashboard() {
  
   const [users, setUsers] = useState([])
 
-  useEffect(()=>{
-    const fetchpost = async () =>{
+  const fetchpost = async () =>{
 
-      try{
-    const  userresponse = await axios.get(GET_USERS_URL);
-    setUsers(userresponse.data);
-    console.log(userresponse.data);
-      }
-      catch(err){
-        console.log(err)
-      }
+    try{
+  const  userresponse = await axios.get(GET_USERS_URL);
+  setUsers(userresponse.data);
+  console.log(userresponse.data);
     }
+    catch(err){
+      console.log(err)
+    }
+  }
+
+  useEffect(()=>{
+  
     fetchpost();
   },[]);
 
 
- 
+  const deleteHandler = async (e,user_name)=>{
+    e.preventDefault();
+    const user = user_name;
+  try{
+    await axios.post(DELETE_USER_URL,
+      JSON.stringify({ 
+        user_name: user,
+        }),{
+        headers: {'Content-Type':'application/json'},
+        // add credentials later once users have been created add token as well
+        withCredentials: false
+      });
+    }
+    catch(err){
+      if(!err?.response){
+        setErrMsg('No server Response');
+      } else if (err.response?.status === 409){
+        setErrMsg(' Username taken');
+      } else{
+        setErrMsg('Registration Failed')
+      }
+      errRef.current.focus();
+    }
+    fetchpost();
+  }
 
 
   return (
@@ -251,7 +277,7 @@ function UserDashboard() {
              { 
                 users.map(user => {
                   return (
-                    <tr key={user.id}>
+                    <tr key={user.idusers}>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
@@ -280,7 +306,7 @@ function UserDashboard() {
               </button>
             </li>
             <li>
-              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0">
+              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0" onClick={deleteHandler(user.user_name)}>
                 Delete
               </button>
             </li>
