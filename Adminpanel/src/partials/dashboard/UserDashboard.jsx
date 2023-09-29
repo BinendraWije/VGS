@@ -154,8 +154,7 @@ function UserDashboard() {
   },[]);
 
 
-  const deleteHandler = async (e,user_name)=>{
-    e.preventDefault();
+  const deleteHandler = async (user_name)=>{  
     const user = user_name;
   try{
     await axios.post(DELETE_USER_URL,
