@@ -18,6 +18,7 @@ const { db } = require('./Config/databaseconfig.js');
 const corsOptions = require('./Config/CORSoptions.js');
 const credentials = require('./Middleware/credentials.js');
 const { handleRefreshTokenrouter } = require('./Routes/refreshtokenroute.js');
+const { deleteUserRouter } = require('./Routes/deleteUser.js');
 
 const app = express();
 
@@ -52,6 +53,7 @@ app.use(getAllForumPostsRouter);
 app.use(signInRouter);
 app.use(refreshTokenRouter);
 app.use(signOutRouter);
+app.use(deleteUserRouter);
 // app.use(verifyJWT);
 app.use(getAllUsersRouter);
 app.use(createUserRouter);
