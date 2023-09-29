@@ -16,6 +16,7 @@ import Image07 from '../../images/avatar_10.jpg';
 import Image08 from '../../images/avatar_12.jpg';
 import Image09 from '../../images/avatar_13.jpg';
 import Image10 from '../../images/avatar_15.jpg';
+import Image11 from '../../images/avatars/';
 import axios from '../../utils/axios' 
 import bcrypt from 'bcryptjs';
 
@@ -367,7 +368,7 @@ const editSubmitHandler = async (e) =>{
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={user.user_image}  width="40" height="40" alt={user.user_name} />
+                            <img className="rounded-full" src={'../../images/avatars/' + user.user_image +'.jpg'}  width="40" height="40" alt={user.user_name} />
                           </div>
                           <div className="font-medium text-slate-800 dark:text-slate-100">{user.user_name}</div>
                         </div>
