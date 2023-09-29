@@ -155,6 +155,7 @@ function UserDashboard() {
   const deleteHandler = async (e, user_name)=>{
     e.preventDefault();
     const user = user_name;
+    console.log(user);
 try{
     await axios.delete(DELETE_USER_URL,
       JSON.stringify({ 
