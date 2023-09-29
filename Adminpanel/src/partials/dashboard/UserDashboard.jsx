@@ -270,19 +270,19 @@ function UserDashboard() {
    {/* Menu button */}
    <EditMenu align="right" className="relative inline-flex">
             <li>
-              <Link className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0">
-                Option 1
-              </Link>
+              <button className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0">
+                Edit
+              </button>
             </li>
             <li>
-              <Link className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0">
-                Option 2
-              </Link>
+              <button className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0">
+                Ban
+              </button>
             </li>
             <li>
-              <Link className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0">
-                Remove
-              </Link>
+              <button className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0">
+                Delete
+              </button>
             </li>
           </EditMenu>
                       </td>
