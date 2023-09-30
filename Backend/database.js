@@ -20,6 +20,7 @@ const credentials = require('./Middleware/credentials.js');
 const { handleRefreshTokenrouter } = require('./Routes/refreshtokenroute.js');
 const { deleteUserRouter } = require('./Routes/deleteUser.js');
 const { editUserRouter } = require('./Routes/editUser.js');
+const {getAllProductsRouter} = require('./Routes/allProducts.js');
 
 const app = express();
 
@@ -59,7 +60,7 @@ app.use(getAllUsersRouter);
 app.use(createUserRouter);
 app.use(deleteUserRouter);
 app.use(editUserRouter);
-
+app.use(getAllProductsRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")    
