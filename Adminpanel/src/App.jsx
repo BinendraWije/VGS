@@ -39,6 +39,7 @@ function App() {
         <Route element={<RequireAuth allowedRoles={['Admin','Moderator']} />}>
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/users" element={<UsersPage />} />
+          <Route exact path="/products" element={<ProductPage />} />          
         </Route>
         </Route>
       </Routes>

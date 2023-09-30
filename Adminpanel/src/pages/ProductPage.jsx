@@ -4,9 +4,8 @@ import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
 import Banner from '../partials/Banner';
-import UserDashboard from '../partials/dashboard/UserDashboard';
 import '../utils/adminpanel.css'; 
-
+import Productdashboard from '../partials/dashboard/ProductDashboard';
 
 
 
@@ -49,7 +48,7 @@ function ProductPage() {
                  
              
               {/* Card (Customers) */}
-              <UserDashboard />
+              <Productdashboard />
 
              
               
