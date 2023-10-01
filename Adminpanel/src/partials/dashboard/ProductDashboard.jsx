@@ -294,21 +294,21 @@ const editSubmitHandler = async (e) =>{
              <form onSubmit={editMode? editSubmitHandler : submitHandler}>
              <div className="addproductformholder flex-nowrap  grid grid-cols-2">
               <div className="productdetailssection flex flex-col p-10 flex-nowrap xl:col-span-1 col-start-1 ">
-                <div className="productformfield flex-col">
+                <div className="productformfield flex flex-col">
                 <label className='mx-1 my-2' htmlFor="productname"> Product Name:
                 <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
                 </div>
 
-                <div className="productformfield flex-col">
+                <div className="productformfield flex flex-col">
                 <label className='mx-1 my-2' htmlFor="productdescription"> Product description: 
                 <input type="text" id="productdescription" ref={productDescriptionRef} autoComplete='off' onChange={(e)=>setProductDescription(e.target.value)} required  onFocus={()=>setProductDescriptionFocus(true)} onBlur={()=>setProductDescriptionFocus(false)} /></label>
                 </div>
-                <div className="productformfield flex-col">
+                <div className="productformfield flex flex-col">
                 <label className='mx-1 my-2' htmlFor="Price"> Price: 
                 <input type="text" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductPriceFocus(true)} onBlur={()=>setProductPriceFocus(false)} /></label>
                 </div>
 
-                <div className="productformfield flex-col">
+                <div className="productformfield flex flex-col">
                 <label  className='mx-1 my-2' htmlFor='Producttype'>
 
                 Product Type: 
