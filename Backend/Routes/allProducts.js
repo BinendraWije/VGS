@@ -15,8 +15,8 @@ const products =  db.query(sql,(err,data)=>{
         if(err) return res.json(err);
         return data;
     }) 
-    console.log(products[0]);
-    console.log(producttypes[0]);    
+    console.log(products.data);
+    console.log(producttypes.data);    
     return res.json({products, producttypes});
 })
 
