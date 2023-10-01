@@ -4,24 +4,20 @@ const { verifyRoles } = require('../Middleware/verifyRoles.js');
 
 const getAllProductsRouter = express.Router();
 getAllProductsRouter.get('/products',(req,res)=>{
- let productsarray
     const sql = "SELECT * FROM vgsdb.Products";
- db.query(sql, async (err,products)=>{
+const products =  db.query(sql,async (err,data)=>{
         if(err) return res.json(err);
-        productsarray = products
-        return productsarray;
+        return res.json(data);
     })
-let producttypesarray
 
     const sql1 = "SELECT * FROM vgsdb.producttype";
- db.query(sql1, async(err,producttypes)=>{
+    const producttypes = db.query(sql1, async(err,data1)=>{
         if(err) return res.json(err);
-        producttypesarray = producttypes
-        return producttypesarray;
+        return res.json(data1);
     }) 
-    console.log(producttypesarray);
-    console.log(productsarray);    
-    return res.json(productsarray, producttypesarray);
+    console.log(products);
+    console.log(producttypes);    
+    return res.json({products, producttypes});
 })
 
 module.exports = {getAllProductsRouter};
