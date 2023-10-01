@@ -19,7 +19,7 @@ let producttypesarray
         producttypesarray = producttypes
         return producttypesarray;
     }) 
-    console.log(data1);
+    console.log(producttypesarray);
     console.log(productsarray);    
     return res.json(productsarray, producttypesarray);
 })
