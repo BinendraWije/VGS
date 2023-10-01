@@ -242,6 +242,19 @@ const editSubmitHandler = async (e) =>{
 ///////////////// temp image preview setup ////////////////////////////
   const [files, setFiles] = useState();
   const [previews, setPreviews] = useState();
+  const [pic1, setPic1] = useState();
+  const [pic1preview, setPic1preview] = useState();
+  useEffect(() => {
+    if (!pic1) return;   
+  
+    const pic1ObjectUrl = URL.createObjectURL(pic1);
+    setPic1preview(pic1ObjectUrl);
+
+    // free memory
+    URL.revokeObjectURL(pic1ObjectUrl);     
+    
+  }, [pic1]);
+
 
   useEffect(() => {
     if (!files) return;
@@ -330,11 +343,25 @@ const editSubmitHandler = async (e) =>{
                 </div>
                 <div className="productimagessection flex flex-col p-10 flex-nowrap xl:col-span-1 col-start-2">
                 <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
-              <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files && e.target.files.length > 0) { setFiles(e.target.files); } }} />
+              
               <div className="imageholdersection">
-              {previews && previews.map((pic) => {
-                return <img src={pic} />;
-              })}
+                <div className="imageholder flex flex-col">
+               <img src={pic1preview} /> 
+               <input type="pic1" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               </div>
+               <div className="imageholder flex flex-col">
+               <img src={pic1preview} /> 
+               <input type="pic1" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               </div>
+               <div className="imageholder flex flex-col">
+               <img src={pic1preview} /> 
+               <input type="pic1" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               </div>
+               <div className="imageholder flex flex-col">
+               <img src={pic1preview} /> 
+               <input type="pic1" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               </div>
+                             
               </div>
               </div>
               </div>
