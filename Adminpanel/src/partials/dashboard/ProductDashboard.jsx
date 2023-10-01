@@ -294,23 +294,23 @@ const editSubmitHandler = async (e) =>{
              <form onSubmit={editMode? editSubmitHandler : submitHandler}>
              <div className="addproductformholder columns-2 flex-nowrap">
               <div className="productdetailssection flex flex-col p-10 flex-nowrap">
-                <label className='mx-1' htmlFor="productname"> Product Name:
+                <label className='mx-1 my-2' htmlFor="productname"> Product Name:
                 <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
 
 
 
-                <label className='mx-1' htmlFor="productdescription"> Product description: 
+                <label className='mx-1 my-2' htmlFor="productdescription"> Product description: 
                 <input type="text" id="productdescription" ref={productDescriptionRef} autoComplete='off' onChange={(e)=>setProductDescription(e.target.value)} required  onFocus={()=>setProductDescriptionFocus(true)} onBlur={()=>setProductDescriptionFocus(false)} /></label>
 
-                <label className='mx-1' htmlFor="Price"> Price: 
+                <label className='mx-1 my-2' htmlFor="Price"> Price: 
                 <input type="text" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductPriceFocus(true)} onBlur={()=>setProductPriceFocus(false)} /></label>
                               
              
-                <label  className='mx-1' htmlFor='Producttype'>
+                <label  className='mx-1 my-2' htmlFor='Producttype'>
 
                 Product Type: 
 
-                <select className='mx-1' value={productType}  ref={productTypeRef} onChange={(e)=>setProductType(e.target.value)} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
+                <select className='mx-1 my-2' value={productType}  ref={productTypeRef} onChange={(e)=>setProductType(e.target.value)} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
               {
                 productTypes.map(producttype => {
                   return (
