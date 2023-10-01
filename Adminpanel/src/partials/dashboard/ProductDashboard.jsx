@@ -248,7 +248,7 @@ const editSubmitHandler = async (e) =>{
   useEffect(() => {
     if (!pic1) return;   
   
-    const pic1ObjectUrl = URL.createObjectURL(pic1[0]);
+    const pic1ObjectUrl = URL.createObjectURL(pic1);
     console.log(pic1);
     console.log(pic1ObjectUrl);
     setPic1preview(pic1ObjectUrl);
@@ -349,19 +349,31 @@ const editSubmitHandler = async (e) =>{
               
               <div className="imageholdersection flex flex-row">
                 <div className="imageholder flex flex-col p-10">
-               <img src={pic1preview} /> 
+              {pic1preview =>{
+               return <img src={pic1preview} /> 
+              }
+            }
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
-               <img src={pic1preview} /> 
+               {pic1preview =>{
+               return <img src={pic1preview} /> 
+              }
+            }
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
-               <img src={pic1preview} /> 
+               {pic1preview =>{
+               return <img src={pic1preview} /> 
+              }
+            }
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
-               <img src={pic1preview} /> 
+               {pic1preview =>{
+               return <img src={pic1preview} /> 
+              }
+            }
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
                              
