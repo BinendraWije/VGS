@@ -16,6 +16,7 @@ import Signin from './pages/Signin';
 import Unauthorized from './pages/Unauthorized';
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
+import ProductPage from './pages/ProductPage';
 
 function App() {
 
