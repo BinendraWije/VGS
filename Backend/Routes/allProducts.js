@@ -9,8 +9,8 @@ getAllProductsRouter.get('/products',(req,res)=>{
         if(err) return res.json(err);
         console.log(data);
         return res.json({
-            products:data[0],
-            producttypes:data[1]
+            products :data[0],
+            producttypes :data[1]
         });
     })
    
