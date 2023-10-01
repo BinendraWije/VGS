@@ -16,9 +16,7 @@ const products =  db.query(sql,(err,data)=>{
         if(err) return res.json(err);
         return data;
     }) 
-    console.log(products.RowDataPacket);
-    products = products.RowDataPacket;
-    producttypes =producttypes.RowDataPacket;
+    console.log(products[0]);    
     return res.json({products, producttypes});
 })
 
