@@ -264,14 +264,14 @@ const editSubmitHandler = async (e) =>{
             <div className="formholder min-w-full">
              <p ref={errRef} className={errMsg ? "errmsg":"offscreen"}>{errMsg}</p> 
              <form onSubmit={editMode? editSubmitHandler : submitHandler}>
-                <label className='mx-1' htmlFor="productname"> Product Name: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !user ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
+                <label className='mx-1' htmlFor="productname"> Product Name:
+                <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
 
-                <label className='mx-1' htmlFor="productdescription"> Product description: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !product ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="text" id="productdescription" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
+                <label className='mx-1' htmlFor="productdescription"> Product description: 
+                <input type="text" id="productdescription" ref={productDescriptionRef} autoComplete='off' onChange={(e)=>setProductDescription(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
 
-                <label className='mx-1' htmlFor="Price"> Price: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !product ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="text" id="Price" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
+                <label className='mx-1' htmlFor="Price"> Price: 
+                <input type="text" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
                               
              
                 <label  className='mx-1' htmlFor='Producttype'>
