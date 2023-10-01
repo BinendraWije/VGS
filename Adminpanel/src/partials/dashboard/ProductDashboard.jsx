@@ -295,25 +295,25 @@ const editSubmitHandler = async (e) =>{
              <div className="addproductformholder flex-nowrap  grid grid-cols-2">
               <div className="productdetailssection flex flex-col p-10 flex-nowrap xl:col-span-1 col-start-1 ">
                 <div className="productformfield flex flex-col">
-                <label className='mx-1 my-2' htmlFor="productname"> Product Name:
+                <label className='mx-1 my-2 flex flex-col' htmlFor="productname"> Product Name:
                 <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
                 </div>
 
                 <div className="productformfield flex flex-col">
-                <label className='mx-1 my-2' htmlFor="productdescription"> Product description: 
+                <label className='mx-1 my-2 flex flex-col' htmlFor="productdescription"> Product description: 
                 <input type="text" id="productdescription" ref={productDescriptionRef} autoComplete='off' onChange={(e)=>setProductDescription(e.target.value)} required  onFocus={()=>setProductDescriptionFocus(true)} onBlur={()=>setProductDescriptionFocus(false)} /></label>
                 </div>
-                <div className="productformfield flex flex-col">
-                <label className='mx-1 my-2' htmlFor="Price"> Price: 
+                <div className="productformfield ">
+                <label className='mx-1 my-2 flex flex-col' htmlFor="Price"> Price: 
                 <input type="text" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductPriceFocus(true)} onBlur={()=>setProductPriceFocus(false)} /></label>
                 </div>
 
                 <div className="productformfield flex flex-col">
-                <label  className='mx-1 my-2' htmlFor='Producttype'>
+                <label  className='mx-1 my-2 flex flex-col' htmlFor='Producttype'>
 
                 Product Type: 
 
-                <select className='mx-1 my-2' value={productType}  ref={productTypeRef} onChange={(e)=>setProductType(e.target.value)} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
+                <select className='mx-1 my-2 flex flex-col' value={productType}  ref={productTypeRef} onChange={(e)=>setProductType(e.target.value)} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
               {
                 productTypes.map(producttype => {
                   return (
