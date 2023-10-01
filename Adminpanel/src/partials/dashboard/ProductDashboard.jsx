@@ -255,9 +255,9 @@ const editSubmitHandler = async (e) =>{
      <div className='testcard min-w-full flex flex-col col-span-full xl:col-span-12' style={sectionstyle}>
       <header className="py-4 border-b border-slate-100 dark:border-slate-700">
         {editMode ?
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Edit User</h2>  
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Edit Product</h2>  
           :
-          <h2 className="font-semibold text-slate-800 dark:text-slate-100">Create New Users</h2>   }
+          <h2 className="font-semibold text-slate-800 dark:text-slate-100">Add Product</h2>   }
         </header>
         {editMode ?
         <div className="successfailnotification">
@@ -335,7 +335,7 @@ const editSubmitHandler = async (e) =>{
 
     <div className="col-span-full xl:col-span-12 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Users</h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Products</h2>
       </header>
       <div className="p-3">
 
@@ -346,10 +346,10 @@ const editSubmitHandler = async (e) =>{
             <thead className="text-xs font-semibold uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50">
               <tr>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Name</div>
+                  <div className="font-semibold text-left">Product Name</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Role</div>
+                  <div className="font-semibold text-left">Product Type</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
                   <div className="font-semibold text-left">Status</div>
@@ -368,7 +368,7 @@ const editSubmitHandler = async (e) =>{
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-20 h-20 shrink-0 mr-2 sm:mr-3">
-                            <img src={new URL('../../images/products/' + product.Product_Image +'.jpg', import.meta.url).href}  width="40" height="40" alt={product.Product_Name} />
+                            <img src={new URL('../../images/Products/' + product.Product_Image +'.jpg', import.meta.url).href}  width="40" height="40" alt={product.Product_Name} />
                           </div>
                           <div className="font-medium text-slate-800 dark:text-slate-100">{product.Product_Name}</div>
                         </div>
