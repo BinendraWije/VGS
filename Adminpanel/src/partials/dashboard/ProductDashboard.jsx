@@ -244,6 +244,7 @@ const editSubmitHandler = async (e) =>{
   const [previews, setPreviews] = useState();
   const [pic1, setPic1] = useState();
   const [pic1preview, setPic1preview] = useState();
+
   useEffect(() => {
     if (!pic1) return;   
   
@@ -344,7 +345,7 @@ const editSubmitHandler = async (e) =>{
                 <div className="productimagessection flex flex-col p-10 flex-nowrap xl:col-span-1 col-start-2">
                 <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
               
-              <div className="imageholdersection">
+              <div className="imageholdersection flex flex-row">
                 <div className="imageholder flex flex-col p-10">
                <img src={pic1preview} /> 
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
