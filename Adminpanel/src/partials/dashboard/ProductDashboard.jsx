@@ -354,7 +354,7 @@ const editSubmitHandler = async (e) =>{
               :
               <img />
             }
-               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
                { pic1preview ?
@@ -362,7 +362,7 @@ const editSubmitHandler = async (e) =>{
               :
               <img />
             }
-               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
                { pic1preview ?
