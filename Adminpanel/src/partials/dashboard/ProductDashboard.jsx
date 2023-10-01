@@ -345,21 +345,21 @@ const editSubmitHandler = async (e) =>{
                 <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
               
               <div className="imageholdersection">
-                <div className="imageholder flex flex-col">
+                <div className="imageholder flex flex-col p-10">
                <img src={pic1preview} /> 
-               <input type="pic1" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
-               <div className="imageholder flex flex-col">
+               <div className="imageholder flex flex-col p-10">
                <img src={pic1preview} /> 
-               <input type="pic1" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
-               <div className="imageholder flex flex-col">
+               <div className="imageholder flex flex-col p-10">
                <img src={pic1preview} /> 
-               <input type="pic1" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
-               <div className="imageholder flex flex-col">
+               <div className="imageholder flex flex-col p-10">
                <img src={pic1preview} /> 
-               <input type="pic1" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
                              
               </div>
