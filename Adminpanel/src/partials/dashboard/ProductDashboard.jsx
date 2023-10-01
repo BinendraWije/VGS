@@ -56,6 +56,12 @@ function Productdashboard() {
   const [productType,setProductType] = useState('');
   const [productPrice,setProductPrice] = useState('');
 
+  const [ProductFocus, setProductFocus] = useState(false);
+  const [ProductDescriptionFocus, setProductDescriptionFocus] = useState(false);
+  const [ProductImageFocus, setProductImageFocus] = useState(false);
+  const [ProductTypeFocus, setProductTypeFocus] = useState(false);
+  const [ProductPriceFocus, setProductPriceFocus] = useState(false);
+
   const [userFocus, setUserFocus] = useState(false);
   
   const [pwd,setPwd] = useState('');
@@ -268,10 +274,10 @@ const editSubmitHandler = async (e) =>{
                 <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
 
                 <label className='mx-1' htmlFor="productdescription"> Product description: 
-                <input type="text" id="productdescription" ref={productDescriptionRef} autoComplete='off' onChange={(e)=>setProductDescription(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
+                <input type="text" id="productdescription" ref={productDescriptionRef} autoComplete='off' onChange={(e)=>setProductDescription(e.target.value)} required  onFocus={()=>setProductDescriptionFocus(true)} onBlur={()=>setProductDescriptionFocus(false)} /></label>
 
                 <label className='mx-1' htmlFor="Price"> Price: 
-                <input type="text" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
+                <input type="text" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductPriceFocus(true)} onBlur={()=>setProductPriceFocus(false)} /></label>
                               
              
                 <label  className='mx-1' htmlFor='Producttype'>
@@ -310,13 +316,13 @@ const editSubmitHandler = async (e) =>{
               </form> 
             </div>
             <div className="errholder">
-            <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+            <p id="uidnote" className={"offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             4 to 24 characters.<br />
                             Must begin with a letter.<br />
                             Letters, numbers, underscores, hyphens allowed.
                         </p>
-                        <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+                        <p id="pwdnote" className={"offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             8 to 24 characters.<br />
                             Must include uppercase and lowercase letters, a number and a special character.<br />
