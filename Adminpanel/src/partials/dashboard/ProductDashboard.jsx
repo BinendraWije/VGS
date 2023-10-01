@@ -349,30 +349,34 @@ const editSubmitHandler = async (e) =>{
               
               <div className="imageholdersection flex flex-row">
                 <div className="imageholder flex flex-col p-10">
-              {pic1preview =>{
-               return <img src={pic1preview} /> 
-              }
+              { pic1preview ?
+               <img src={pic1preview} /> 
+              :
+              <img />
             }
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
-               {pic1preview =>{
-               return <img src={pic1preview} /> 
-              }
+               { pic1preview ?
+               <img src={pic1preview} /> 
+              :
+              <img />
             }
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
-               {pic1preview =>{
-               return <img src={pic1preview} /> 
-              }
+               { pic1preview ?
+               <img src={pic1preview} /> 
+              :
+              <img />
             }
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
-               {pic1preview =>{
-               return <img src={pic1preview} /> 
-              }
+               { pic1preview ?
+               <img src={pic1preview} /> 
+              :
+              <img />
             }
                <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.pic1) { setPic1(e.target.pic1); } }}/>
                </div>
