@@ -292,13 +292,8 @@ const editSubmitHandler = async (e) =>{
             <div className="formholder min-w-full">
              <p ref={errRef} className={errMsg ? "errmsg":"offscreen"}>{errMsg}</p> 
              <form onSubmit={editMode? editSubmitHandler : submitHandler}>
-             <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
-              <input type="file" accept="image/jpg, image/jpeg, image/png"multiple onChange={(e) => { if (e.target.files && e.target.files.length > 0) { setFiles(e.target.files); } }} />
-              <div className="imageholdersection">
-              {previews && previews.map((pic) => {
-                return <img src={pic} />;
-              })}
-              </div>
+             <div className="addproductformholder columns-2">
+              <div className="productdetailssection">
                 <label className='mx-1' htmlFor="productname"> Product Name:
                 <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
 
@@ -328,7 +323,17 @@ const editSubmitHandler = async (e) =>{
                 </select>
 
                 </label>
-               
+                </div>
+                <div className="productimagessection">
+                <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
+              <input type="file" accept="image/jpg, image/jpeg, image/png"multiple onChange={(e) => { if (e.target.files && e.target.files.length > 0) { setFiles(e.target.files); } }} />
+              <div className="imageholdersection">
+              {previews && previews.map((pic) => {
+                return <img src={pic} />;
+              })}
+              </div>
+              </div>
+              </div>
              {editMode ? 
              <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white mx-2" >
                  <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
