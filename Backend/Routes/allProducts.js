@@ -15,8 +15,9 @@ const products =  db.query(sql,(err,data)=>{
         if(err) return res.json(err);
         return data;
     })
-    
-    return res.json({products,producttypes});
+    console.log(products);
+    console.log(producttypes);
+    return res.json({products, producttypes});
 })
 
 module.exports = {getAllProductsRouter};
