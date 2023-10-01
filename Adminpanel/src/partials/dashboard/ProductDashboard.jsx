@@ -330,7 +330,7 @@ const editSubmitHandler = async (e) =>{
                 </div>
                 <div className="productimagessection flex flex-col p-10 flex-nowrap xl:col-span-1 col-start-2">
                 <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
-              <input type="file" accept="image/jpg, image/jpeg, image/png"multiple onChange={(e) => { if (e.target.files && e.target.files.length > 0) { setFiles(e.target.files); } }} />
+              <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files && e.target.files.length > 0) { setFiles(e.target.files); } }} />
               <div className="imageholdersection">
               {previews && previews.map((pic) => {
                 return <img src={pic} />;
