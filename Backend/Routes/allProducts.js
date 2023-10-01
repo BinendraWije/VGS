@@ -4,7 +4,7 @@ const { verifyRoles } = require('../Middleware/verifyRoles.js');
 
 const getAllProductsRouter = express.Router();
 getAllProductsRouter.get('/products',(req,res)=>{
-    const sql = "SELECT * FROM vgsdb.Products; SELECT * FROM vgsdb.producttype ";
+    const sql = "SELECT * FROM vgsdb.Products;SELECT * FROM vgsdb.producttype;";
  db.query(sql, async (err,data)=>{
         if(err) return res.json(err);
         console.log(data);
