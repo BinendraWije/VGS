@@ -8,14 +8,17 @@ getAllProductsRouter.get('/products',(req,res)=>{
 const products =  db.query(sql,(err,data)=>{
         if(err) return res.json(err);
         console.log(data);
-        return res.json(data);
+        return data;
     })
 
     const sql1 = "SELECT * FROM vgsdb.producttype";
     const producttypes = db.query(sql1,(err,data)=>{
         if(err) return res.json(err);
-        return res.json(data);
+        return data;
     }) 
+    console.log(products.data);
+    console.log(products)
+    console.log(products.RowDataPacket);
     return res.json({products, producttypes});
 })
 
