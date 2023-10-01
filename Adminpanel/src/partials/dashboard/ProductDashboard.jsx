@@ -138,10 +138,10 @@ function Productdashboard() {
 
       try{
     const  productsresponse = await axios.get(GET_PRODUCTS_URL);
-    setProducts(productsresponse.products);
-    setProductTypes(productsresponse.producttypes);
-    console.log(productsresponse.products);
-    console.log(productsresponse.producttypes);
+    setProducts(productsresponse);
+    setProductTypes(productsresponse);
+    console.log(productsresponse);
+    console.log(productsresponse);
       }
       catch(err){
         console.log(err)
