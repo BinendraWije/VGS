@@ -292,7 +292,7 @@ const editSubmitHandler = async (e) =>{
             <div className="formholder min-w-full">
              <p ref={errRef} className={errMsg ? "errmsg":"offscreen"}>{errMsg}</p> 
              <form onSubmit={editMode? editSubmitHandler : submitHandler}>
-             <div className="addproductformholder flex-nowrap">
+             <div className="addproductformholder flex-nowrap columns-2">
               <div className="productdetailssection flex flex-col p-10 flex-nowrap xl:col-span-6">
                 <label className='mx-1 my-2' htmlFor="productname"> Product Name:
                 <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required  onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
