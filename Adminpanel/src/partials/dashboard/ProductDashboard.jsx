@@ -280,7 +280,7 @@ const editSubmitHandler = async (e) =>{
 
                 <select className='mx-1' value={productType}  ref={productTypeRef} onChange={(e)=>setProductType(e.target.value)} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
               {
-                producttypes.map(producttype => {
+                productTypes.map(producttype => {
                   return (
                     <option value={producttype.product_type_name}>{producttype.product_type_name}</option>
                   )
