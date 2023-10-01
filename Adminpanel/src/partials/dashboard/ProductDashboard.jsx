@@ -43,24 +43,25 @@ function Productdashboard() {
     padding: "1rem",
   };
 
-  const userRef = useRef();
-  const pwdRef = useRef();
-  const userTypeRef = useRef();
+  const ProductRef = useRef();
+  const productDescriptionRef = useRef();
+  const productImageRef = useRef();
+  const productPriceRef = useRef();
+  const productTypeRef = useRef();
   const errRef = useRef();
   
-  const [user,setUser] = useState('');
-  const [validName, setValidName] = useState(false);
+  const [product,setProduct] = useState('');
+  const [productDescription,setProductDescription] = useState('');
+  const [productImage,setProductImage] = useState('');
+  const [productType,setProductType] = useState('');
+  const [productPrice,setProductPrice] = useState('');
+
   const [userFocus, setUserFocus] = useState(false);
   
   const [pwd,setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
   
-  const [matchPwd,setMatchPwd] = useState('');
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
-  
-  const [userType,setUserType] = useState('');
   const [validUserType, setValidUserType] = useState(false);
   const [userTypeFocus, setUserTypeFocus] = useState(false);
 
@@ -109,13 +110,13 @@ function Productdashboard() {
       
     }
     try{
-      const hash = await bcrypt.hash(pwd,10);
-      console.log(hash);    
-      const response = await axios.post(CREATE_USER_URL,
+       
+      const response = await axios.post(CREATE_PRODUCT_URL,
         JSON.stringify({ 
-          user_name: user,
-          user_pwd: hash,
-          user_role: userType   
+          product_name: product,
+          product_description: productDescription,
+          product_image: productImage,
+          product_type: productType   
 
         }),{
           headers: {'Content-Type':'application/json'},
@@ -141,15 +142,19 @@ function Productdashboard() {
   }
 
 
-/////////////////// GET ALL USERS FUNCTION //////////////////////////////
+/////////////////// GET ALL PRODUCTS FUNCTION //////////////////////////////
  
   const [products, setProducts] = useState([])
+  const [productTypes,setProductTypes] = useState([]);
+
   const fetchproducts = async () =>{
 
       try{
     const  productsresponse = await axios.get(GET_PRODUCTS_URL);
-    setProducts(productsresponse.data);
-    console.log(productsresponse.data);
+    setProducts(productsresponse.data.products);
+    setProductTypes(productsresponse.data.producttypes);
+    console.log(productsresponse.data.products);
+    console.log(productsresponse.data.producttypes);
       }
       catch(err){
         console.log(err)
@@ -250,7 +255,7 @@ const editSubmitHandler = async (e) =>{
 
   return (
     <>
-      {/* Create a User section */}
+      {/* Create a Product section */}
     <div className="col-span-full xl:col-span-12 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
      <div className='testcard min-w-full flex flex-col col-span-full xl:col-span-12' style={sectionstyle}>
       <header className="py-4 border-b border-slate-100 dark:border-slate-700">
@@ -263,14 +268,14 @@ const editSubmitHandler = async (e) =>{
         <div className="successfailnotification">
             <p id="uidnote" className={success ? "successmsg" : "offscreen"}>
               <FontAwesomeIcon icon={faCheck}/>  
-                User Successfully edited!                            
+                Product Successfully edited!                            
                         </p>                                                
             </div>
             :
             <div className="successfailnotification">
             <p id="uidnote" className={success ? "successmsg" : "offscreen"}>
               <FontAwesomeIcon icon={faCheck}/>  
-                User Successfully created!                            
+                Product Successfully created!                            
                         </p>                                                
             </div>
             
@@ -278,21 +283,29 @@ const editSubmitHandler = async (e) =>{
             <div className="formholder min-w-full">
              <p ref={errRef} className={errMsg ? "errmsg":"offscreen"}>{errMsg}</p> 
              <form onSubmit={editMode? editSubmitHandler : submitHandler}>
-                <label className='mx-1' htmlFor="username"> Username: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !user ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="text" id="username" ref={userRef} autoComplete='off' onChange={(e)=>setUser(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setUserFocus(true)} onBlur={()=>setUserFocus(false)} /></label>
-               
-                <label className='mx-1' htmlFor="pwd"> Password: <span className={validPwd ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validPwd || !pwd ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
-                <input type="password" id="pwd" ref={pwdRef} onChange={(e)=>setPwd(e.target.value)} required onFocus={()=>setPwdFocus(true)} onBlur={()=>setPwdFocus(false)} aria-invalid={validPwd ? "false" : "true"} aria-describedby="pwdnote" /></label>
-              
-                <label  className='mx-1' htmlFor='usertype'>
+                <label className='mx-1' htmlFor="productname"> Product Name: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !user ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
+                <input type="text" id="productname" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
 
-                User Type: 
+                <label className='mx-1' htmlFor="productdescription"> Product description: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !product ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
+                <input type="text" id="productdescription" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
 
-                <select className='mx-1' value={userType}  ref={userTypeRef} onChange={(e)=>setUserType(e.target.value)} id="usertype" required  onFocus={()=>setUserTypeFocus(true)} onBlur={()=>setUserTypeFocus(false)}>
+                <label className='mx-1' htmlFor="Price"> Price: <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span><span className={validName || !product ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
+                <input type="text" id="Price" ref={ProductRef} autoComplete='off' onChange={(e)=>setProduct(e.target.value)} required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" onFocus={()=>setProductFocus(true)} onBlur={()=>setProductFocus(false)} /></label>
+                              
+             
+                <label  className='mx-1' htmlFor='Producttype'>
 
-                <option value="Admin">Admin</option>
+                Product Type: 
 
-                <option value="Moderator">Moderator</option>
+                <select className='mx-1' value={productType}  ref={productTypeRef} onChange={(e)=>setProductType(e.target.value)} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
+              {
+                producttypes.map(producttype => {
+                  return (
+                    <option value={producttype.product_type_name}>{producttype.product_type_name}</option>
+                  )
+                  })
+                }
+                        
 
                 </select>
 
@@ -303,14 +316,14 @@ const editSubmitHandler = async (e) =>{
                  <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
                      <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                  </svg>
-                 <span className="hidden xs:block ml-2">Edit User</span>
+                 <span className="hidden xs:block ml-2">Edit Product</span>
              </button>                
               : 
               <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white mx-2" disabled={!validName && !validPwd}>
               <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
                   <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
               </svg>
-              <span className="hidden xs:block ml-2">Create User</span>
+              <span className="hidden xs:block ml-2">Create Product</span>
           </button>    
            }
               </form> 
