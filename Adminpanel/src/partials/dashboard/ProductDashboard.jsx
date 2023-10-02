@@ -351,8 +351,8 @@ const editSubmitHandler = async (e) =>{
                <img src={pic1preview} /> 
               :
               <img />
-            }
-               <input className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
+            }  <label for="picchooser" class="btn">Select Image</label>
+               <input  id="picchooser" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
                <div className="imageholder flex flex-col p-10">
                { pic1preview ?
