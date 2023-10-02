@@ -352,7 +352,7 @@ const editSubmitHandler = async (e) =>{
               :
               <img />
             }
-               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }} style='display:none'/>
                </div>
                <div className="imageholder flex flex-col p-10">
                { pic1preview ?
@@ -360,7 +360,15 @@ const editSubmitHandler = async (e) =>{
               :
               <img />
             }
-               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }} style='display:none'/>
+               </div>
+               <div className="imageholder flex flex-col p-10 ">
+               { pic1preview ?
+               <img className='' src={pic1preview} /> 
+              :
+              <img />
+            }
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }} style='display:none'/>
                </div>
                <div className="imageholder flex flex-col p-10">
                { pic1preview ?
@@ -368,15 +376,7 @@ const editSubmitHandler = async (e) =>{
               :
               <img />
             }
-               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
-               </div>
-               <div className="imageholder flex flex-col p-10">
-               { pic1preview ?
-               <img src={pic1preview} /> 
-              :
-              <img />
-            }
-               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
+               <input type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }} style='display:none'/>
                </div>
                              
               </div>
