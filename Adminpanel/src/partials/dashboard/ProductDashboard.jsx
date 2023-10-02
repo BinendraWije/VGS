@@ -346,7 +346,7 @@ const editSubmitHandler = async (e) =>{
                 <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
               
               <div className="imageholdersection flex flex-row">
-                <div className="imageholder flex flex-col p-10">
+                <div className="imageholder flex flex-col p-10 items-center	content-center	">
               { pic1preview ?
                <img src={pic1preview} /> 
               :
