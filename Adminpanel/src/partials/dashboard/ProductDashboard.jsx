@@ -249,12 +249,10 @@ const editSubmitHandler = async (e) =>{
     if (!pic1) return;   
   
     const pic1ObjectUrl = URL.createObjectURL(pic1[0]);
-    console.log(pic1);
-    console.log(pic1ObjectUrl);
     setPic1preview(pic1ObjectUrl);
 
     // free memory
-    URL.revokeObjectURL(pic1ObjectUrl);     
+    //URL.revokeObjectURL(pic1ObjectUrl);     
     
   }, [pic1]);
 
