@@ -8,3 +8,13 @@
 @import 'additional-styles/flatpickr.css';
 
 @import 'tailwindcss/utilities';
+
+
+/*     MY STYLES      */
+
+.imageholder{
+    min-width: 2rem;
+    max-width: 5rem;
+    background-color: gray;
+    
+}

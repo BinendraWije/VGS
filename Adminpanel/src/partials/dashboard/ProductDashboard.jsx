@@ -348,7 +348,7 @@ const editSubmitHandler = async (e) =>{
               <div className="imageholdersection flex flex-row">
                 <div className="imageholder flex flex-col p-10 items-center	content-center	">
               { pic1preview ?
-               <img src={pic1preview} /> 
+               <img className='object-cover' src={pic1preview} /> 
               :
               <img />
             }  <label htmlFor="picchooser" className="btn absolute">Upload</label>
@@ -356,7 +356,7 @@ const editSubmitHandler = async (e) =>{
                </div>
                <div className="imageholder flex flex-col p-10">
                { pic1preview ?
-               <img src={pic1preview} /> 
+               <img className='object-cover' src={pic1preview} /> 
               :
               <img />
             }
@@ -364,7 +364,7 @@ const editSubmitHandler = async (e) =>{
                </div>
                <div className="imageholder flex flex-col p-10 ">
                { pic1preview ?
-               <img className='' src={pic1preview} /> 
+               <img className='object-cover' src={pic1preview} /> 
               :
               <img />
             }
@@ -372,7 +372,7 @@ const editSubmitHandler = async (e) =>{
                </div>
                <div className="imageholder flex flex-col p-10">
                { pic1preview ?
-               <img src={pic1preview} /> 
+               <img className='object-cover' src={pic1preview} /> 
               :
               <img />
             }
