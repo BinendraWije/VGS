@@ -319,7 +319,7 @@ const editSubmitHandler = async (e) =>{
                 </div>
                 <div className="productformfield ">
                 <label className='mx-1 my-2 flex flex-col' htmlFor="Price"> Price: 
-                <input className='priceinput' type="text" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductPriceFocus(true)} onBlur={()=>setProductPriceFocus(false)} /></label>
+                <input className='priceinput' type="number" min="0.01" step="0.01" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductPriceFocus(true)} onBlur={()=>setProductPriceFocus(false)} /></label>
                 </div>
 
                 <div className="productformfield flex flex-col">
