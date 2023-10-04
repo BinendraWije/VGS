@@ -16,6 +16,7 @@ import Image07 from '../../images/avatar_10.jpg';
 import Image08 from '../../images/avatar_12.jpg';
 import Image09 from '../../images/avatar_13.jpg';
 import Image10 from '../../images/avatar_15.jpg';
+import defaultimage from '../../images/upload-image-icon.webp';
 
 import axios from '../../utils/axios' 
 import bcrypt from 'bcryptjs';
@@ -354,7 +355,8 @@ const editSubmitHandler = async (e) =>{
               { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :
-              <img />
+              <img src={defaultimage}/>
+           
             }  <label htmlFor="picchooser" className="btn absolute">{pic1? "Replace" : "Upload"}</label>
             {
               pic1? 
