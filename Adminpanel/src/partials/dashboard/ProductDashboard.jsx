@@ -360,7 +360,7 @@ const editSubmitHandler = async (e) =>{
             }
                <input  id="picchooser" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
-               <div className="imageholder flex flex-col mx-2">
+               <div className="imageholder flex flex-col mx-2" onDrop={(e)=>{e.preventDefault();if (e.dataTransfer.files) setPic1(e.dataTransfer.files);}}>
                { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :
