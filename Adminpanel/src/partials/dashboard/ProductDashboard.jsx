@@ -359,9 +359,9 @@ const editSubmitHandler = async (e) =>{
            
             }
             { pic1 ? 
-
-            <p>Upload a file or Drag and Drop one</p>:
-            <></>
+               <></>
+              :
+              <p>Upload a file or Drag and Drop one</p>
 
             }            
               <label htmlFor="picchooser" className="btn absolute">{pic1? "Replace" : "Upload"}</label>
