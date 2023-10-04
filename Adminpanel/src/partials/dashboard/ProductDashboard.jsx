@@ -347,7 +347,8 @@ const editSubmitHandler = async (e) =>{
               
               <div className="imageholdersection flex flex-row">
                 <div className="imageholder flex flex-col mx-2 items-center	content-center" 
-                onDrag={(event)=>{event.preventDefault(); console.log("someone dragged something");}}
+                onDragOver={(event)=>{event.preventDefault(); console.log("someone dragged something"); event.dataTransfer.dropEffect ="copy";}}
+                onDragLeave={(event)=>{event.preventDefault(); }}
                 onDrop={(event)=>{event.preventDefault();console.log("someone dropped something"); if (event.dataTransfer.files) setPic1(event.dataTransfer.files); }}
                                 >
               { pic1preview ?
