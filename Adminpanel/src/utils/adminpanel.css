@@ -52,6 +52,8 @@
     margin-right: 0.25rem;
 }
 
+/*     MY PRODUCT DASHBOARD      */
+
 textarea{
 resize: none;
 }
@@ -61,4 +63,17 @@ background-image: url('../images/dollar1.png');
 background-position: 5px 5px;
 background-repeat: no-repeat;
 padding-left: 40px;
+}
+
+
+
+.imageholder{
+    min-width: 12rem;
+    max-width: 12rem;
+    min-height: 12rem;
+    max-height: 12rem;
+    border-radius: 5px;
+    border: 2px dashed slategray;
+    align-items: center;
+    justify-content: center;
 }
