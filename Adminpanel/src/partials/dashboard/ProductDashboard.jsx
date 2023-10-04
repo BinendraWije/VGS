@@ -347,9 +347,9 @@ const editSubmitHandler = async (e) =>{
               
               <div className="imageholdersection flex flex-row">
                 <div className="imageholder flex flex-col mx-2 items-center	content-center" 
-                onDrop={(e)=>{e.preventDefault();if (e.dataTransfer.files) setPic1(e.dataTransfer.files);}}
-                onDrag={(e)=>{e.preventDefault()}}
-                >
+                onDrag={(event)=>{event.preventDefault(); console.log("someone dragged something");}}
+                onDrop={(event)=>{event.preventDefault();console.log("someone dropped something"); if (event.dataTransfer.files) setPic1(event.dataTransfer.files); }}
+                                >
               { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :
