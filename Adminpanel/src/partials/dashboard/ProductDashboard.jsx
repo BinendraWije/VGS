@@ -355,12 +355,19 @@ const editSubmitHandler = async (e) =>{
               { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :
-              <img src={defaultimage}/>
+              <img className='defaultimage'src={defaultimage}/>
            
-            }  <label htmlFor="picchooser" className="btn absolute">{pic1? "Replace" : "Upload"}</label>
+            }
+            { pic1 ? 
+
+            <p>Upload a file or Drag and Drop one</p>:
+            <></>
+
+            }            
+              <label htmlFor="picchooser" className="btn absolute">{pic1? "Replace" : "Upload"}</label>
             {
               pic1? 
-              <button className="removeimage absolute top-10" onClick={()=>{setPic1(null); setPic1preview(null)}}>Remove</button>
+              <button className="removeimage absolute top-20" onClick={()=>{setPic1(null); setPic1preview(null)}}>Remove</button>
               :
               <></>
             }

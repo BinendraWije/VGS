@@ -79,3 +79,9 @@ padding-left: 40px;
     overflow: hidden;
     object-fit: cover;
 }
+.defaultimage{
+    min-width: 5rem;
+    max-width: 5rem;
+    min-height: 5rem;
+    max-height: 5rem;
+}
