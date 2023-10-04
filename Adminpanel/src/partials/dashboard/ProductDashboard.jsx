@@ -360,7 +360,7 @@ const editSubmitHandler = async (e) =>{
             }  <label htmlFor="picchooser" className="btn absolute">{pic1? "Replace" : "Upload"}</label>
             {
               pic1? 
-              <button className="removeimage absolute top-10" onClick={()=>{setPic1(null); setPic1preview(null)}}>Remove</button>
+              <button className="removeimage" onClick={()=>{setPic1(null); setPic1preview(null)}}>Remove</button>
               :
               <></>
             }
