@@ -13,8 +13,8 @@
 /*     MY STYLES      */
 
 .imageholder{
-    min-width: 2rem;
-    max-width: 5rem;
-    background-color: gray;
-    
+    min-width: 12rem;
+    max-width: 12rem; 
+    background-color: gray;    
+
 }
