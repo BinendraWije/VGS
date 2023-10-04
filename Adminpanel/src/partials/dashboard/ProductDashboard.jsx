@@ -346,7 +346,10 @@ const editSubmitHandler = async (e) =>{
                 <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
               
               <div className="imageholdersection flex flex-row">
-                <div className="imageholder flex flex-col mx-2 items-center	content-center" onDrop={(e)=>{e.preventDefault();if (e.dataTransfer.files) setPic1(e.dataTransfer.files);}}>
+                <div className="imageholder flex flex-col mx-2 items-center	content-center" 
+                onDrop={(e)=>{e.preventDefault();if (e.dataTransfer.files) setPic1(e.dataTransfer.files);}}
+                onDrag={(e)=>{e.preventDefault()}}
+                >
               { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :
