@@ -351,7 +351,13 @@ const editSubmitHandler = async (e) =>{
                <img className='object-cover' src={pic1preview} /> 
               :
               <img />
-            }  <label htmlFor="picchooser" className="btn absolute">Upload</label>
+            }  <label htmlFor="picchooser" className="btn absolute">{pic1? "Replace" : "Upload"}</label>
+            {
+              pic1? 
+              <button className="removeimage" onClick={()=>{setPic1(null)}}>Remove</button>
+              :
+              <></>
+            }
                <input  id="picchooser" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
                <div className="imageholder flex flex-col mx-2">
