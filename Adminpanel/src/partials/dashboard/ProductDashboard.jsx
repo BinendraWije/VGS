@@ -318,7 +318,7 @@ const editSubmitHandler = async (e) =>{
                 <textarea rows="5" id="productdescription" ref={productDescriptionRef} autoComplete='off' onChange={(e)=>setProductDescription(e.target.value)} required  onFocus={()=>setProductDescriptionFocus(true)} onBlur={()=>setProductDescriptionFocus(false)} /></label>
                 </div>
                 <div className="productformfield ">
-                <label className='mx-1 my-2 flex flex-col' htmlFor="Price"> Price: 
+                <label className='mx-1 my-2 flex flex-col priceinput' htmlFor="Price"> Price: 
                 <input type="text" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductPriceFocus(true)} onBlur={()=>setProductPriceFocus(false)} /></label>
                 </div>
 

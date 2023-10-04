@@ -51,3 +51,14 @@
 .successmsg > svg {
     margin-right: 0.25rem;
 }
+
+textarea{
+resize: none;
+}
+
+.priceinput{
+background-image: url('../images/2.png');
+background-position: 10px 10px;
+background-repeat: no-repeat;
+padding-left: 40px;
+}
