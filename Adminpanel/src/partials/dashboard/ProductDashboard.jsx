@@ -346,7 +346,7 @@ const editSubmitHandler = async (e) =>{
                 <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
               
               <div className="imageholdersection flex flex-row">
-                <div className="imageholder flex flex-col mx-2 items-center	content-center p-5">
+                <div className="imageholder flex flex-col mx-2 items-center	content-center">
               { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :
@@ -354,7 +354,7 @@ const editSubmitHandler = async (e) =>{
             }  <label htmlFor="picchooser" className="btn absolute">Upload</label>
                <input  id="picchooser" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
-               <div className="imageholder flex flex-col mx-2 p-5">
+               <div className="imageholder flex flex-col mx-2">
                { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :
@@ -362,7 +362,7 @@ const editSubmitHandler = async (e) =>{
             }
                <input className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
-               <div className="imageholder flex flex-col mx-2 p-5">
+               <div className="imageholder flex flex-col mx-2 ">
                { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :
@@ -370,7 +370,7 @@ const editSubmitHandler = async (e) =>{
             }
                <input className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
-               <div className="imageholder flex flex-col mx-2 p-5">
+               <div className="imageholder flex flex-col mx-2">
                { pic1preview ?
                <img className='object-cover' src={pic1preview} /> 
               :

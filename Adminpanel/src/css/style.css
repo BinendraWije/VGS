@@ -14,7 +14,9 @@
 
 .imageholder{
     min-width: 12rem;
-    max-width: 12rem; 
+    max-width: 12rem;
+    min-height: 12rem;
+    max-height: 12rem;
     background-color: gray;    
 
 }
