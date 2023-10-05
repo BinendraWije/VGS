@@ -78,6 +78,7 @@ padding-left: 40px;
     justify-content: center;
     overflow: hidden;
     object-fit: cover;
+    text-align: center;
 }
 .defaultimage{
     min-width: 5rem;
