@@ -92,7 +92,7 @@ function Productdashboard() {
   const submitHandler = async (e)=>{
     e.preventDefault();
     console.log(pic1);
-    console.log(pic1);
+    console.log(pic1Ref.current.files[0]);
     const formData = new FormData;
     formData.append("Product_Name",product);
     formData.append("Product_Description",productDescription);
