@@ -364,10 +364,10 @@ const editSubmitHandler = async (e) =>{
               <p>or Drag and Drop an image</p>
 
             }            
-              <label htmlFor="picchooser" className="picchooser btn absolute bg-indigo-500 text-white button">{pic1? "Replace" : "Click to Upload"}</label>
+              <label htmlFor="picchooser" className="picchooser absolute text-indigo-500 ">{pic1? "Replace" : "Click to Upload"}</label>
             {
               pic1? 
-              <button className="removeimage absolute top-30" onClick={()=>{setPic1(null); setPic1preview(null)}}>Remove</button>
+              <button className="removeimage absolute top-60" onClick={()=>{setPic1(null); setPic1preview(null)}}>Remove</button>
               :
               <></>
             }
