@@ -152,6 +152,7 @@ padding-left: 40px;
         object-fit: cover;
         text-align: center;
         position:relative;
+        z-index: 50;
     }
 
 .imageholderafterpic:hover{
