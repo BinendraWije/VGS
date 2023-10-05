@@ -254,7 +254,7 @@ const editSubmitHandler = async (e) =>{
     setPic1preview(pic1ObjectUrl);
     }
     catch{
-      setErrMsg("No picture was selected");
+      setTimeout(()=>{setErrMsg("No picture was selected");},10000);      
     }
     // free memory
     //URL.revokeObjectURL(pic1ObjectUrl);     
