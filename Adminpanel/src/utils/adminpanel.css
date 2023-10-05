@@ -66,8 +66,11 @@ padding-left: 40px;
 }
 
 
-
 .imageholder{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2px;
+    margin-right:2px;
     min-width: 12rem;
     max-width: 12rem;
     min-height: 12rem;
@@ -79,6 +82,7 @@ padding-left: 40px;
     overflow: hidden;
     object-fit: cover;
     text-align: center;
+    position:relative;
 }
 
 
@@ -120,7 +124,7 @@ padding-left: 40px;
     padding: .5rem;
     background-color: red;
     color: white;
-    top:7rem;
+    top:8rem;
     display: none;
     border-radius: 5px;
    
@@ -130,7 +134,25 @@ padding-left: 40px;
     display: flex;
 }
 
-.imageholder:hover{
+.imageholderafterpic{
+        display: flex;
+        flex-direction: column;
+        margin-left: 2px;
+        margin-right:2px;
+        min-width: 12rem;
+        max-width: 12rem;
+        min-height: 12rem;
+        max-height: 12rem;
+        border-radius: 5px;      
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        object-fit: cover;
+        text-align: center;
+        position:relative;
+    }
+
+.imageholderafterpic:hover{
     background-color: rgb(99 102 241 / var(--tw-bg-opacity));
     opacity: .25;
 }
