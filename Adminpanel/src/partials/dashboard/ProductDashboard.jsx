@@ -92,7 +92,6 @@ function Productdashboard() {
   const submitHandler = async (e)=>{
     e.preventDefault();
     console.log(pic1);
-    console.log(pic1Ref.current.files[0]);
     const formData = new FormData;
     formData.append("Product_Name",product);
     formData.append("Product_Description",productDescription);
@@ -102,14 +101,14 @@ function Productdashboard() {
     if(pic1){   
     formData.set("Product_Image_1",pic1[0]);
     }
-    if(pic1){
-      formData.set("Product_Image_2",pic1Ref.current.files[0]);
+    if(pic2){
+      formData.set("Product_Image_2",pic2[0]);
       }
     if(pic3){
-        formData.append("Product_Image_3",pic3[0]);
+        formData.set("Product_Image_3",pic3[0]);
         }
     if(pic4){
-          formData.append("Product_Image_4pic4",pic4[0]);
+          formData.set("Product_Image_4pic4",pic4[0]);
           }
         
     // if button enabled with JS Hack
@@ -253,7 +252,6 @@ const editSubmitHandler = async (e) =>{
 ///////////////// temp image preview setup ////////////////////////////
   const [pic1, setPic1] = useState();
   const [pic1preview, setPic1preview] = useState();
-  const pic1Ref = useRef();
   const [pic2, setPic2] = useState();
   const [pic2preview, setPic2preview] = useState();
   const [pic3, setPic3] = useState();
@@ -434,7 +432,7 @@ useEffect(() => {
               :
               <></>
             }
-               <input  id="picchooser1" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" ref={pic1Ref} onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
+               <input  id="picchooser1" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png"  onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
                <div className={pic2? "imageholderafterpic" : "imageholder"} 
                 onDragOver={(event)=>{event.preventDefault(); console.log("someone dragged something"); event.dataTransfer.dropEffect ="copy";}}
