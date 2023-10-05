@@ -7,6 +7,8 @@ const filesPayloadExists = require('../Middleware/filePayloadExists.js');
 const fileSizeLimiter = require('../Middleware/fileSizeLimiter.js');
 
 
+
+
 const createProductRouter = express.Router();
 createProductRouter.post('/createproduct',
 fileUpload({ createParentPath: true }),
@@ -28,28 +30,28 @@ db.query(findDuplicatesquery,[req.body.Product_Name], async (err,results)=>{
 })
 //saving the files in the folder
 if(req.files.Product_Image_1){ 
-const folderpath1 = path.join(__dirname,'images',req.body.Product_Name,req.files.Product_Image_1.name);
+const folderpath1 = path.join('../../public/images',req.body.Product_Name,req.files.Product_Image_1.name);
 req.files.Product_Image_1.mv(folderpath1,(err)=>{
     if(err) return res.sendStatus(500);
 })
 
 }
 if(req.files.Product_Image_2){ 
-    const folderpath2 = path.join(__dirname,'images',req.body.Product_Name,req.files.Product_Image_2.name);
+    const folderpath2 = path.join('../../public/images',req.body.Product_Name,req.files.Product_Image_2.name);
     req.files.Product_Image_2.mv(folderpath2,(err)=>{
         if(err) return res.sendStatus(500);
     })
     
     }
 if(req.files.Product_Image_3){ 
-        const folderpath3 = path.join(__dirname,'images',req.body.Product_Name,req.files.Product_Image_3.name);
+        const folderpath3 = path.join('../../public/images',req.body.Product_Name,req.files.Product_Image_3.name);
         req.files.Product_Image_3.mv(folderpath3,(err)=>{
             if(err) return res.sendStatus(500);
         })
         
         }
 if(req.files.Product_Image_4){ 
-            const folderpath4 = path.join(__dirname,'images',req.body.Product_Name,req.files.Product_Image_4.name);
+            const folderpath4 = path.join('../../public/images',req.body.Product_Name,req.files.Product_Image_4.name);
             req.files.Product_Image_4.mv(folderpath4,(err)=>{
                 if(err) return res.sendStatus(500);
             })
