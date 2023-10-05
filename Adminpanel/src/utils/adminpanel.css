@@ -103,10 +103,11 @@ padding-left: 40px;
 
 .picreplacebtn{
     position: absolute;
-    padding: 1rem;
+    padding: .5rem;
     background-color: rgb(99 102 241 / var(--tw-bg-opacity));
     color: white;
     display: none;
+    border-radius: 5px;
 }
 
 
@@ -116,11 +117,12 @@ padding-left: 40px;
 
 .picremovebtn{
     position: absolute;
-    padding: 1rem;
+    padding: .5rem;
     background-color: red;
     color: white;
-    top:20rem;
+    top:10rem;
     display: none;
+    border-radius: 5px;
    
 }
 
