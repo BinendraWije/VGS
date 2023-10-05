@@ -120,7 +120,7 @@ padding-left: 40px;
     padding: .5rem;
     background-color: red;
     color: white;
-    top:10rem;
+    top:7rem;
     display: none;
     border-radius: 5px;
    
@@ -128,4 +128,9 @@ padding-left: 40px;
 
 .imageholder:hover .picremovebtn{
     display: flex;
+}
+
+.imageholder:hover{
+    background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+    opacity: .25;
 }
