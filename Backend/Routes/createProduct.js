@@ -10,9 +10,6 @@ const fileSizeLimiter = require('../Middleware/fileSizeLimiter.js');
 const createProductRouter = express.Router();
 createProductRouter.post('/createproduct',
 fileUpload({ createParentPath: true }),
-filesPayloadExists,
-fileExtLimiter(['.png', '.jpg', '.jpeg']),
-fileSizeLimiter, 
 async (req,res)=>{
     //validate if required data exists
 if(!req.body.Product_Name || !req.body.Product_Description || !req.body.Product_Price || !req.body.product_type_ID || !req.body.Product_Quantity)return res.status(400).json({'message':'Check if all the data was submitted properly.'});
