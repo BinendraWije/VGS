@@ -100,10 +100,10 @@ function Productdashboard() {
     formData.append("product_type_ID",productTypeID);
     formData.append("Product_Quantity",productQuantity);
     if(pic1){   
-    formData.set("Product_Image_1",pic1);
+    formData.set("Product_Image_1",pic1Ref.current.files[0]);
     }
     if(pic1){
-      formData.set("Product_Image_2",pic1Ref.current.files[0]);
+      formData.set("Product_Image_2",pic1Ref.current.files);
       }
     if(pic3){
         formData.append("Product_Image_3",pic3[0]);
