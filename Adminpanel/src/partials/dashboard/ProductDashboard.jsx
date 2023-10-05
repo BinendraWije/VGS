@@ -91,13 +91,15 @@ function Productdashboard() {
 
   const submitHandler = async (e)=>{
     e.preventDefault();
+    console.log(pic1);
+    console.log(pic1[0]);
     const formData = new FormData;
     formData.append("Product_Name",product);
     formData.append("Product_Description",productDescription);
     formData.append("Product_Price",productPrice);
     formData.append("product_type_ID",productTypeID);
     formData.append("Product_Quantity",productQuantity);
-    if(pic1){
+    if(pic1){   
     formData.append("Product_Image_1",pic1);
     }
     if(pic2){
