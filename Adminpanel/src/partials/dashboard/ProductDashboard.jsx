@@ -120,7 +120,7 @@ function Productdashboard() {
     }
     catch(err){
       if(!err?.response){
-        setErrMsg('No server Response');
+        setErrMsg(err.response);
       } else if (err.response?.status === 409){
         setErrMsg(' Product already exists by that name');
       } else{
