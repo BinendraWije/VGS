@@ -1,3 +1,4 @@
+
 .offscreen {
     position: absolute;
     left: -9999px;
@@ -83,6 +84,8 @@ padding-left: 40px;
     object-fit: cover;
     text-align: center;
     position:relative;
+    box-shadow: var(--shadow);
+    --shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;/* --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 
 
@@ -157,6 +160,8 @@ padding-left: 40px;
         text-align: center;
         position:relative;
         z-index: 50;
+        box-shadow: var(--shadow);
+        --shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;/* --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     }
 
 .imageholderafterpic:hover img{
