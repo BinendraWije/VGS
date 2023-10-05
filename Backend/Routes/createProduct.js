@@ -13,6 +13,7 @@ console.log(req.body);
 
 
 
+
 /* 
 // Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
