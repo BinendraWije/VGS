@@ -91,23 +91,24 @@ function Productdashboard() {
 
   const submitHandler = async (e)=>{
     e.preventDefault();
-
+    const formData = new FormData;
+    formData.append("Product_Name",product);
+    formData.append("Product_Description",productDescription);
+    formData.append("Product_Price",productPrice);
+    formData.append("product_type_ID",productTypeID);
+    formData.append("Product_Quantity",productQuantity);
+    formData.append("Product_Image_1",pic1[0]);
+    formData.append("Product_Image_2",pic2[0]);
+    formData.append("Product_Image_3",pic3[0]);
+    formData.append("Product_Image_4",pic4[0]);
+        
     // if button enabled with JS Hack
   console.log("fired the submithandler");
     try{
        
-      const response = await axios.post(CREATE_PRODUCT_URL,{
-          Product_Name: product,
-          Product_Description: productDescription,
-          Product_Price: productPrice,
-          product_type_ID: productTypeID,             
-          Product_Quantity: productQuantity,  
-          Product_Image_1: pic1[0],
-          Product_Image_2: pic2[0],
-          Product_Image_3: pic3[0],
-          Product_Image_4: pic4[0]          
-        },{
-          headers: {'Content-Type': 'application/json'},
+      const response = await axios.post(CREATE_PRODUCT_URL,formData            
+        ,{
+          headers: {'Content-Type': 'multipart/form-data'},
           // add credentials later once users have been created add token as well
           withCredentials: false
         });
