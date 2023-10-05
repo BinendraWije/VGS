@@ -117,6 +117,7 @@ padding-left: 40px;
 
 .imageholderafterpic:hover .picreplacebtn{
     display: flex;
+    z-index: 100;
 }
 
 .picremovebtn{
@@ -132,6 +133,7 @@ padding-left: 40px;
 
 .imageholderafterpic:hover .picremovebtn{
     display: flex;
+    z-index: 100;
 }
 
 .imageholderafterpic{
