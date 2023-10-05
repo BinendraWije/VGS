@@ -390,7 +390,7 @@ useEffect(() => {
                   function findproducttypeid(element, productType){
                     return element === productType;
                   }
-                  const findproducttype = productTypes.find(findproducttypeid);
+                  const findproducttype = productTypes.find(findproducttypeid(productType));
                   const producttypeid = findproducttype.product_type_ID;
                   console.log(productTypes);
                   console.log(findproducttype);
