@@ -257,14 +257,13 @@ const editSubmitHandler = async (e) =>{
     try{
     const pic1ObjectUrl = URL.createObjectURL(pic1[0]);
     setPic1preview(pic1ObjectUrl);
-    URL.revokeObjectURL(pic1ObjectUrl);    
     }
     catch{
       setErrMsg("No picture was selected");
       setTimeout(()=>{setErrMsg(null);},5000);      
     }
     // free memory
-    // 
+    //URL.revokeObjectURL(pic1ObjectUrl);     
     
   }, [pic1]);
 
@@ -274,7 +273,6 @@ useEffect(() => {
     try{
     const pic2ObjectUrl = URL.createObjectURL(pic2[0]);
     setPic2preview(pic2ObjectUrl);
-    URL.revokeObjectURL(pic2ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
@@ -291,7 +289,6 @@ useEffect(() => {
     try{
     const pic3ObjectUrl = URL.createObjectURL(pic3[0]);
     setPic3preview(pic3ObjectUrl);
-    URL.revokeObjectURL(pic3ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
@@ -308,7 +305,6 @@ useEffect(() => {
     try{
     const pic4ObjectUrl = URL.createObjectURL(pic4[0]);
     setPic4preview(pic4ObjectUrl);
-    URL.revokeObjectURL(pic4ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
@@ -411,14 +407,14 @@ useEffect(() => {
               <p>or Drag and Drop an image</p>
 
             }            
-              <label htmlFor="picchooser" className={pic1? "picreplacebtn" : "picchooserbtn"}>{pic1? "Replace" : "Click to Upload"}</label>
+              <label htmlFor="picchooser1" className={pic1? "picreplacebtn" : "picchooserbtn"}>{pic1? "Replace" : "Click to Upload"}</label>
             {
               pic1? 
               <button className="picremovebtn" onClick={()=>{setPic1(null); setPic1preview(null)}}>Remove</button>
               :
               <></>
             }
-               <input  id="picchooser" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
+               <input  id="picchooser1" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic1(e.target.files); } }}/>
                </div>
                <div className={pic2? "imageholderafterpic" : "imageholder"} 
                 onDragOver={(event)=>{event.preventDefault(); console.log("someone dragged something"); event.dataTransfer.dropEffect ="copy";}}
@@ -437,14 +433,14 @@ useEffect(() => {
               <p>or Drag and Drop an image</p>
 
             }            
-              <label htmlFor="picchooser" className={pic2? "picreplacebtn" : "picchooserbtn"}>{pic2? "Replace" : "Click to Upload"}</label>
+              <label htmlFor="picchooser2" className={pic2? "picreplacebtn" : "picchooserbtn"}>{pic2? "Replace" : "Click to Upload"}</label>
             {
               pic2? 
               <button className="picremovebtn" onClick={()=>{setPic2(null); setPic2preview(null)}}>Remove</button>
               :
               <></>
             }
-               <input  id="picchooser" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic2(e.target.files); } }}/>
+               <input  id="picchooser2" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic2(e.target.files); } }}/>
                </div>
                <div className={pic3? "imageholderafterpic" : "imageholder"} 
                 onDragOver={(event)=>{event.preventDefault(); console.log("someone dragged something"); event.dataTransfer.dropEffect ="copy";}}
@@ -463,14 +459,14 @@ useEffect(() => {
               <p>or Drag and Drop an image</p>
 
             }            
-              <label htmlFor="picchooser" className={pic3? "picreplacebtn" : "picchooserbtn"}>{pic3? "Replace" : "Click to Upload"}</label>
+              <label htmlFor="picchooser3" className={pic3? "picreplacebtn" : "picchooserbtn"}>{pic3? "Replace" : "Click to Upload"}</label>
             {
               pic3? 
               <button className="picremovebtn" onClick={()=>{setPic3(null); setPic3preview(null)}}>Remove</button>
               :
               <></>
             }
-               <input  id="picchooser" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic3(e.target.files); } }}/>
+               <input  id="picchooser3" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic3(e.target.files); } }}/>
                </div>
                <div className={pic4? "imageholderafterpic" : "imageholder"} 
                 onDragOver={(event)=>{event.preventDefault(); console.log("someone dragged something"); event.dataTransfer.dropEffect ="copy";}}
@@ -489,14 +485,14 @@ useEffect(() => {
               <p>or Drag and Drop an image</p>
 
             }            
-              <label htmlFor="picchooser" className={pic4? "picreplacebtn" : "picchooserbtn"}>{pic4? "Replace" : "Click to Upload"}</label>
+              <label htmlFor="picchooser4" className={pic4? "picreplacebtn" : "picchooserbtn"}>{pic4? "Replace" : "Click to Upload"}</label>
             {
               pic4? 
               <button className="picremovebtn" onClick={()=>{setPic4(null); setPic4preview(null)}}>Remove</button>
               :
               <></>
             }
-               <input  id="picchooser" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic4(e.target.files); } }}/>
+               <input  id="picchooser4" className='hidden' type="file" accept="image/jpg, image/jpeg, image/png" onChange={(e) => { if (e.target.files) { setPic4(e.target.files); } }}/>
                </div>
                              
               </div>
