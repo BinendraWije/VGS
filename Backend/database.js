@@ -21,6 +21,7 @@ const { handleRefreshTokenrouter } = require('./Routes/refreshtokenroute.js');
 const { deleteUserRouter } = require('./Routes/deleteUser.js');
 const { editUserRouter } = require('./Routes/editUser.js');
 const {getAllProductsRouter} = require('./Routes/allProducts.js');
+const { createProductRouter } = require('./Routes/createProduct.js');
 
 const app = express();
 
@@ -61,6 +62,8 @@ app.use(createUserRouter);
 app.use(deleteUserRouter);
 app.use(editUserRouter);
 app.use(getAllProductsRouter);
+app.use(createProductRouter);
+
 
 app.listen(3306, ()=>{
     console.log("listening")    
