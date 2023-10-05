@@ -389,7 +389,7 @@ useEffect(() => {
                 <div className="productimagessection flex flex-col p-10 flex-nowrap xl:col-span-1 col-start-2">
                 <label className='mx-1' htmlFor="productname"> Product Images Upload : </label>
               
-              <div className="imageholdersection flex flex-row">
+              <div className="imageholdersection flex flex-row flex-wrap ">
                 <div className={pic1? "imageholderafterpic" : "imageholder"} 
                 onDragOver={(event)=>{event.preventDefault(); console.log("someone dragged something"); event.dataTransfer.dropEffect ="copy";}}
                 onDragLeave={(event)=>{event.preventDefault(); }}
