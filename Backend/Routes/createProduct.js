@@ -4,8 +4,8 @@ const { db } = require('../Config/databaseconfig.js');
 const { verifyRoles } = require('../Middleware/verifyRoles.js');
 const path = require("path");
 const filesPayloadExists = require('../Middleware/filePayloadExists.js');
-const fileExtLimiter = require('../Middleware/fileEXTLimiter.js');
 const fileSizeLimiter = require('../Middleware/fileSizeLimiter.js');
+const fileExtLimiter = require('../Middleware/fileExtLimiter.js');
 
 const createProductRouter = express.Router();
 createProductRouter.post('/createproduct',
