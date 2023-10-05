@@ -263,7 +263,7 @@ const editSubmitHandler = async (e) =>{
       setTimeout(()=>{setErrMsg(null);},5000);      
     }
     // free memory
-    //URL.revokeObjectURL(pic1ObjectUrl);     
+    URL.revokeObjectURL(pic1ObjectUrl);     
     
   }, [pic1]);
 
@@ -279,7 +279,7 @@ useEffect(() => {
       setTimeout(()=>{setErrMsg(null);},5000);      
     }
     // free memory
-    //URL.revokeObjectURL(pic1ObjectUrl);     
+    URL.revokeObjectURL(pic2ObjectUrl);     
     
   }, [pic2]);
 
@@ -295,7 +295,7 @@ useEffect(() => {
       setTimeout(()=>{setErrMsg(null);},5000);      
     }
     // free memory
-    //URL.revokeObjectURL(pic1ObjectUrl);     
+    URL.revokeObjectURL(pic3ObjectUrl);     
     
   }, [pic3]);
 
@@ -311,7 +311,7 @@ useEffect(() => {
       setTimeout(()=>{setErrMsg(null);},5000);      
     }
     // free memory
-    //URL.revokeObjectURL(pic1ObjectUrl);     
+    URL.revokeObjectURL(pic4ObjectUrl);     
     
   }, [pic4]);
 
