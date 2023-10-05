@@ -124,7 +124,8 @@ function Productdashboard() {
       } else if (err.response?.status === 409){
         setErrMsg(' Product already exists by that name');
       } else{
-              console.log(err.response.toString());
+              console.log(err.response);
+              console.log(err.response.status);
       }
       errRef.current.focus();
     }
