@@ -388,6 +388,7 @@ useEffect(() => {
                 <select className='mx-1 my-2 flex flex-col' value={productType}  ref={productTypeRef} onChange={(e)=>{
                   setProductType(e.target.value);
                   const producttypeid = productTypes.indexOf(productType);
+                  console.log(productTypes);
                   console.log(producttypeid);
                   setProductTypeID(producttypeid);
                 }} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
