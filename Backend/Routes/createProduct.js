@@ -28,6 +28,7 @@ db.query(findDuplicatesquery,[req.body.Product_Name], async (err,results)=>{
 
     }
 })
+
 //saving the files in the folder
 if(req.files.Product_Image_1){ 
 const folderpath1 = path.join('../../public/images',req.body.Product_Name,req.files.Product_Image_1.name);
@@ -41,7 +42,8 @@ if(req.files.Product_Image_2){
     req.files.Product_Image_2.mv(folderpath2,(err)=>{
         if(err) return res.sendStatus(500);
     })
-    
+    const productImage1name = req.files.Product_Image_1.name;
+    return productImage1name
     }
 if(req.files.Product_Image_3){ 
         const folderpath3 = path.join('../../public/images',req.body.Product_Name,req.files.Product_Image_3.name);
@@ -58,17 +60,20 @@ if(req.files.Product_Image_4){
             
             }
 
-
+    const productImage1name = (typeof req.files.Product_Image_1.name === 'undefined') ? null : req.files.Product_Image_1.name 
+    const productImage2name = (typeof req.files.Product_Image_2.name === 'undefined') ? null : req.files.Product_Image_2.name 
+    const productImage3name = (typeof req.files.Product_Image_3.name === 'undefined') ? null : req.files.Product_Image_3.name 
+    const productImage4name = (typeof req.files.Product_Image_4.name === 'undefined') ? null : req.files.Product_Image_4.name 
 
 
 const q = "INSERT INTO vgsdb.Products (`Product_Name`,`Product_Description`,`Product_Image_1`,`Product_Image_2`,`Product_Image_3`,`Product_Image_4`,`Product_Quantity`,`Product_Price`,`product_type_ID`) VALUES(?)";
 const values = [
       req.body.Product_Name,
       req.body.Product_Description,
-      req.files.Product_Image_1.name,
-      req.files.Product_Image_2.name,
-      req.files.Product_Image_3.name,
-      req.files.Product_Image_4.name,   
+      productImage1name,
+      productImage2name,
+      productImage3name,
+      productImage4name,   
       req.body.Product_Quantity,
       req.body.Product_Price,
       req.body.product_type_ID,  
