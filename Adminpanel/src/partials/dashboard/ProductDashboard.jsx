@@ -93,7 +93,7 @@ function Productdashboard() {
     e.preventDefault();
 
     // if button enabled with JS Hack
-  
+  console.log("fired the submithandler");
     try{
        
       const response = await axios.post(CREATE_PRODUCT_URL,
