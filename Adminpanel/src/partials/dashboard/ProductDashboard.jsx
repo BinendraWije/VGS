@@ -92,7 +92,7 @@ function Productdashboard() {
   const submitHandler = async (e)=>{
     e.preventDefault();
     console.log(pic1);
-    console.log(pic1.current.value);
+    console.log(pic1);
     const formData = new FormData;
     formData.append("Product_Name",product);
     formData.append("Product_Description",productDescription);
@@ -100,7 +100,7 @@ function Productdashboard() {
     formData.append("product_type_ID",productTypeID);
     formData.append("Product_Quantity",productQuantity);
     if(pic1){   
-    formData.set("Product_Image_1",pic1.current.value);
+    formData.set("Product_Image_1",pic1Ref.current.value);
     }
     if(pic1){
       formData.set("Product_Image_2",pic1Ref.current.value);
