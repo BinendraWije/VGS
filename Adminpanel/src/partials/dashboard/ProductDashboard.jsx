@@ -573,7 +573,7 @@ useEffect(() => {
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-30 h-30 shrink-0 mr-2 sm:mr-3">
-                            <img src={new URL('../../images/Products/' + product.Product_Image +'.jpg', import.meta.url).href}  width="70" height="70" alt={product.Product_Name} />
+                            <img src={new URL('../../images/Products/' + product.Product_Image_1 +'.jpg', import.meta.url).href}  width="70" height="70" alt={product.Product_Name} />
                           </div>
                           <div className="font-medium text-slate-800 dark:text-slate-100">{product.Product_Name}</div>
                         </div>
