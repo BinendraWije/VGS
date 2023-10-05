@@ -272,7 +272,7 @@ useEffect(() => {
   
     try{
     const pic2ObjectUrl = URL.createObjectURL(pic2[0]);
-    setPic1preview(pic2ObjectUrl);
+    setPic2preview(pic2ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
@@ -288,7 +288,7 @@ useEffect(() => {
   
     try{
     const pic3ObjectUrl = URL.createObjectURL(pic3[0]);
-    setPic1preview(pic3ObjectUrl);
+    setPic3preview(pic3ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
@@ -304,7 +304,7 @@ useEffect(() => {
   
     try{
     const pic4ObjectUrl = URL.createObjectURL(pic4[0]);
-    setPic1preview(pic4ObjectUrl);
+    setPic4preview(pic4ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
