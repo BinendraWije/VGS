@@ -70,7 +70,7 @@ padding-left: 40px;
 .imageholder{
     display: flex;
     flex-direction: column;
-    margin: 2px; 
+    margin: 1rem; 
     min-width: 12rem;
     max-width: 12rem;
     min-height: 12rem;
@@ -145,7 +145,7 @@ padding-left: 40px;
 .imageholderafterpic{
         display: flex;
         flex-direction: column;
-        margin: 2px;       
+        margin: 1rem;       
         min-width: 12rem;
         max-width: 12rem;
         min-height: 12rem;

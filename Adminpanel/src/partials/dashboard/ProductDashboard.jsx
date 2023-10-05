@@ -29,7 +29,7 @@ const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
 
-const CREATE_USER_URL = '/createuser';
+const CREATE_PRODUCT_URL = '/createproduct';
 const GET_PRODUCTS_URL = '/products';
 const DELETE_USER_URL = '/deleteuser/';
 const EDIT_USER_URL = '/edituser/';
@@ -46,24 +46,25 @@ function Productdashboard() {
 
   const ProductRef = useRef();
   const productDescriptionRef = useRef();
-  const productImageRef = useRef();
   const productPriceRef = useRef();
+  const productQuantityRef = useRef();
   const productTypeRef = useRef();
   const errRef = useRef();
 
   const [product,setProduct] = useState('');
   const [productDescription,setProductDescription] = useState('');
-  const [productImage,setProductImage] = useState('');
   const [productType,setProductType] = useState('');
   const [productPrice,setProductPrice] = useState('');
+  const [productQuantity,setProductQuantity] = useState('');
+
 
   const [ProductFocus, setProductFocus] = useState(false);
   const [ProductDescriptionFocus, setProductDescriptionFocus] = useState(false);
   const [ProductImageFocus, setProductImageFocus] = useState(false);
   const [ProductTypeFocus, setProductTypeFocus] = useState(false);
   const [ProductPriceFocus, setProductPriceFocus] = useState(false);
+  const [productQuantityFocus,setProductQuantityFocus] = useState(false);
 
-  const [userFocus, setUserFocus] = useState(false);
   
   const [pwd,setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
@@ -85,34 +86,33 @@ function Productdashboard() {
   }, [success])
 
 
-/////////////////// CREATE USER FUNCTION //////////////////////////////
+/////////////////// CREATE PRODUCT FUNCTION //////////////////////////////
 
   const submitHandler = async (e)=>{
     e.preventDefault();
 
     // if button enabled with JS Hack
-    const v1 = USER_REGEX.test(user);
-    const v2 = PWD_REGEX.test(pwd);
-    if(!v1 || !v2){
-      setErrMsg("Invalid Entry");
-      
-    }
+  
     try{
        
       const response = await axios.post(CREATE_PRODUCT_URL,
         JSON.stringify({ 
           product_name: product,
           product_description: productDescription,
-          product_image: productImage,
-          product_type: productType   
-
+          product_price: productPrice,
+          product_type: productType,             
+          product_quantity: productQuantity,  
+          product_image_1: pic1,
+          product_image_2: pic2,
+          product_image_3: pic3,
+          product_image_4: pic4          
         }),{
           headers: {'Content-Type':'application/json'},
           // add credentials later once users have been created add token as well
           withCredentials: false
         });
         console.log(response.data);
-        console.log(response.accessToken);      
+        console.log(response);      
         console.log(JSON.stringify(response));
         setSuccess(true);
         // clear input fields   
@@ -121,9 +121,9 @@ function Productdashboard() {
       if(!err?.response){
         setErrMsg('No server Response');
       } else if (err.response?.status === 409){
-        setErrMsg(' Username taken');
+        setErrMsg(' Product already exists by that name');
       } else{
-        setErrMsg('Registration Failed')
+        setErrMsg('Product Creation Failed')
       }
       errRef.current.focus();
     }
@@ -364,6 +364,11 @@ useEffect(() => {
                 <div className="productformfield ">
                 <label className='mx-1 my-2 flex flex-col' htmlFor="Price"> Price: 
                 <input className='priceinput' type="number" min="0.01" step="0.01" max="2500" id="Price" ref={productPriceRef} autoComplete='off' onChange={(e)=>setProductPrice(e.target.value)} required  onFocus={()=>setProductPriceFocus(true)} onBlur={()=>setProductPriceFocus(false)} /></label>
+                </div>
+
+                <div className="productformfield ">
+                <label className='mx-1 my-2 flex flex-col' htmlFor="Quantity"> Quantity: 
+                <input className='quantityinput' type="number" id="Quantity" ref={productQuantityRef} autoComplete='off' onChange={(e)=>setProductQuantity(e.target.value)} required  onFocus={()=>setProductQuantityFocus(true)} onBlur={()=>setProductQuantityFocus(false)} /></label>
                 </div>
 
                 <div className="productformfield flex flex-col">
