@@ -155,7 +155,7 @@ padding-left: 40px;
         z-index: 50;
     }
 
-.imageholderafterpic:hover{
+.imageholderafterpic:hover img{
     background-color: rgb(99 102 241 / var(--tw-bg-opacity));
     opacity: .25;
 }
