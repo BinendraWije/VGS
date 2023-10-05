@@ -54,6 +54,7 @@ function Productdashboard() {
   const [product,setProduct] = useState('');
   const [productDescription,setProductDescription] = useState('');
   const [productType,setProductType] = useState('');
+  const [productTypeID,setProductTypeID] = useState('');
   const [productPrice,setProductPrice] = useState('');
   const [productQuantity,setProductQuantity] = useState('');
 
@@ -97,15 +98,15 @@ function Productdashboard() {
        
       const response = await axios.post(CREATE_PRODUCT_URL,
         JSON.stringify({ 
-          product_name: product,
-          product_description: productDescription,
-          product_price: productPrice,
-          product_type: productType,             
-          product_quantity: productQuantity,  
-          product_image_1: pic1,
-          product_image_2: pic2,
-          product_image_3: pic3,
-          product_image_4: pic4          
+          Product_Name: product,
+          Product_Description: productDescription,
+          Product_Price: productPrice,
+          product_type_ID: productTypeID,             
+          Product_Quantity: productQuantity,  
+          Product_Image_1: pic1,
+          Product_Image_2: pic2,
+          Product_Image_3: pic3,
+          Product_Image_4: pic4          
         }),{
           headers: {'Content-Type':'application/json'},
           // add credentials later once users have been created add token as well
@@ -376,7 +377,11 @@ useEffect(() => {
 
                 Product Type: 
 
-                <select className='mx-1 my-2 flex flex-col' value={productType}  ref={productTypeRef} onChange={(e)=>setProductType(e.target.value)} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
+                <select className='mx-1 my-2 flex flex-col' value={productType}  ref={productTypeRef} onChange={(e)=>{
+                  setProductType(e.target.value);
+                  const producttypeid = productTypes.indexOf(productType);
+                  setProductTypeID(producttypeid);
+                }} id="Producttype" required  onFocus={()=>setProductTypeFocus(true)} onBlur={()=>setProductTypeFocus(false)}>
               {
                 productTypes.map(producttype => {
                   return (
