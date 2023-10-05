@@ -28,7 +28,7 @@ db.query(findDuplicatesquery,[req.body.Product_Name], async (err,results)=>{
 })
 //saving the files in the folder
 if(req.body.Product_Image_1){ 
-const folderpath1 = path.join(__dirname,'images',req.body.Product_Name,req.body.Product_Image_1.name);
+const folderpath1 = path.join(__dirname,'images',req.body.Product_Name,req.body.Product_Image_1[0].name);
 req.body.Product_Image_1.mv(folderpath1,(err)=>{
     if(err) return res.sendStatus(500);
 })
