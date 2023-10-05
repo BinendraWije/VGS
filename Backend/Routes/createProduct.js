@@ -15,7 +15,6 @@ async (req,res)=>{
 if(!req.body.Product_Name || !req.body.Product_Description || !req.body.Product_Price || !req.body.product_type_ID || !req.body.Product_Quantity)return res.status(400).json({'message':'Check if all the data was submitted properly.'});
 console.log(req.body);
 console.log(req.body.Product_Image_1);
-console.log(req.body.Product_Image_1[0]);
 
 // Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.Products WHERE `Product_Name` = ?";
@@ -28,7 +27,7 @@ db.query(findDuplicatesquery,[req.body.Product_Name], async (err,results)=>{
 })
 //saving the files in the folder
 if(req.body.Product_Image_1){ 
-const folderpath1 = path.join(__dirname,'images',req.body.Product_Name,req.body.Product_Image_1[0].name);
+const folderpath1 = path.join(__dirname,'images',req.body.Product_Name,req.body.Product_Image_1.name);
 req.body.Product_Image_1.mv(folderpath1,(err)=>{
     if(err) return res.sendStatus(500);
 })
