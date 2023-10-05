@@ -257,13 +257,14 @@ const editSubmitHandler = async (e) =>{
     try{
     const pic1ObjectUrl = URL.createObjectURL(pic1[0]);
     setPic1preview(pic1ObjectUrl);
+    URL.revokeObjectURL(pic1ObjectUrl);    
     }
     catch{
       setErrMsg("No picture was selected");
       setTimeout(()=>{setErrMsg(null);},5000);      
     }
     // free memory
-    //URL.revokeObjectURL(pic1ObjectUrl);     
+    // 
     
   }, [pic1]);
 
@@ -273,6 +274,7 @@ useEffect(() => {
     try{
     const pic2ObjectUrl = URL.createObjectURL(pic2[0]);
     setPic2preview(pic2ObjectUrl);
+    URL.revokeObjectURL(pic2ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
@@ -289,6 +291,7 @@ useEffect(() => {
     try{
     const pic3ObjectUrl = URL.createObjectURL(pic3[0]);
     setPic3preview(pic3ObjectUrl);
+    URL.revokeObjectURL(pic3ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
@@ -305,6 +308,7 @@ useEffect(() => {
     try{
     const pic4ObjectUrl = URL.createObjectURL(pic4[0]);
     setPic4preview(pic4ObjectUrl);
+    URL.revokeObjectURL(pic4ObjectUrl);
     }
     catch{
       setErrMsg("No picture was selected");
