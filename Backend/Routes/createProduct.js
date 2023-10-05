@@ -60,10 +60,10 @@ if(req.files.Product_Image_4){
             
             }
 
-    const productImage1name = ( req.files.Product_Image_1 === 'undefined') ? null : req.files.Product_Image_1.name 
-    const productImage2name = ( req.files.Product_Image_2 === 'undefined') ? null : req.files.Product_Image_2.name 
-    const productImage3name = ( req.files.Product_Image_3 === 'undefined') ? null : req.files.Product_Image_3.name 
-    const productImage4name = ( req.files.Product_Image_4 === 'undefined') ? null : req.files.Product_Image_4.name 
+    const productImage1name = ( req.files.Product_Image_1 === undefined) ? null : req.files.Product_Image_1.name 
+    const productImage2name = ( req.files.Product_Image_2 === undefined) ? null : req.files.Product_Image_2.name 
+    const productImage3name = ( req.files.Product_Image_3 === undefined) ? null : req.files.Product_Image_3.name 
+    const productImage4name = ( req.files.Product_Image_4 === undefined) ? null : req.files.Product_Image_4.name 
 
 
 const q = "INSERT INTO vgsdb.Products (`Product_Name`,`Product_Description`,`Product_Image_1`,`Product_Image_2`,`Product_Image_3`,`Product_Image_4`,`Product_Quantity`,`Product_Price`,`product_type_ID`) VALUES(?)";
