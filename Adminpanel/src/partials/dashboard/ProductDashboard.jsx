@@ -108,7 +108,7 @@ function Productdashboard() {
           Product_Image_3: pic3[0],
           Product_Image_4: pic4[0]          
         },{
-          headers: {'Content-Type':'application/json'},
+          headers: {'Content-Type': 'multipart/form-data'},
           // add credentials later once users have been created add token as well
           withCredentials: false
         });
@@ -143,9 +143,7 @@ function Productdashboard() {
     const  productsresponse = await axios.get(GET_PRODUCTS_URL);
     setProducts(productsresponse.data.products);
     setProductTypes(productsresponse.data.producttypes);
-    console.log(productsresponse.data.products);
-    console.log(productsresponse.data.producttypes);
-      }
+     }
       catch(err){
         console.log(err)
       }
