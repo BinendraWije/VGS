@@ -97,17 +97,17 @@ function Productdashboard() {
     try{
        
       const response = await axios.post(CREATE_PRODUCT_URL,
-        JSON.stringify({ 
+        { 
           Product_Name: product,
           Product_Description: productDescription,
           Product_Price: productPrice,
           product_type_ID: productTypeID,             
           Product_Quantity: productQuantity,  
-          Product_Image_1: pic1,
-          Product_Image_2: pic2,
-          Product_Image_3: pic3,
-          Product_Image_4: pic4          
-        }),{
+          Product_Image_1: pic1[0],
+          Product_Image_2: pic2[0],
+          Product_Image_3: pic3[0],
+          Product_Image_4: pic4[0]          
+        },{
           headers: {'Content-Type':'application/json'},
           // add credentials later once users have been created add token as well
           withCredentials: false
