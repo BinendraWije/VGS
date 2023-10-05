@@ -249,9 +249,13 @@ const editSubmitHandler = async (e) =>{
   useEffect(() => {
     if (!pic1) return;   
   
+    try{
     const pic1ObjectUrl = URL.createObjectURL(pic1[0]);
     setPic1preview(pic1ObjectUrl);
-
+    }
+    catch{
+      setErrMsg("No picture was selected");
+    }
     // free memory
     //URL.revokeObjectURL(pic1ObjectUrl);     
     
