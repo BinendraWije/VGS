@@ -1,5 +1,5 @@
 
-import {createUserRouter} from './Routes/createUser.js';
+const {createUserRouter} = require('./Routes/createUser.js');
 const {getAllPostsRouter} = require('./Routes/Allposts.js');
 const {getAllUsersRouter} = require('./Routes/allUsers.js');
 const {getAllForumPostsRouter} = require('./Routes/allForumposts.js');
