@@ -4,7 +4,7 @@ import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import EditMenu from '../../components/DropdownEditMenu';
 import { Link } from 'react-router-dom';
-const path = require("path");
+import path from 'path';
 
 import Image01 from '../../images/avatar_1.jpg';
 import Image02 from '../../images/avatar_3.jpg';
