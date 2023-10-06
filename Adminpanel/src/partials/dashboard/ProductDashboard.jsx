@@ -17,7 +17,7 @@ import Image08 from '../../images/avatar_12.jpg';
 import Image09 from '../../images/avatar_13.jpg';
 import Image10 from '../../images/avatar_15.jpg';
 import defaultimage from '../../images/upload-image-icon.webp';
-import defaultimage from '';
+
 
 import axios from '../../utils/axios' 
 import bcrypt from 'bcryptjs';
