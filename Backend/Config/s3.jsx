@@ -1,5 +1,5 @@
-const { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } = require("@aws-sdk/client-s3")
-const { getSignedUrl }= require("@aws-sdk/s3-request-presigner")
+import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3"
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 
 require('dotenv').config();
 
@@ -19,7 +19,7 @@ const s3Client = new S3Client({
 })
 
 
-function uploadFile(fileBuffer, fileName, mimetype) {
+export function uploadFile(fileBuffer, fileName, mimetype) {
   const uploadParams = {
     Bucket: bucketName,
     Body: fileBuffer,
@@ -30,7 +30,7 @@ function uploadFile(fileBuffer, fileName, mimetype) {
   return s3Client.send(new PutObjectCommand(uploadParams));
 }
 
-function deleteFile(fileName) {
+export function deleteFile(fileName) {
   const deleteParams = {
     Bucket: bucketName,
     Key: fileName,
@@ -39,7 +39,7 @@ function deleteFile(fileName) {
   return s3Client.send(new DeleteObjectCommand(deleteParams));
 }
 
-async function getObjectSignedUrl(key) {
+export async function getObjectSignedUrl(key) {
   const params = {
     Bucket: bucketName,
     Key: key
@@ -52,5 +52,3 @@ async function getObjectSignedUrl(key) {
 
   return url
 }
-
-module.exports = {uploadFile, deleteFile, getObjectSignedUrl }
