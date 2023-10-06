@@ -17,7 +17,7 @@ import Image08 from '../../images/avatar_12.jpg';
 import Image09 from '../../images/avatar_13.jpg';
 import Image10 from '../../images/avatar_15.jpg';
 import defaultimage from '../../images/upload-image-icon.webp';
-import path from 'path';
+
 
 import axios from '../../utils/axios' 
 import bcrypt from 'bcryptjs';
@@ -582,14 +582,13 @@ useEffect(() => {
             <tbody className="text-sm divide-y divide-slate-100 dark:divide-slate-700">
              { 
                 products.map(product => {
-                   const imagepath = (path.join('../../../../public/images/', product.Product_Name, product.Product_Image_1))
                   return (
                     <tr key={product.Product_ID}>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-30 h-30 shrink-0 mr-2 sm:mr-3">
                         
-                            <img src={imagepath}  width="70" height="70" alt={product.Product_Name} />
+                            <img src={new URL('localhost:3000/VGS/public/images/' + product.Product_Name + '/' + product.Product_Image_1, import.meta.url).href}  width="70" height="70" alt={product.Product_Name} />
                           </div>
                           <div className="font-medium text-slate-800 dark:text-slate-100">{product.Product_Name}</div>
                         </div>
