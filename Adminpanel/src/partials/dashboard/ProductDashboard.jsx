@@ -582,14 +582,14 @@ useEffect(() => {
             <tbody className="text-sm divide-y divide-slate-100 dark:divide-slate-700">
              { 
                 products.map(product => {
-                  console.log(path.join('../../../../public/images/', product.Product_Name, product.Product_Image_1))
+                   const imagepath = (path.join('../../../../public/images/', product.Product_Name, product.Product_Image_1))
                   return (
                     <tr key={product.Product_ID}>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-30 h-30 shrink-0 mr-2 sm:mr-3">
                         
-                            <img src={new URL('../../../../public/images/' + product.Product_Name + '/' + product.Product_Image_1, import.meta.url).href}  width="70" height="70" alt={product.Product_Name} />
+                            <img src={new URL(imagepath, import.meta.url).href}  width="70" height="70" alt={product.Product_Name} />
                           </div>
                           <div className="font-medium text-slate-800 dark:text-slate-100">{product.Product_Name}</div>
                         </div>
