@@ -15,9 +15,6 @@ fileUpload({ createParentPath: true }),
 async (req,res)=>{
     //validate if required data exists
 if(!req.body.Product_Name || !req.body.Product_Description || !req.body.Product_Price || !req.body.product_type_ID || !req.body.Product_Quantity)return res.status(400).json({'message':'Check if all the data was submitted properly.'});
-console.log(req.body);
-console.log(req.files.Product_Image_1);
-console.log(req.files.Product_Image_2);
 
 // Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.Products WHERE `Product_Name` = ?";
@@ -32,6 +29,7 @@ db.query(findDuplicatesquery,[req.body.Product_Name], async (err,results)=>{
 //saving the files in the folder
 if(req.files.Product_Image_1){ 
 const folderpath1 = path.join('../../public/images/',req.body.Product_Name,req.files.Product_Image_1.name);
+console.log(folderpath1);
 req.files.Product_Image_1.mv(folderpath1,(err)=>{
     if(err) return res.sendStatus(500);
 })
