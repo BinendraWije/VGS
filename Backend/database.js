@@ -9,7 +9,6 @@ const { refreshTokenRouter } = require('./Routes/refreshtoken.js');
 const bcrypt = require('bcryptjs');
 const { verifyJWT } = require('./Middleware/verifyJWT.js');
 const  cookieParser = require('cookie-parser');
-const {S3} = require('@aws-sdk/client-s3');
 
 const express = require('express');
 const mysql = require('mysql');
