@@ -588,7 +588,7 @@ useEffect(() => {
                         <div className="flex items-center">
                           <div className="w-30 h-30 shrink-0 mr-2 sm:mr-3">
                             
-                            <img src={new URL(path.join('../../../../../public/images/', product.Product_Name,product.Product_Image_1), import.meta.url).href}  width="70" height="70" alt={product.Product_Name} />
+                            <img src={new URL(path.join('../../../../public/images/', product.Product_Name,product.Product_Image_1), import.meta.url).href}  width="70" height="70" alt={product.Product_Name} />
                           </div>
                           <div className="font-medium text-slate-800 dark:text-slate-100">{product.Product_Name}</div>
                         </div>
