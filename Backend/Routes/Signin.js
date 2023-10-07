@@ -4,7 +4,7 @@ const require = createRequire(import.meta.url);
 
 const express = require('express');
 import { db } from '../Config/databaseconfig.js';
-const bcrypt = require('bcryptjs');
+import bcrypt from 'bcryptjs';
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
