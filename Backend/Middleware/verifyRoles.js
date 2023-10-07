@@ -2,7 +2,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-const verifyRoles = (...allowedRoles) => {
+export const verifyRoles = (...allowedRoles) => {
     return (req,res,next)=>{
         if(!req && ! req.user_role) return res.sendStatus(401);
         const rolesArray = [...allowedRoles];
@@ -13,4 +13,3 @@ const verifyRoles = (...allowedRoles) => {
     }
 }
 
-module.exports = { verifyRoles }
