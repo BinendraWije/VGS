@@ -1,3 +1,7 @@
+// These lines make "require" available
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 const express = require('express');
 const { db } = require('../Config/databaseconfig.js');
 const bcrypt = require('bcryptjs');

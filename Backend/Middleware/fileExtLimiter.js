@@ -1,3 +1,7 @@
+// These lines make "require" available
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 const path = require("path")
 
 const fileExtLimiter = (allowedExtArray) => {

@@ -1,3 +1,7 @@
+// These lines make "require" available
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 
 const {createUserRouter} = require('./Routes/createUser.js');
 const {getAllPostsRouter} = require('./Routes/Allposts.js');

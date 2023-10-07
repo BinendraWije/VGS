@@ -1,3 +1,7 @@
+// These lines make "require" available
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 const MB = 5; // 5 MB 
 const FILE_SIZE_LIMIT = MB * 1024 * 1024;
 

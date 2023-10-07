@@ -1,3 +1,6 @@
+// These lines make "require" available
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 const mysql = require('mysql');
 require('dotenv').config();
 
