@@ -1,7 +1,7 @@
 // These lines make "require" available
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-import allowedOrigins from './allowedOrigins';
+import allowedOrigins from './allowedOrigins.js';
 
 export const corsOptions = {
     origin: (origin, callback) => {
