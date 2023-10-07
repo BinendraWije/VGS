@@ -2,7 +2,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-import {allowedOrigins} from '../Config/allowedOrigins';
+import {allowedOrigins} from '../Config/allowedOrigins.js';
 
 export const credentials = (req, res, next) => {
     const origin = req.headers.origin;
