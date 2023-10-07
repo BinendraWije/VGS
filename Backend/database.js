@@ -18,7 +18,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
-import { db } from '../Config/databaseconfig.js';
+import { db } from './Config/databaseconfig.js';
 import corsOptions from './Config/CORSoptions.js';
 import credentials from './Middleware/credentials.js';
 import { handleRefreshTokenrouter } from './Routes/refreshtokenroute.js';
