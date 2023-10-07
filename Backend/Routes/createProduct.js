@@ -13,7 +13,7 @@ import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3.js';
 
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex')
 
-const createProductRouter = express.Router();
+export const createProductRouter = express.Router();
 createProductRouter.post('/createproduct',
 fileUpload({ createParentPath: true }),
 async (req,res)=>{
@@ -113,4 +113,3 @@ db.query(q,[values], async (err,data)=>{
 
 });
 
-module.exports =  { createProductRouter } ;
