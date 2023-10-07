@@ -4,28 +4,28 @@ const require = createRequire(import.meta.url);
 
 
 import {createUserRouter} from './Routes/createUser.js';
-const {getAllPostsRouter} = require('./Routes/Allposts.js');
-const {getAllUsersRouter} = require('./Routes/allUsers.js');
-const {getAllForumPostsRouter} = require('./Routes/allForumposts.js');
-const {signInRouter} = require('./Routes/Signin.js');
-const {signOutRouter} = require('./Routes/Signout.js');
-const { refreshTokenRouter } = require('./Routes/refreshtoken.js');
+import {getAllPostsRouter} from'./Routes/Allposts.js';
+import {getAllUsersRouter} from './Routes/allUsers.js';
+import {getAllForumPostsRouter} from './Routes/allForumposts.js';
+import {signInRouter} from './Routes/Signin.js';
+import {signOutRouter} from './Routes/Signout.js';
+import { refreshTokenRouter } from './Routes/refreshtoken.js';
 const bcrypt = require('bcryptjs');
-const { verifyJWT } = require('./Middleware/verifyJWT.js');
+import { verifyJWT } from './Middleware/verifyJWT.js';
 const  cookieParser = require('cookie-parser');
 
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
-const { db } = require('./Config/databaseconfig.js');
-const corsOptions = require('./Config/CORSoptions.js');
-const credentials = require('./Middleware/credentials.js');
-const { handleRefreshTokenrouter } = require('./Routes/refreshtokenroute.js');
-const { deleteUserRouter } = require('./Routes/deleteUser.js');
-const { editUserRouter } = require('./Routes/editUser.js');
-const {getAllProductsRouter} = require('./Routes/allProducts.js');
-const { createProductRouter } = require('./Routes/createProduct.js');
+import { db } from '../Config/databaseconfig.js';
+import corsOptions from './Config/CORSoptions.js';
+import credentials from './Middleware/credentials.js';
+import { handleRefreshTokenrouter } from './Routes/refreshtokenroute.js';
+import { deleteUserRouter }from './Routes/deleteUser.js';
+import { editUserRouter }from'./Routes/editUser.js';
+import {getAllProductsRouter}from './Routes/allProducts.js';
+import { createProductRouter } from'./Routes/createProduct.js';
 
 const app = express();
 

@@ -3,14 +3,14 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const express = require('express');
-const { db } = require('../Config/databaseconfig.js');
+import { db } from '../Config/databaseconfig.js';
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 
 
-const signInRouter = express.Router();
+export const signInRouter = express.Router();
 signInRouter.post('/auth', async (req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
 const user = req.body.user_name;
@@ -63,4 +63,3 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
 
 });
 
-module.exports =  { signInRouter } ;

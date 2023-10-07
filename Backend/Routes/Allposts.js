@@ -3,9 +3,9 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const express = require('express');
-const { db } = require('../Config/databaseconfig.js');
+import { db } from '../Config/databaseconfig.js';
 
-const getAllPostsRouter = express.Router();
+export const getAllPostsRouter = express.Router();
 getAllPostsRouter.get('/posts',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.posts";
     db.query(sql,(err,data)=>{
@@ -16,4 +16,3 @@ getAllPostsRouter.get('/posts',(req,res)=>{
     })
 })
 
-module.exports =  { getAllPostsRouter } ;

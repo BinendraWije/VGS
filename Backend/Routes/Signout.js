@@ -3,11 +3,11 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const express = require('express');
-const { db } = require('../Config/databaseconfig.js');
+import { db } from '../Config/databaseconfig.js';
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const signOutRouter = express.Router();
+export const signOutRouter = express.Router();
 signOutRouter.get('/signout', async (req,res)=>{
     // On client(front end), also delete the accessToken
 
@@ -42,4 +42,3 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
 
 });
 
-module.exports =  { signOutRouter };

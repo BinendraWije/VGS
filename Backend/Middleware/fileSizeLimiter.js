@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url);
 const MB = 5; // 5 MB 
 const FILE_SIZE_LIMIT = MB * 1024 * 1024;
 
-const fileSizeLimiter = (req, res, next) => {
+export const fileSizeLimiter = (req, res, next) => {
     const files = req.files
 
     const filesOverLimit = []
@@ -30,4 +30,3 @@ const fileSizeLimiter = (req, res, next) => {
 
 }
 
-module.exports = fileSizeLimiter

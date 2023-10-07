@@ -3,10 +3,10 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const express = require('express');
-const { db } = require('../Config/databaseconfig.js');
-const { verifyRoles } = require('../Middleware/verifyRoles.js');
+import { db } from '../Config/databaseconfig.js';
+import { verifyRoles } from '../Middleware/verifyRoles.js';
 
-const editUserRouter = express.Router();
+export const editUserRouter = express.Router();
 editUserRouter.post('/edituser/:username', async (req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
 
@@ -31,4 +31,3 @@ db.query(findDuplicatesquery,[req.params.username], async (err,results)=>{
 
 });
 
-module.exports =  { editUserRouter } ;

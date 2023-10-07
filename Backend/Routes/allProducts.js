@@ -3,10 +3,10 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const express = require('express');
-const { db } = require('../Config/databaseconfig.js');
-const { verifyRoles } = require('../Middleware/verifyRoles.js');
+import { db } from '../Config/databaseconfig.js';
+import { verifyRoles } from '../Middleware/verifyRoles.js';
 
-const getAllProductsRouter = express.Router();
+export const getAllProductsRouter = express.Router();
 getAllProductsRouter.get('/products',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.Products";
      db.query(sql,(err,products)=>{
@@ -21,4 +21,3 @@ getAllProductsRouter.get('/products',(req,res)=>{
     })
 })
 
-module.exports = {getAllProductsRouter};

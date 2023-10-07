@@ -4,12 +4,12 @@ const require = createRequire(import.meta.url);
 
 const express = require('express');
 const fileUpload = require('express-fileupload');
-const { db } = require('../Config/databaseconfig.js');
-const { verifyRoles } = require('../Middleware/verifyRoles.js');
+import { db } from '../Config/databaseconfig.js';
+import { verifyRoles } from '../Middleware/verifyRoles.js';
 const path = require("path");
-const filesPayloadExists = require('../Middleware/filePayloadExists.js');
-const fileSizeLimiter = require('../Middleware/fileSizeLimiter.js');
-const { uploadFile, deleteFile, getObjectSignedUrl } = require('../Config/s3');
+import {filesPayloadExists} from '../Middleware/filePayloadExists.js';
+import {fileSizeLimiter} from '../Middleware/fileSizeLimiter.js';
+import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3';
 
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex')
 

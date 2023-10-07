@@ -3,11 +3,11 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const express = require('express');
-const { db } = require('../Config/databaseconfig.js');
+import { db } from '../Config/databaseconfig.js';
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const refreshTokenRouter = express.Router();
+export const refreshTokenRouter = express.Router();
 refreshTokenRouter.get('/refreshtoken', async (req,res)=>{
 const cookies = req.cookies;
 console.log(cookies);
@@ -47,5 +47,3 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
 
 
 });
-
-module.exports =  { refreshTokenRouter };

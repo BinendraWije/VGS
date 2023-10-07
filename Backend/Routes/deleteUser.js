@@ -3,10 +3,10 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const express = require('express');
-const { db } = require('../Config/databaseconfig.js');
-const { verifyRoles } = require('../Middleware/verifyRoles.js');
+import { db } from '../Config/databaseconfig.js';
+import { verifyRoles } from '../Middleware/verifyRoles.js';
 
-const deleteUserRouter = express.Router();
+export const deleteUserRouter = express.Router();
 deleteUserRouter.delete('/deleteuser/:username', async (req,res)=>{
 console.log("We're in the delete function it has fired");
 console.log(req.params);
@@ -34,4 +34,3 @@ db.query(findDuplicatesquery,[req.params.username], async (err,results)=>{
 
 });
 
-module.exports =  { deleteUserRouter } ;
