@@ -3,7 +3,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const express = require('express');
-const { db } = require('../Config/databaseconfig.js');
+import { db } from '../Config/databaseconfig.js';
 const { verifyRoles } = require('../Middleware/verifyRoles.js');
 
 export const createUserRouter = express.Router();

@@ -4,7 +4,7 @@ const require = createRequire(import.meta.url);
 const mysql = require('mysql');
 require('dotenv').config();
 
-const db = mysql.createConnection({
+export const db = mysql.createConnection({
     host: process.env.MYSQL_HOST,
     port: process.env.MYSQL_PORT,
     user: process.env.MYSQL_USER,
@@ -12,4 +12,3 @@ const db = mysql.createConnection({
     database: process.env.MYSQL_DATABASE
 })
 
-module.exports =  { db } ;
