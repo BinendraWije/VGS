@@ -9,7 +9,7 @@ import { verifyRoles } from '../Middleware/verifyRoles.js';
 const path = require("path");
 import {filesPayloadExists} from '../Middleware/filePayloadExists.js';
 import {fileSizeLimiter} from '../Middleware/fileSizeLimiter.js';
-import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3';
+import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3.js';
 
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex')
 
