@@ -6,7 +6,7 @@ const express = require('express');
 const { db } = require('../Config/databaseconfig.js');
 const { verifyRoles } = require('../Middleware/verifyRoles.js');
 
-const createUserRouter = express.Router();
+export const createUserRouter = express.Router();
 createUserRouter.post('/createuser', verifyRoles('Admin'), async (req,res)=>{
 if(!req.body.user_name || !req.body.user_pwd)return res.status(400).json({'message':'Username and password are required.'});
 
@@ -36,4 +36,3 @@ db.query(q,[values], async (err,data)=>{
 
 });
 
-module.exports =  { createUserRouter } ;
