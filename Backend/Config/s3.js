@@ -2,8 +2,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-const { S3Client } = require("@aws-sdk/client-s3/dist-es/S3Client.js");
-import { PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import {getSignedUrl}  from "@aws-sdk/s3-request-presigner";
 
 
