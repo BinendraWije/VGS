@@ -2,10 +2,11 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-import { S3Client } from "@aws-sdk/client-s3/dist-es/S3Client.js";
+import aws from "@aws-sdk/client-s3/dist-es/S3Client.js";
 import { PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import {getSignedUrl}  from "@aws-sdk/s3-request-presigner";
 
+const {s3Client} = aws;
 
 require('dotenv').config();
 
@@ -16,7 +17,7 @@ const region = process.env.AWS_BUCKET_REGION
 const accessKeyId = process.env.AWS_ACCESS_KEY
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
 
-const s3Client = new S3Client({
+s3Client = new s3Client({
   region,
   credentials: {
     accessKeyId,
