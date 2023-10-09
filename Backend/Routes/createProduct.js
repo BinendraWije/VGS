@@ -38,22 +38,21 @@ db.query(findDuplicatesquery,[req.body.Product_Name], async (err,results)=>{
 
 
 if(req.files.Product_Image_1){
-    console.log(req.files.Product_Image_1);
-    console.log(req.files.Product_Image_1.data);
+
     await uploadFile(req.files.Product_Image_1.data, req.body.Product_Name+"/"+imageName1, req.files.Product_Image_1.mimetype)
 }
 
 if(req.files.Product_Image_2){
     
-    await uploadFile(req.files.Product_Image_2.buffer, req.body.Product_Name+"/"+imageName2, req.files.Product_Image_2.mimetype)
+    await uploadFile(req.files.Product_Image_2.data, req.body.Product_Name+"/"+imageName2, req.files.Product_Image_2.mimetype)
 }
 if(req.files.Product_Image_3){
     
-    await uploadFile(req.files.Product_Image_3.buffer, req.body.Product_Name+"/"+imageName3, req.files.Product_Image_3.mimetype)
+    await uploadFile(req.files.Product_Image_3.data, req.body.Product_Name+"/"+imageName3, req.files.Product_Image_3.mimetype)
 }
 if(req.files.Product_Image_4){
     
-    await uploadFile(req.files.Product_Image_4.buffer, req.body.Product_Name+"/"+imageName4, req.files.Product_Image_4.mimetype)
+    await uploadFile(req.files.Product_Image_4.data, req.body.Product_Name+"/"+imageName4, req.files.Product_Image_4.mimetype)
 }
 
 /*saving the files in the folder
