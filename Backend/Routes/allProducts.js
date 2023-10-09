@@ -13,7 +13,7 @@ getAllProductsRouter.get('/products', async (req,res)=>{
      db.query(sql,(err,products)=>{
         if(err) return res.json(err);
 
-        for(const product of products){
+        for await (const product of products){
             if(product.Product_Image_1){
             product.productimageurl1 = getObjectSignedUrl(product.Product_Image_1);
             console.log(product);
