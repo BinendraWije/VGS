@@ -8,28 +8,28 @@ import { verifyRoles } from '../Middleware/verifyRoles.js';
 import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3.js';
 
 export const getAllProductsRouter = express.Router();
-getAllProductsRouter.get('/products', async (req,res)=>{
+getAllProductsRouter.get('/products', async(req,res)=>{
     const sql = "SELECT * FROM vgsdb.Products";
-     db.query(sql,(err,products)=>{
+     db.query(sql, async (err,products)=>{
         if(err) return res.json(err);
 
-        for await (const product of products){
+        for (const product of products){
             if(product.Product_Image_1){
-            product.productimageurl1 = getObjectSignedUrl(product.Product_Image_1);
+            product.productimageurl1 =  await getObjectSignedUrl(product.Product_Image_1);
             console.log(product);
             }
 
             if(product.Product_Image_2){
-                product.productimageurl2 = getObjectSignedUrl(product.Product_Image_2);
+                product.productimageurl2 =  await getObjectSignedUrl(product.Product_Image_2);
                 console.log(product);
                 }
                 if(product.Product_Image_3){
-                   product.productimageurl3 = getObjectSignedUrl(product.Product_Image_3);
+                   product.productimageurl3 =  await getObjectSignedUrl(product.Product_Image_3);
 
                     console.log(product);
                     }
                     if(product.Product_Image_4){
-                      product.productimageurl4 = getObjectSignedUrl(product.Product_Image_4);
+                      product.productimageurl4 = await getObjectSignedUrl(product.Product_Image_4);
                         console.log(product);
                         }
         }
