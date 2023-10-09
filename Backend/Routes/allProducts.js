@@ -20,16 +20,16 @@ getAllProductsRouter.get('/products', async(req,res)=>{
             }
 
             if(product.Product_Image_2){
-                product.productimageurl2 =  await getObjectSignedUrl(product.Product_Image_2);
+                product.productimageurl2 =  await getObjectSignedUrl(product.Product_Name + "/" + product.Product_Image_2);
                 console.log(product);
                 }
                 if(product.Product_Image_3){
-                   product.productimageurl3 =  await getObjectSignedUrl(product.Product_Image_3);
+                   product.productimageurl3 =  await getObjectSignedUrl(product.Product_Name + "/" + product.Product_Image_3);
 
                     console.log(product);
                     }
                     if(product.Product_Image_4){
-                      product.productimageurl4 = await getObjectSignedUrl(product.Product_Image_4);
+                      product.productimageurl4 = await getObjectSignedUrl(product.Product_Name + "/" + product.Product_Image_4);
                         console.log(product);
                         }
         }

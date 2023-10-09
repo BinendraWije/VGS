@@ -33,7 +33,9 @@ const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}
 const CREATE_PRODUCT_URL = '/createproduct';
 const GET_PRODUCTS_URL = '/products';
 const DELETE_USER_URL = '/deleteuser/';
-const EDIT_USER_URL = '/edituser/';
+const EDIT_PRODUCT_URL = '/editproduct/';
+const GET_PRODUCT_URL = '/getproduct/';
+
 // ------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
@@ -78,7 +80,7 @@ function Productdashboard() {
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  const [editUsername, setEditUsername] = useState('');
+  const [editProductname, setEditProductname] = useState('');
 
 
   useEffect(()=>{
@@ -192,44 +194,84 @@ try{
 
 /////////////////// EDIT USER FUNCTION //////////////////////////////
 
-const editUser =  async (e, user_name, user_role) => {
+const editUser =  async (e, Product_Name) => {
+
   e.preventDefault();
-  const user = user_name;
-  const userrole = user_role;
-  setUser(user);
-  userRef.current.value = user;
-  pwdRef.current.value = "*********";
-  setUserType(userrole);
-  userTypeRef.current = userrole;
-  setEditUsername(user);
-  setEditMode(true);
-}
+    // get the single product
+  try{
+    const  productresponse = await axios.get(GET_PRODUCT_URL + Product_Name);
+    setProduct(productresponse.data.Product_Name);
+    ProductRef.current.value = productresponse.data.Product_Name;
+    setProductDescription(productresponse.data.Product_Description);
+    productDescriptionRef.current.value = productresponse.data.Product_Description;
+    setProductType(productresponse.data.product_type_ID)
+    productTypeRef.current.value = productresponse.data.product_type_ID
+    setProductTypeID(productresponse.data.product_type_ID)
+    productTypeRef.current.value = productresponse.data.product_type_ID
+    setProductPrice(productresponse.data.Product_Price)
+    productPriceRef.current.value = productresponse.data.Product_Price
+    setProductQuantity(productresponse.data.Product_Quantity)
+    productQuantityRef.current.value = productresponse.data.Product_Quantity
+    if(productresponse.data.Product_Image_1){
+    setPic1(productresponse.data.Product_Image_1)
+    setPic1preview(productresponse.data.Product_Image_1);
+    }
+    if(productresponse.data.Product_Image_2){
+    setPic2(productresponse.data.Product_Image_2)
+    setPic2preview(productresponse.data.Product_Image_2);
+    }
+    if(productresponse.data.Product_Image_3){
+    setPic3(productresponse.data.Product_Image_3)
+    setPic3preview(productresponse.data.Product_Image_3);
+    }
+    if(productresponse.data.Product_Image_4){
+    setPic4(productresponse.data.Product_Image_4)
+    setPic4preview(productresponse.data.Product_Image_4);
+    }
+    setEditProductname(Product_Name);
+    setEditMode(true);
+    
+     }
+      catch(err){
+        console.log(err)
+      }
+    
+  }
+
+  //set the product values in the relevant fields
+
+
+
 /// set the current user info onto the create user form
 
 /// set all the titles and add button text based off of whether or not youre in the edit function or not 
 
 const editSubmitHandler = async (e) =>{
   e.preventDefault();
-
- // if button enabled with JS Hack
- const v1 = USER_REGEX.test(user);
- const v2 = PWD_REGEX.test(pwd);
- if(!v1 || !v2){
-   setErrMsg("Invalid Entry");
-   
- }
-
+  const formData = new FormData;
+  formData.append("Product_Name",product);
+  formData.append("Product_Description",productDescription);
+  formData.append("Product_Price",productPrice);
+  formData.append("product_type_ID",productTypeID);
+  formData.append("Product_Quantity",productQuantity);
+  if(pic1){   
+  formData.set("Product_Image_1",pic1[0]);
+  }
+  if(pic2){
+    formData.set("Product_Image_2",pic2[0]);
+    }
+  if(pic3){
+      formData.set("Product_Image_3",pic3[0]);
+      }
+  if(pic4){
+        formData.set("Product_Image_4pic4",pic4[0]);
+        }
+      
   try{  
-    const hash = await bcrypt.hash(pwd,10);
-    console.log(hash);      
-    const response = await axios.post(EDIT_USER_URL + editUsername,
-      JSON.stringify({ 
-        user_name: user,
-        user_pwd: hash,
-        user_role: userType   
-
-      }),{
-        headers: {'Content-Type':'application/json'},
+         
+    const response = await axios.post(EDIT_PRODUCT_URL + editProductname,formData,
+    {
+        headers: {'Content-Type':'multipart/form-data'},
         // add credentials later once users have been created add token as well
         withCredentials: false
       });
@@ -248,7 +290,7 @@ const editSubmitHandler = async (e) =>{
     errRef.current.focus();
   }
   setEditMode(false);
-  fetchpost();
+  fetchproducts();
 }
   
 ///////////////// temp image preview setup ////////////////////////////
