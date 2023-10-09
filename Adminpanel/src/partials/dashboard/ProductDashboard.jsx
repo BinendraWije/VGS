@@ -268,7 +268,8 @@ const editSubmitHandler = async (e) =>{
         }
       
   try{  
-    console.log(editProductname);     
+    console.log(editProductname);
+   
     const response = await axios.post(EDIT_PRODUCT_URL + editProductname,formData,
     {
         headers: {'Content-Type':'multipart/form-data'},
