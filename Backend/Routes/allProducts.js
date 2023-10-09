@@ -13,6 +13,7 @@ getAllProductsRouter.get('/products',(req,res)=>{
         if(err) return res.json(err);
 
         for(const product of products){
+            product.imageurl ="testurl";
             console.log(product);
         }
 
