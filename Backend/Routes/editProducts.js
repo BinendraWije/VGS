@@ -52,6 +52,7 @@ db.query(findDuplicatesquery,[req.params.productname], async (err,results)=>{
         // delete files handling as well needs to be implemented here if there arent any images where once there was, also think about editing 
         //the s3 folder name based on the new edit of the name of the product 
         if(req.body.Product_Name != req.params.productname){
+            console.log("we're getting stuck here in the delete");
             await deleteFile(req.params.productname);
         }
         
