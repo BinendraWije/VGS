@@ -63,18 +63,21 @@ export async function emptyS3Directory(dir) {
       Bucket: bucketName,
       Prefix: dir
   };
-
+  console.log('attempting to get the listed objects')
   const listedObjects = await s3Client.send(new ListObjectsCommand(params));
+  console.log(listedObjects);
 
 
   if (listedObjects.Contents.length === 0) return;
 
   const deleteParams = {
       Bucket: bucketName,
-      Delete: { Objects: [] }
+      Delete: listedObjects
   };
 
+  console.log('attempting to delete the listed objects');
   await  s3Client.send(new DeleteObjectsCommand(deleteParams));
+  console.log('deeted the listed objects');
 
   if (listedObjects.IsTruncated) await emptyS3Directory(dir);
 }
