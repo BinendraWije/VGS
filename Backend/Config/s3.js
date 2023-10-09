@@ -2,7 +2,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand, ListObjectsCommand,DeleteObjectsCommand} from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand, ListObjectsV2Command,DeleteObjectsCommand} from "@aws-sdk/client-s3";
 import {getSignedUrl}  from "@aws-sdk/s3-request-presigner";
 
 
@@ -59,21 +59,10 @@ export async function getObjectSignedUrl(key) {
 }
 
 export async function emptyBucketByPrefix(prefix) {
-   
-  let listResponse
-  do {
-      listResponse = await s3Client.send(new ListObjectsCommand({Bucket: bucketName}));
-      console.log(listResponse);
-      if (!listResponse.Contents?.length) {
-          break;
-      }
-      const objects = listResponse.Contents.map(({Key}) => ({Key}));
-      const command = new DeleteObjectsCommand({
+  
+        const command = new DeleteObjectsCommand({
           Bucket: bucketName,
-          Delete: {
-              Objects: objects,
-          },
+          Prefix :prefix
       });
       await s3Client.send(command);
-  } while (listResponse.IsTruncated);
-}
+  } 
