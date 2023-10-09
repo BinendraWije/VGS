@@ -14,7 +14,7 @@ const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex
 export const editProductRouter = express.Router();
 editProductRouter.post('/editproduct/:productname', async (req,res)=>{
 if(!req.body.Product_Name || !req.body.Product_Description || !req.body.Product_Price || !req.body.product_type_ID || !req.body.Product_Quantity)return res.status(400).json({'message':'Check if all the data was submitted properly.'});
-
+console.log("we're here in the product edit section")
 
 // Checking if product exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.Products WHERE `Product_Name` = ?";
