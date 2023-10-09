@@ -2,7 +2,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand, ListObjectsCommand,DeleteObjectsCommand} from "@aws-sdk/client-s3";
 import {getSignedUrl}  from "@aws-sdk/s3-request-presigner";
 
 
@@ -64,7 +64,8 @@ export async function emptyS3Directory(dir) {
       Prefix: dir
   };
 
-  const listedObjects = await s3Client.listObjects(params).promise();
+  const listedObjects = await s3Client.send(new ListObjectsCommand(params));
+
 
   if (listedObjects.Contents.length === 0) return;
 
@@ -73,11 +74,7 @@ export async function emptyS3Directory(dir) {
       Delete: { Objects: [] }
   };
 
-  listedObjects.Contents.forEach(({ Key }) => {
-      deleteParams.Delete.Objects.push({ Key });
-  });
-
-  await s3Client.deleteObjects(deleteParams).promise();
+  await  s3Client.send(new DeleteObjectsCommand(deleteParams));
 
   if (listedObjects.IsTruncated) await emptyS3Directory(dir);
 }
