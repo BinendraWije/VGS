@@ -14,7 +14,7 @@ getAllProductsRouter.get('/products', async(req,res)=>{
         if(err) return res.json(err);
 
         for (const product of products){
-            if(product.Product_Image_1)
+            if(product.Product_Image_1){
             product.productimageurl1 =  await getObjectSignedUrl(product.Product_Name + "/" + product.Product_Image_1);
             console.log(product);
             }
