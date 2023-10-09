@@ -61,9 +61,9 @@ export async function getObjectSignedUrl(key) {
 export async function emptyS3Directory(dir) {
   const params = {
       Bucket: bucketName,
-      Prefix: dir
+      Prefix: dir + "/"
   };
-  console.log('attempting to get the listed objects')
+  console.log(params.Prefix);
   const listedObjects = await s3Client.send(new ListObjectsV2Command(params));
   console.log(listedObjects);
 
