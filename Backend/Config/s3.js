@@ -58,11 +58,32 @@ export async function getObjectSignedUrl(key) {
   return url
 }
 
-export async function emptyBucketByPrefix(prefix) {
+export async function emptyBucketByPrefix() {
   
-        const command = new DeleteObjectsCommand({
-          Bucket: bucketName,
-          Prefix :prefix
-      });
-      await s3Client.send(command);
-  } 
+  const command = new ListObjectsV2Command({
+    Bucket: bucketName,
+    // The default and maximum number of keys returned is 1000. This limits it to
+    // one for demonstration purposes.
+    MaxKeys: 1,
+  });
+
+  try {
+    let isTruncated = true;
+
+    console.log("Your bucket contains the following objects:\n");
+    let contents = "";
+
+    while (isTruncated) {
+      const { Contents, IsTruncated, NextContinuationToken } =
+        await s3Client.send(command);
+      const contentsList = Contents.map((c) => ` • ${c.Key}`).join("\n");
+      contents += contentsList + "\n";
+      isTruncated = IsTruncated;
+      command.input.ContinuationToken = NextContinuationToken;
+    }
+    console.log(contents);
+  } catch (err) {
+    console.error(err);
+  }
+};
+  
