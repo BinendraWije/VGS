@@ -4,7 +4,7 @@ const require = createRequire(import.meta.url);
 
 const express = require('express');
 import { db } from '../Config/databaseconfig.js';
-const { verifyRoles } = require('../Middleware/verifyRoles.js');
+import { verifyRoles } from '../Middleware/verifyRoles.js';
 import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3.js';
 
 export const getProductRouter = express.Router();
