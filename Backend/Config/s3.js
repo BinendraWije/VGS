@@ -2,7 +2,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand, ListObjectsCommand,DeleteObjectsCommand} from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand, ListObjectsV2Command,DeleteObjectsCommand} from "@aws-sdk/client-s3";
 import {getSignedUrl}  from "@aws-sdk/s3-request-presigner";
 
 
@@ -64,7 +64,7 @@ export async function emptyS3Directory(dir) {
       Prefix: dir
   };
   console.log('attempting to get the listed objects')
-  const listedObjects = await s3Client.send(new ListObjectsCommand(params));
+  const listedObjects = await s3Client.send(new ListObjectsV2Command(params));
   console.log(listedObjects);
 
 
