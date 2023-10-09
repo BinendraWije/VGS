@@ -268,17 +268,17 @@ const editSubmitHandler = async (e) =>{
         }
       
   try{  
-         
+    console.log(editProductname);     
     const response = await axios.post(EDIT_PRODUCT_URL + editProductname,formData,
     {
         headers: {'Content-Type':'multipart/form-data'},
         // add credentials later once users have been created add token as well
         withCredentials: false
       });
-      console.log(response.data);
-      console.log(response.accessToken);      
+      console.log(response.data);    
       console.log(JSON.stringify(response));
       setSuccess(true);
+      setEditMode(false);
       // clear input fields   
 
   }catch(err){
@@ -289,7 +289,6 @@ const editSubmitHandler = async (e) =>{
     }
     errRef.current.focus();
   }
-  setEditMode(false);
   fetchproducts();
 }
   
