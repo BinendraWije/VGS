@@ -58,3 +58,26 @@ export async function getObjectSignedUrl(key) {
   return url
 }
 
+export async function emptyS3Directory(dir) {
+  const params = {
+      Bucket: bucketName,
+      Prefix: dir
+  };
+
+  const listedObjects = await s3Client.listObjects(params).promise();
+
+  if (listedObjects.Contents.length === 0) return;
+
+  const deleteParams = {
+      Bucket: bucketName,
+      Delete: { Objects: [] }
+  };
+
+  listedObjects.Contents.forEach(({ Key }) => {
+      deleteParams.Delete.Objects.push({ Key });
+  });
+
+  await s3Client.deleteObjects(deleteParams).promise();
+
+  if (listedObjects.IsTruncated) await emptyS3Directory(dir);
+}
