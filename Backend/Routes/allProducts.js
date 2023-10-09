@@ -8,7 +8,7 @@ import { verifyRoles } from '../Middleware/verifyRoles.js';
 import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3.js';
 
 export const getAllProductsRouter = express.Router();
-getAllProductsRouter.get('/products',(req,res)=>{
+getAllProductsRouter.get('/products', async (req,res)=>{
     const sql = "SELECT * FROM vgsdb.Products";
      db.query(sql,(err,products)=>{
         if(err) return res.json(err);
