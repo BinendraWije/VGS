@@ -10,7 +10,7 @@ const path = require("path");
 import {filesPayloadExists} from '../Middleware/filePayloadExists.js';
 import {fileSizeLimiter} from '../Middleware/fileSizeLimiter.js';
 import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3.js';
-const crypto = require("crypto-js");
+import crypto from 'crypto';
 
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex')
 
