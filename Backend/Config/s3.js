@@ -62,7 +62,7 @@ export async function emptyBucketByPrefix(prefix) {
    
   let listResponse
   do {
-      listResponse = await s3Client.send(new ListObjectsV2Command({Bucket: bucketName, Prefix: prefix + "/" }));
+      listResponse = await s3Client.send(new ListObjectsV2Command({Bucket: bucketName}));
       console.log(listResponse);
       if (!listResponse.Contents?.length) {
           break;
