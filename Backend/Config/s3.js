@@ -58,26 +58,21 @@ export async function getObjectSignedUrl(key) {
   return url
 }
 
-export async function emptyS3Directory(dir) {
-  const params = {
-      Bucket: bucketName,
-      Prefix: dir + "/"
-  };
-  console.log(params.Prefix);
-  const listedObjects = await s3Client.send(new ListObjectsV2Command(params));
-  console.log(listedObjects);
-
-
-  if (listedObjects.Contents.length === 0) return;
-
-  const deleteParams = {
-      Bucket: bucketName,
-      Delete: listedObjects
-  };
-
-  console.log('attempting to delete the listed objects');
-  await  s3Client.send(new DeleteObjectsCommand(deleteParams));
-  console.log('deeted the listed objects');
-
-  if (listedObjects.IsTruncated) await emptyS3Directory(dir);
+export async function emptyBucketByPrefix(prefix) {
+  let listResponse
+  do {
+      listResponse = await s3Client.send(new ListObjectsV2Command({Bucket: bucketName, Prefix: prefix}));
+      console.log(listResponse);
+      if (!listResponse.Contents?.length) {
+          break;
+      }
+      const objects = listResponse.Contents.map(({Key}) => ({Key}));
+      const command = new DeleteObjectsCommand({
+          Bucket: bucketName,
+          Delete: {
+              Objects: objects,
+          },
+      });
+      await s3Client.send(command);
+  } while (listResponse.IsTruncated);
 }
