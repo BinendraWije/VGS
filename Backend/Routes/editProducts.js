@@ -7,7 +7,7 @@ const express = require('express');
 import { db } from '../Config/databaseconfig.js';
 import { verifyRoles } from '../Middleware/verifyRoles.js';
 import crypto from 'crypto';
-import { uploadFile, deleteFile, getObjectSignedUrl,emptyS3Directory} from '../Config/s3.js';
+import { uploadFile, deleteFile, getObjectSignedUrl,emptyBucketByPrefix} from '../Config/s3.js';
 
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex')
 
