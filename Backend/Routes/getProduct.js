@@ -8,7 +8,7 @@ import { verifyRoles } from '../Middleware/verifyRoles.js';
 import { uploadFile, deleteFile, getObjectSignedUrl } from '../Config/s3.js';
 
 export const getProductRouter = express.Router();
-getProductRouter.post('/getproduct/:productname', async (req,res)=>{
+getProductRouter.get('/getproduct/:productname', async (req,res)=>{
 console.log("in the get product section")
 // Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.Products WHERE `Product_Name` = ?";
