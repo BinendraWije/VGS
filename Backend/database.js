@@ -26,6 +26,7 @@ import { deleteUserRouter }from './Routes/deleteUser.js';
 import { editUserRouter }from'./Routes/editUser.js';
 import {getAllProductsRouter}from './Routes/allProducts.js';
 import { createProductRouter } from'./Routes/createProduct.js';
+import { getProductRouter } from "./Routes/getProduct.js";
 
 const app = express();
 
@@ -67,7 +68,7 @@ app.use(deleteUserRouter);
 app.use(editUserRouter);
 app.use(getAllProductsRouter);
 app.use(createProductRouter);
-
+app.use(getProductRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")    
