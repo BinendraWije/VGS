@@ -63,11 +63,11 @@ export async function emptyBucketByPrefix(prefix) {
     let listResponse
     do {
         listResponse = await s3Client.send(new ListObjectsV2Command({Bucket: bucketName, Prefix: prefix}));
-        console.log(listResponse);
         if (!listResponse.Contents?.length) {
             break;
         }
         const objects = listResponse.Contents.map(({Key}) => ({Key}));
+        console.log(objects);
         const command = new DeleteObjectsCommand({
             Bucket: bucketName,
             Delete: {
