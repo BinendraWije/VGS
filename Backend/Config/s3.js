@@ -82,7 +82,7 @@ export async function emptyBucketByPrefix(prefix) {
           console.log(objectkey)
           const command = new DeleteObjectCommand({
             Bucket: bucketName,
-            Key: "shitty girl/3fe7391fa1eb6d7292b184e28a8684e7581f728af0ee96491a5fd6311f347a7d.jpeg"
+            Key: objectkey
         });
         await s3Client.send(command); 
         })        
