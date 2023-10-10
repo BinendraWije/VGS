@@ -2,7 +2,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand, ListObjectsV2Command,DeleteObjectsCommand} from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand, ListObjectsV2Command, ListBucketsCommand, DeleteObjectsCommand} from "@aws-sdk/client-s3";
 import {getSignedUrl}  from "@aws-sdk/s3-request-presigner";
 
 
@@ -58,32 +58,25 @@ export async function getObjectSignedUrl(key) {
   return url
 }
 
-export async function emptyBucketByPrefix() {
-  
-  const command = new ListObjectsV2Command({
-    Bucket: bucketName,
-    // The default and maximum number of keys returned is 1000. This limits it to
-    // one for demonstration purposes.
-    MaxKeys: 1,
-  });
+export async function emptyBucketByPrefix(prefix) {
 
-  try {
-    let isTruncated = true;
-
-    console.log("Your bucket contains the following objects:\n");
-    let contents = "";
-
-    while (isTruncated) {
-      const { Contents, IsTruncated, NextContinuationToken } =
+    let listResponse
+    do {
+        listResponse = await s3Client.send(new ListObjectsV2Command({Bucket: bucketName, Prefix: prefix}));
+        console.log(listResponse);
+        if (!listResponse.Contents?.length) {
+            break;
+        }
+        const objects = listResponse.Contents.map(({Key}) => ({Key}));
+        const command = new DeleteObjectsCommand({
+            Bucket: bucketName,
+            Delete: {
+                Objects: objects,
+            },
+        });
         await s3Client.send(command);
-      const contentsList = Contents.map((c) => ` • ${c.Key}`).join("\n");
-      contents += contentsList + "\n";
-      isTruncated = IsTruncated;
-      command.input.ContinuationToken = NextContinuationToken;
-    }
-    console.log(contents);
-  } catch (err) {
-    console.error(err);
-  }
-};
+    } while (listResponse.IsTruncated);
+}
+
+
   

@@ -52,7 +52,7 @@ db.query(findDuplicatesquery,[req.params.productname], async (err,results)=>{
         //the s3 folder name based on the new edit of the name of the product 
         if(req.body.Product_Name != req.params.productname){
             console.log("we're getting stuck here in the delete");
-            await emptyBucketByPrefix();
+            await emptyBucketByPrefix(req.params.productname);
         }
         
         const productImage1name = ( req.files.Product_Image_1 === undefined) ? null : imageName1 
