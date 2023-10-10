@@ -38,7 +38,7 @@ db.query(findDuplicatesquery,[req.body.Product_Name], async (err,results)=>{
 
 
 if(req.files.Product_Image_1){
-    console.log(req.files.Product_Image_1.mimetype);
+
     await uploadFile(req.files.Product_Image_1.data, req.body.Product_Name+"/"+imageName1, req.files.Product_Image_1.mimetype)
 }
 
