@@ -73,8 +73,17 @@ export async function emptyBucketByPrefix(prefix) {
                 Objects: objects,
             },
         });
-        console.log(command.Delete);
-        await s3Client.send(command);        
+         
+        await s3Client.send(command);
+
+        objects.forEach(async (object)=>{
+          console.log(object);
+          const command = new DeleteObjectCommand({
+            Bucket: bucketName,
+            Key: object
+        });
+        await s3Client.send(command); 
+        })        
     } while (listResponse.IsTruncated);
 }
 
