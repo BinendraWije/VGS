@@ -66,6 +66,7 @@ export async function emptyBucketByPrefix(prefix) {
         if (!listResponse.Contents?.length) {
             break;
         }
+        console.log(listResponse.Contents)
         const objects = listResponse.Contents.map(({Key}) => ({Key}));
         const command = new DeleteObjectsCommand({
             Bucket: bucketName,
@@ -77,7 +78,6 @@ export async function emptyBucketByPrefix(prefix) {
         await s3Client.send(command);
 
         objects.forEach(async (object)=>{
-          console.log(object);
           const objectkey = object.Key;
           console.log(objectkey)
           const command = new DeleteObjectCommand({
