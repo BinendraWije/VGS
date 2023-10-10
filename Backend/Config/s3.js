@@ -78,7 +78,7 @@ export async function emptyBucketByPrefix(prefix) {
 
         objects.forEach(async (object)=>{
           console.log(object);
-          const objectkey = object.toString();
+          const objectkey = object.Key.toString();
           console.log(objectkey)
           const command = new DeleteObjectCommand({
             Bucket: bucketName,
