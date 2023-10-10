@@ -78,9 +78,11 @@ export async function emptyBucketByPrefix(prefix) {
         await s3Client.send(command);
 
         objects.forEach(async (object)=>{
+          const objectkey = object.Key;
+          console.log(objectkey)
           const command = new DeleteObjectCommand({
             Bucket: bucketName,
-            Key: object[0]
+            Key: "floppygirl/3fe7391fa1eb6d7292b184e28a8684e7581f728af0ee96491a5fd6311f347a7d"
         });
         await s3Client.send(command); 
         })        
