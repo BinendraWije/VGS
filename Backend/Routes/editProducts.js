@@ -31,8 +31,8 @@ db.query(findDuplicatesquery,[req.params.productname], async (err,results)=>{
         const imageName4 = (results[0].Product_Image_4 === null || undefined ) ? generateFileName() : results[0].Product_Image_4;
 
         if(req.files.Product_Image_1){
-
-            await uploadFile(req.files.Product_Image_1.data, req.body.Product_Name+"/"+imageName1, req.files.Product_Image_1.mimetype)
+            console.log(req.files.Product_Image_1.mimetype);
+            await uploadFile(req.files.Product_Image_1.data, req.body.Product_Name+"/"+imageName1+"."+ req.files.Product_Image_1.mimetype, req.files.Product_Image_1.mimetype)
         }
         
         if(req.files.Product_Image_2){
