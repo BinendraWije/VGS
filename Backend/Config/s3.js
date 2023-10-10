@@ -80,7 +80,7 @@ export async function emptyBucketByPrefix(prefix) {
           console.log(object);
           const command = new DeleteObjectCommand({
             Bucket: bucketName,
-            Key: object
+            Key: object.toString()
         });
         await s3Client.send(command); 
         })        
