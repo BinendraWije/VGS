@@ -26,8 +26,8 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
     }
     // delete refreshToken in db  
       const refreshtokenquery = "UPDATE vgsdb.users SET refresh_token = NULL WHERE user_name = ? AND idusers > 0";
-      console.log("trying to find the user")
-      console.log(req.body);
+      console.log("results 2")
+      console.log(results);
       db.query(refreshtokenquery,[req.body.user_name], async (err,data)=>{
                if(err) return res.json(err);      
                 return res.json("refresh token inserted successfully");        
