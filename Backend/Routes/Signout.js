@@ -29,10 +29,7 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
       console.log("results 2")
       console.log(results[0].user_name);
       db.query(refreshtokenquery,[results[0].user_name], async (err,data)=>{
-               if(err) {return res.json(err)}
-               else{     
-                return res.json("refresh token inserted successfully");
-               }        
+               if(err) return res.json(err);   
             });
  
     res.clearCookie('jwt',{httpOnly:true, sameSite:'None',secure:true});
