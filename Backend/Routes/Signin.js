@@ -40,7 +40,7 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
         const refreshToken = jwt.sign(
             {"user_name": req.body.user_name},
             process.env.REFRESH_TOKEN_SECRET,
-            {expiresIn: '60s'}
+            {expiresIn: '40s'}
         );
         //Updating the refresh token to the current user's profile in DB
 
@@ -51,7 +51,7 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
                 }
               });
         
-        res.cookie('jwt', refreshToken, {httpOnly:true, secure:true, sameSite:'None',  maxAge: 24 * 60 * 60 * 1000});
+        res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
         res.json({ user_role, accessToken }); 
     }else{
         res.sendStatus(401);
