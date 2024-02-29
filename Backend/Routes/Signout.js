@@ -21,7 +21,7 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
     if(err) return res.json(err);         
     if(results.length == 0 ){ 
       console.log("I'm clearing the cookie in here now where the results.length = 0")
-      res.clearCookie('jwt',{httpOnly:true, sameSite:'None',secure:true});
+      //res.clearCookie('jwt',{httpOnly:true, sameSite:'None',secure:true});
         return res.sendStatus(204); // No Content
     }
     // delete refreshToken in db  
