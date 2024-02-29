@@ -40,7 +40,7 @@ db.query(findDuplicatesquery,[user], async (err,results)=>{
         const refreshToken = jwt.sign(
             {"user_name": req.body.user_name},
             process.env.REFRESH_TOKEN_SECRET,
-            {expiresIn: '1m'}
+            {expiresIn: '60s'}
         );
         //Updating the refresh token to the current user's profile in DB
 
