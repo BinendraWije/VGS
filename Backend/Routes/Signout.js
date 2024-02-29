@@ -20,15 +20,14 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
     console.log(results);
     if(err) return res.json(err);         
     if(results.length == 0 ){ 
+      console.log("I'm clearing the cookie in here now where the results.length = 0")
       res.clearCookie('jwt',{httpOnly:true, sameSite:'None',secure:true});
-
         return res.sendStatus(204); // No Content
-
     }
     // delete refreshToken in db  
       const refreshtokenquery = "UPDATE vgsdb.users SET refresh_token = NULL WHERE user_name = ? AND idusers > 0";
       console.log("trying to find the user")
-      console.log(req);
+      console.log(req.body);
       db.query(refreshtokenquery,[req.body.user_name], async (err,data)=>{
                if(err) return res.json(err);      
                 return res.json("refresh token inserted successfully");        
