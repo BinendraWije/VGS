@@ -10,7 +10,6 @@ require('dotenv').config();
 export const signOutRouter = express.Router();
 signOutRouter.get('/signout', async (req,res)=>{
     // On client(front end), also delete the accessToken
-console.log("we're in the signout function");
 const cookies = req.cookies;
 if(!cookies && !cookies.jwt) return res.sendStatus(204); // No content to send back;
   const refreshToken = cookies.jwt;
@@ -27,10 +26,11 @@ db.query(findUserFromToken,[refreshToken], async (err,results)=>{
 
     }
     // delete refreshToken in db  
-
+      console.log("we're now going to delete the refrest token")
       const refreshtokenquery = "UPDATE vgsdb.users SET refresh_token = NULL WHERE user_name = ?";
       
       db.query(refreshtokenquery,[req.body.user_name], async (err,data)=>{
+              console.log(data);
                 if(err) return res.json(err);      
                 return res.json("refresh token inserted successfully");
         
