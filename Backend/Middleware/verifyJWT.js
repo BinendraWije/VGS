@@ -10,7 +10,8 @@ export const verifyJWT = (req,res,next) =>{
     //const authHeader = req.headers.authorization || req.headers.Authorization || req.headers['authorization'] || req.headers['Authorization'] ;
     const authHeader = req.headers.cookie    
     if(!authHeader && !authHeader.startsWith('jwt ')) return res.sendStatus(401); //Unauthorized
-    const token = authHeader.split('jwt=')[1];  
+    const token = authHeader.split('jwt=')[1];
+    console.log(token);
     jwt.verify(
         token,
         process.env.ACCESS_TOKEN_SECRET,
