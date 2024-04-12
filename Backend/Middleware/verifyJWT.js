@@ -7,11 +7,10 @@ require('dotenv').config();
 
 
 export const verifyJWT = (req,res,next) =>{
-    const authHeader = req.headers.authorization || req.headers.Authorization || req.headers['authorization'] || req.headers['Authorization'] ;
-    console.log(req.headers.cookie)
-    console.log(authHeader);
-    console.log("Bearer token: " + authHeader.startsWith('Bearer '));
-    if(!authHeader && !authHeader.startsWith('Bearer ')) return res.sendStatus(401); //Unauthorized
+    //const authHeader = req.headers.authorization || req.headers.Authorization || req.headers['authorization'] || req.headers['Authorization'] ;
+    const authHeader = req.headers.cookie    
+    console.log(req.headers.cookie)   
+    if(!authHeader && !authHeader.startsWith('jwt ')) return res.sendStatus(401); //Unauthorized
     const token = authHeader.split(' ')[1];
     jwt.verify(
         token,
