@@ -28,6 +28,7 @@ import {getAllProductsRouter}from './Routes/allProducts.js';
 import { createProductRouter } from'./Routes/createProduct.js';
 import { getProductRouter } from "./Routes/getProduct.js";
 import { editProductRouter } from "./Routes/editProducts.js";
+import { getMyprofileRouter } from "./Routes/checkUserdata.js";
 
 const app = express();
 
@@ -71,6 +72,7 @@ app.use(getAllProductsRouter);
 app.use(createProductRouter);
 app.use(getProductRouter);
 app.use(editProductRouter);
+app.use(getMyprofileRouter);
 
 app.listen(3306, ()=>{
     console.log("listening")    
