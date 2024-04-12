@@ -12,7 +12,7 @@ const UserDatapage = () => {
 
     const [usera,setUsera] = useState('');
 
-    const getMyprofile =  async (e, Product_Name) => {
+    const getMyprofile =  async (e) => {
     e.preventDefault();
     // get the single product
   try{
@@ -28,7 +28,7 @@ const UserDatapage = () => {
     <h1>UserDatapage</h1>
     <div>
         <h2>user :{usera}</h2>   
-        <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white mx-2" onClick={()=>getMyprofile()}>
+        <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white mx-2" onClick={(e)=>getMyprofile(e)}>
                 MY profile
               </button>
       
