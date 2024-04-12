@@ -8,7 +8,7 @@ const UserDatapage = () => {
     const { auth } = useContext(AuthContext);  
     console.log(auth)
 
-    const GET_PRODUCT_URL = '/myprofile/';
+    const GET_PRODUCT_URL = '/myprofile/:';
 
     const [usera,setUsera] = useState('');
 
