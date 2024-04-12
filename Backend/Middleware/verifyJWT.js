@@ -7,7 +7,7 @@ require('dotenv').config();
 
 
 export const verifyJWT = (req,res,next) =>{
-    const authHeader = req.headers.authorization || req.headers.Authorization;
+    const authHeader = req.headers.authorization || req.headers.Authorization || req.headers['authorization'];
     console.log(req)
     console.log(req.headers)
     console.log(authHeader);
