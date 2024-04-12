@@ -17,6 +17,7 @@ import Unauthorized from './pages/Unauthorized';
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
 import ProductPage from './pages/ProductPage';
+import UserDatapage from './pages/UserDatapage';
 
 function App() {
 
@@ -40,7 +41,8 @@ function App() {
         <Route element={<RequireAuth allowedRoles={['Admin','Moderator']} />}>
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/users" element={<UsersPage />} />
-          <Route exact path="/products" element={<ProductPage />} />          
+          <Route exact path="/products" element={<ProductPage />} />
+          <Route exact path="/userdata" element={<UserDatapage />} />
         </Route>
         </Route>
       </Routes>
