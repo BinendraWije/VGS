@@ -9,12 +9,13 @@ require('dotenv').config();
 export const verifyJWT = (req,res,next) =>{
     //const authHeader = req.headers.authorization || req.headers.Authorization || req.headers['authorization'] || req.headers['Authorization'] ;
     console.log(req.headers)
-    const authHeader = req.headers.cookie    
+    console.log(req.body.accessToken)
+    const authHeader = req.body.accessToken    
     if(!authHeader && !authHeader.startsWith('jwt ')) return res.sendStatus(401); //Unauthorized
-    const token = authHeader.split('jwt=')[1];
+    const token = authHeader//authHeader.split('jwt=')[1];
     jwt.verify(
         token,
-        process.env.REFRESH_TOKEN_SECRET,
+        process.env.ACCESS_TOKEN_SECRET,
         (err,decoded)=>{           
             if(err) return res.sendStatus(403); //Forbidden invalid token 
             req.user_name = decoded.UserInfo.user_name;
