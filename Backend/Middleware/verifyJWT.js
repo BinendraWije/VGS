@@ -9,7 +9,7 @@ require('dotenv').config();
 export const verifyJWT = (req,res,next) =>{
     //const authHeader = req.headers.authorization || req.headers.Authorization || req.headers['authorization'] || req.headers['Authorization'] ;
     console.log(req.headers)
-    console.log(req.headers['x-auth']);
+    console.log(req.headers.authorization);
     const authHeader = req.headers.cookie    
     if(!authHeader && !authHeader.startsWith('jwt ')) return res.sendStatus(401); //Unauthorized
     const token = authHeader.split('jwt=')[1];
