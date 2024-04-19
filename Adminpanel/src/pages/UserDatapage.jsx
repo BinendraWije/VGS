@@ -15,11 +15,12 @@ const UserDatapage = () => {
     e.preventDefault();
     // get the single product
   try{
-    const  userresponse = await axios.post(GET_PRODUCT_URL + auth.user,JSON.stringify({ 
+    const  userresponse = await axios.post(GET_PRODUCT_URL + auth.user,
+      JSON.stringify({ 
       accessToken: auth.accessToken     
     }),{
           // add credentials later once users have been created add token as well
-          
+        headers: {'Content-Type':'application/json'},
         withCredentials: true
       });;
     setUsera(userresponse)
