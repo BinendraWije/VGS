@@ -11,7 +11,7 @@ export const verifyJWT = (req,res,next) =>{
     console.log(req.headers)
     console.log(req.body.accessToken)
     const authHeader = req.body.accessToken    
-    if(!authHeader && !authHeader.startsWith('jwt ')) return res.sendStatus(401); //Unauthorized
+    if(!authHeader) return res.sendStatus(401); //Unauthorized  && !authHeader.startsWith('jwt ')
     const token = authHeader//authHeader.split('jwt=')[1];
     jwt.verify(
         token,
