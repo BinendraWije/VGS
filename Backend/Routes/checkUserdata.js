@@ -14,7 +14,7 @@ console.log("We're in the profile checker")
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[req.params.username], async (err,results)=>{
     if(err) return res.json(err);
-    const user = results[0]; 
+    const user = results[0].user_name; 
     console.log(user);
    return res.json(user)
 })

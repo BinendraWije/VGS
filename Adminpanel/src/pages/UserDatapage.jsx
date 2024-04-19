@@ -9,7 +9,7 @@ const UserDatapage = () => {
 
     const GET_PRODUCT_URL = '/myprofile/';
 
-    const [usera,setUsera] = useState('');
+    const [usera, setUsera] = useState('');
 
     const getMyprofile =  async (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const UserDatapage = () => {
     {          // add credentials later once users have been created add token as well
         headers: {'Authorization': 'Bearer ' + auth.accessToken},
         withCredentials: true
-      });;
+      });
     setUsera(userresponse)
     console.log(usera);
   }catch(err){
@@ -31,7 +31,7 @@ const UserDatapage = () => {
     <div>
     <h1>UserDatapage</h1>
     <div>
-        <h2>user :</h2>   
+        <h2>user: {usera} </h2>   
         <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white mx-2" onClick={(e)=>getMyprofile(e)}>
                 MY profile
               </button>
