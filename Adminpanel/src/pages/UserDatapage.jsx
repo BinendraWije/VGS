@@ -15,7 +15,7 @@ const UserDatapage = () => {
     e.preventDefault();
     // get the single product
   try{
-    const  userresponse = await axios.post(GET_PRODUCT_URL + auth.user,
+    const  userresponse = await axios.get(GET_PRODUCT_URL + auth.user,
       JSON.stringify({ 
       accessToken: auth.accessToken     
     }),{
