@@ -10,6 +10,11 @@ import { verifyJWT } from "../Middleware/verifyJWT.js";
 export const getMyprofileRouter = express.Router();
 getMyprofileRouter.get('/myprofile/:username', verifyJWT, async (req,res)=>{
 console.log("We're in the profile checker")
+console.log(req.user_name);
+// checking if the username param and the current user's username match
+if(req.user_name !== req.params.username){
+    return res.json("You are trying to access someone elses's profile Fuck off");
+}else{
 // Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[req.params.username], async (err,results)=>{
@@ -18,6 +23,6 @@ db.query(findDuplicatesquery,[req.params.username], async (err,results)=>{
     console.log(user);
    return res.json(user)
 })
-
+}
 });
 

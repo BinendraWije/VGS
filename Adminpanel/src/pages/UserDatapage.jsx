@@ -15,7 +15,7 @@ const UserDatapage = () => {
     e.preventDefault();
     // get the single product
   try{
-    const  userresponse = await axios.get(GET_PRODUCT_URL + auth.user,
+    const  userresponse = await axios.get(GET_PRODUCT_URL + "test1",
     {          // add credentials later once users have been created add token as well
         headers: {'Authorization': 'Bearer ' + auth.accessToken},
         withCredentials: true
