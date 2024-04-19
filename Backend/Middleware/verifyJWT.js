@@ -7,12 +7,11 @@ require('dotenv').config();
 
 
 export const verifyJWT = (req,res,next) =>{
-    //const authHeader = req.headers.authorization || req.headers.Authorization || req.headers['authorization'] || req.headers['Authorization'] ;
+    const authHeader = req.headers.authorization || req.headers.Authorization || req.headers['authorization'] || req.headers['Authorization'] ;
     console.log(req.headers)
-    console.log(req.body.accessToken)
-    const authHeader = req.body.accessToken    
-    if(!authHeader) return res.sendStatus(401); //Unauthorized  && !authHeader.startsWith('jwt ')
-    const token = authHeader//authHeader.split('jwt=')[1];
+    console.log(authHeader)  
+    if(!authHeader && !authHeader.startsWith('Bearer ')) return res.sendStatus(401); //Unauthorized  
+    const token = authHeader.split('Bearer ')[1];
     jwt.verify(
         token,
         process.env.ACCESS_TOKEN_SECRET,

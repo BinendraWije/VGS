@@ -16,11 +16,8 @@ const UserDatapage = () => {
     // get the single product
   try{
     const  userresponse = await axios.get(GET_PRODUCT_URL + auth.user,
-      JSON.stringify({ 
-      accessToken: auth.accessToken     
-    }),{
-          // add credentials later once users have been created add token as well
-        headers: {'Content-Type':'application/json'},
+    {          // add credentials later once users have been created add token as well
+        headers: {'Authorization': 'Bearer ' + auth.accessToken},
         withCredentials: true
       });;
     setUsera(userresponse)
