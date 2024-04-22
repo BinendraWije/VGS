@@ -92,12 +92,13 @@ const handleGoogleLogin = async (e)=>{
   e.preventDefault();
 
   try {
-    const response = await axios.post(GOOGLE_LOGIN_URL,
+    const response = await fetch(GOOGLE_LOGIN_URL,
       {
-         withCredentials: true
+         method:'post'
       })         
-    console.log(response);
-    window.location.href = response.data.url;
+    console.log(response.json);
+    const data = response.json()
+    window.location.href = data.url;
     
   } catch (err) {
     if(!err?.response){
