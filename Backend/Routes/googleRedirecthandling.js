@@ -17,28 +17,19 @@ async function getUserData(access_token){
     console.log('data', data);
 }
 
-export const googlesignInRouter = express.Router();
-googlesignInRouter.post('/auth/google', async (req,res)=>{
-res.header('Referrer-Policy', 'no-referrer-when-downgrade');
-
-const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000/auth/google/oauth';
-
-const oAuth2Client = new OAuth2Client(
-process.env.GOOGLE_CLIENT_ID,
-process.env.GOOGLE_CLIENT_SECRET,
-redirectURL 
-);
-
-const authorizeURL = oAuth2Client.generateAuthUrl({
-    access_type:'offline',
-    scope:'https://www.googleapis.com/auth/userinfo.profile openid',
-    prompt:'consent' 
-})
-
-res.json({url:authorizeURL});
+export const googleRedirectRouter = express.Router();
+googlesignInRouter.post('/auth/google/oauth', async (req,res)=>{
 
 const code = req.query.code;
 try{
+    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000/auth/google/oauth';
+
+    const oAuth2Client = new OAuth2Client(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+    redirectURL 
+    );
+
     const res = await oAuth2Client.getToken(code);
     await oAuth2Client.setCredentials(res.tokens);
     console.log('Tokens acquired')
@@ -46,8 +37,8 @@ try{
     console.log('credentials', user);
     await getUserData(user.access_token)
 }
-catch{
-res.json(error)
+catch(err){
+res.json(err)
 }
 /* Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
