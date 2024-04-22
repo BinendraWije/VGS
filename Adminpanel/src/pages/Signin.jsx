@@ -29,7 +29,7 @@ import {
 
 
 const LOGIN_URL = "/auth";
-const GOOGLE_LOGIN_URL = "/auth/google";
+const GOOGLE_LOGIN_URL = "/googlesigninrequest";
 
 
 function Signin() {

@@ -18,7 +18,7 @@ async function getUserData(access_token){
 }
 
 export const googleRedirectRouter = express.Router();
-googleRedirectRouter.get('/auth/google/oauth', async (req,res)=>{
+googleRedirectRouter.get('/oauth', async (req,res)=>{
 
 const code = req.query.code;
 try{
