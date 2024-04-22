@@ -7,6 +7,7 @@ const {OAuth2Client} =require('google-auth-library');
 const express = require('express');
 import { db } from '../Config/databaseconfig.js';
 import bcrypt from 'bcryptjs';
+import { error } from "console";
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -46,7 +47,7 @@ try{
     await getUserData(user.access_token)
 }
 catch{
-res.json(err)
+res.json(error)
 }
 /* Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
