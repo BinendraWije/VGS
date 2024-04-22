@@ -29,7 +29,7 @@ import {
 
 
 const LOGIN_URL = "/auth";
-const GOOGLE_LOGIN_URL = "/googlesigninrequest";
+const GOOGLE_LOGIN_URL = "http://13.49.145.29:3000/googlesigninrequest";
 
 
 function Signin() {
