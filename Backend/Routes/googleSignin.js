@@ -2,7 +2,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-const {OAuth2Client, OAuth2Client} =require('google-auth-library'); 
+const {OAuth2Client} =require('google-auth-library'); 
 
 const express = require('express');
 import { db } from '../Config/databaseconfig.js';
