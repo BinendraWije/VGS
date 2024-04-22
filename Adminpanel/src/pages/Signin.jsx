@@ -97,7 +97,7 @@ const handleGoogleLogin = async (e)=>{
          withCredentials: true
       })         
     console.log(response);
-    navigate(response.data.url, {replace : true});
+    window.location.href = response.data.url;
     
   } catch (err) {
     if(!err?.response){
