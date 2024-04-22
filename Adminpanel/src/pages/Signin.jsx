@@ -29,7 +29,7 @@ import {
 
 
 const LOGIN_URL = "/auth";
-const GOOGLE_LOGIN_URL = "http://13.49.145.29:3000/googlesigninrequest";
+const GOOGLE_LOGIN_URL = "/googlesigninrequest";
 
 
 function Signin() {
@@ -92,13 +92,12 @@ const handleGoogleLogin = async (e)=>{
   e.preventDefault();
 
   try {
-    const response = await fetch(GOOGLE_LOGIN_URL,
+    const response = await axios.post(GOOGLE_LOGIN_URL,
       {
-         method:'post'
+         withCredentials: true
       })         
-    console.log(response.json);
-    const data = await response.json()
-    window.location.href = data.url;
+    console.log(response);
+    window.location.href = response.data.url;
     
   } catch (err) {
     if(!err?.response){
