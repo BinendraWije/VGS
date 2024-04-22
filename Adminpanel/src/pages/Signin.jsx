@@ -97,7 +97,7 @@ const handleGoogleLogin = async (e)=>{
          method:'post'
       })         
     console.log(response.json);
-    const data = response.json()
+    const data = await response.json()
     window.location.href = data.url;
     
   } catch (err) {
