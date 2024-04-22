@@ -21,7 +21,7 @@ export const googlesignInRouter = express.Router();
 googlesignInRouter.post('/auth/google', async (req,res)=>{
 res.header('Referrer-Policy', 'no-referrer-when-downgrade');
 
-const redirectURL ='http://127.0.0.1:3000/oauth';
+const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com';
 
 const oAuth2Client = new OAuth2Client(
 process.env.GOOGLE_CLIENT_ID,
