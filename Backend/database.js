@@ -29,6 +29,7 @@ import { createProductRouter } from'./Routes/createProduct.js';
 import { getProductRouter } from "./Routes/getProduct.js";
 import { editProductRouter } from "./Routes/editProducts.js";
 import { getMyprofileRouter } from "./Routes/checkUserdata.js";
+import { googlesignInRouter } from "./Routes/googleSignin.js";
 
 const app = express();
 
@@ -61,6 +62,7 @@ app.use(getAllForumPostsRouter);
 
 // Adminpanel Routes
 app.use(signInRouter);
+app.use(googlesignInRouter);
 app.use(refreshTokenRouter);
 app.use(signOutRouter);
 // app.use(verifyJWT);

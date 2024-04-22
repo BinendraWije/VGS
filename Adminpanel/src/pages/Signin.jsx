@@ -29,6 +29,8 @@ import {
 
 
 const LOGIN_URL = "/auth";
+const GOOGLE_LOGIN_URL = "/auth/google";
+
 
 function Signin() {
   const { setAuth, persist, setPersist } = useAuth();
@@ -86,6 +88,32 @@ const handleSubmit = async (e)=>{
   }
 
 }
+const handleGoogleLogin = async (e)=>{
+  e.preventDefault();
+
+  try {
+    const response = await axios.post(GOOGLE_LOGIN_URL,
+      {
+         withCredentials: true
+      })         
+    console.log(response);
+    //navigate(from, {replace : true});
+    
+  } catch (err) {
+    if(!err?.response){
+      setErrMsg('No server response');
+    }else if(err.response?.status === 400){
+      setErrMsg('Missing Username or Password');
+    }else if(err.response?.status === 401 ){
+      setErrMsg('Unauthorized');
+    }else{
+      setErrMsg('Login Failed');
+    }
+    errRef.current.focus();  
+
+  }
+
+}
 
 const togglePersist = () => {
   setPersist(prev => !prev);
@@ -115,12 +143,15 @@ useEffect(()=>{
             <input type="text" id="username" ref={userRef} autoComplete='off' onChange={(e)=>setUser(e.target.value)} value={user} required/>
             <label htmlFor="pwd">Password: </label>
             <input type="password" id="pwd" autoComplete='off' onChange={(e)=>setPwd(e.target.value)} value={pwd} required/>
-          <button>Sign in</button>
+          <button className='btn' >Sign in</button>          
           <div className="persistCheck">
             <input type="checkbox" id="persist" onChange={togglePersist} checked={persist}/>
             <label htmlFor='persist'> Trust This Device </label>
             </div> 
           </form>
+          <button className='btn' onClick={(e)=>{
+            handleGoogleLogin(e)
+          }} >Sign in with Google</button>
           </Card>
          </div>
           </div>
