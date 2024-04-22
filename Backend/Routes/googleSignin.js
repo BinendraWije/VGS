@@ -11,17 +11,12 @@ import { error } from "console";
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-async function getUserData(access_token){
-    const response = await fetch(`https://googleapis.com/oauth2/v3/userinfo?access_token${access_token}`);
-    const data = await response.json();
-    console.log('data', data);
-}
 
 export const googlesignInRouter = express.Router();
 googlesignInRouter.post('/googlesigninrequest', async (req,res)=>{
 res.header('Referrer-Policy', 'no-referrer-when-downgrade');
 
-const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000/auth/google/oauth';
+const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000/oauth';
 
 const oAuth2Client = new OAuth2Client(
 process.env.GOOGLE_CLIENT_ID,
@@ -37,18 +32,6 @@ const authorizeURL = oAuth2Client.generateAuthUrl({
 
 res.json({url:authorizeURL});
 
-const code = req.query.code;
-try{
-    const res = await oAuth2Client.getToken(code);
-    await oAuth2Client.setCredentials(res.tokens);
-    console.log('Tokens acquired')
-    const user= oAuth2Client.credentials;
-    console.log('credentials', user);
-    await getUserData(user.access_token)
-}
-catch{
-res.json(error)
-}
 /* Checking if username exists
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[user], async (err,results)=>{
