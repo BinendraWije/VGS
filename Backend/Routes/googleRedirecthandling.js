@@ -78,7 +78,7 @@ try{
                     if(err){ return res.json(err);}else{                    
                     }
                 });
-        
+          res.cookie('jwt', refreshToken)
           //res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
           //res.json({ user_role, accessToken });
           res.redirect('http://13.49.145.29:3000/dashboard'); 
