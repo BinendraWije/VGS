@@ -77,7 +77,7 @@ try{
                 });
         
           //  res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
-            res.json({ user_role, accessToken }); 
+          //  res.json({ user_role, accessToken }); 
         }else{
             res.sendStatus(401);
         }
