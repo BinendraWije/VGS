@@ -24,8 +24,11 @@ const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}
 
 export const googleRedirectRouter = express.Router();
 googleRedirectRouter.get('/oauth', async (req,res)=>{
+
+//getting the params from the URL    
 const code = req.query.code;
 console.log(code);
+
 try{
     const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
@@ -77,7 +80,8 @@ try{
                 });
         
           //  res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
-          //  res.json({ user_role, accessToken }); 
+          //  res.json({ user_role, accessToken });
+          res.redirect('http://13.49.145.29:3000/dashboard'); 
         }else{
             res.sendStatus(401);
         }
@@ -104,7 +108,7 @@ const values = [
       ]
 db.query(q,[values], async (err,data)=>{
           if(err) return res.json(err);      
-          return res.json("user successfully created");
+          return res.redirect('http://13.49.145.29:3000/dashboard');
   
       })
 
@@ -113,7 +117,6 @@ db.query(q,[values], async (err,data)=>{
     
     })
 
-window.location.href = 'http://13.49.145.29:3000/dashboard';
     }
 catch(err){
 res.json(err)
