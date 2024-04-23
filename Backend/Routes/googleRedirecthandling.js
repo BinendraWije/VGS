@@ -35,12 +35,8 @@ try{
     redirectURL 
     );
 
-    const response = await oAuth2Client.getToken(code);
-    await oAuth2Client.setCredentials(response.tokens);
-    console.log(response.tokens);
-    const user= oAuth2Client.credentials;
-    console.log('credentials', user);
-    const data = await getUserData(user.access_token)
+    const response = await oAuth2Client.getToken(code);  
+    const data = await getUserData(response.tokens.access_token)
 
         // Checking if email exists
         // username is the name of the user
