@@ -35,8 +35,8 @@ try{
     redirectURL 
     );
 
-    const res = await oAuth2Client.getToken(code);
-    await oAuth2Client.setCredentials(res.tokens);
+    const response = await oAuth2Client.getToken(code);
+    await oAuth2Client.setCredentials(response.tokens);
     console.log('Tokens acquired')
     const user= oAuth2Client.credentials;
     console.log('credentials', user);
