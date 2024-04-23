@@ -80,10 +80,10 @@ try{
                 });
           // IT SAYS THAT YOU CAN"T SET COOKIES FROM ONE DOMAIN TO ANOTHER UNLESS THE REQUEST COMES FROM THAT DOMAIN SO YOU MIGHT NEED TO DO ANOTHER REQUEST SOMEHOW
           //OR YOU MIGHT WANT TO SPECIFY THE PATH ON THE COOKIE ITSELF      
-          res.cookie('jwt', refreshToken, {path:'http://13.49.145.29:3000/dashboard', maxAge: 24 * 60 * 60 * 1000})
+          res.cookie('jwt', refreshToken, {maxAge: 24 * 60 * 60 * 1000})
           //res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
           //res.json({ user_role, accessToken });
-          //res.redirect('http://13.49.145.29:3000/dashboard'); 
+          res.redirect('http://13.49.145.29:3000'); 
         }else{
             res.sendStatus(401);
         }
