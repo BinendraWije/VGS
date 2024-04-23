@@ -13,7 +13,7 @@ require('dotenv').config();
 
 async function getUserData(access_token){
     console.log("User Data is triggered")
-    const response = await fetch(`https://googleapis.com/oauth2/v3/userinfo?access_token${access_token}`);
+    const response = await fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token${access_token}`);
     const data = await response.json();
     console.log('data', data);
 }
@@ -27,7 +27,7 @@ console.log(req);
 console.log(req.params);
 console.log(req.params.code);
 try{
-    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000/oauth';
+    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
     const oAuth2Client = new OAuth2Client(
     process.env.GOOGLE_CLIENT_ID,
