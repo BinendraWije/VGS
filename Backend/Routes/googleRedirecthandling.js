@@ -21,6 +21,10 @@ export const googleRedirectRouter = express.Router();
 googleRedirectRouter.get('/oauth', async (req,res)=>{
 
 const code = req.query.code;
+console.log(code);
+console.log(req);
+console.log(req.params);
+console.log(req.params.code);
 try{
     const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000/oauth';
 
