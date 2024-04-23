@@ -12,6 +12,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 async function getUserData(access_token){
+    console.log("User Data is triggered")
     const response = await fetch(`https://googleapis.com/oauth2/v3/userinfo?access_token${access_token}`);
     const data = await response.json();
     console.log('data', data);
@@ -19,7 +20,7 @@ async function getUserData(access_token){
 
 export const googleRedirectRouter = express.Router();
 googleRedirectRouter.get('/oauth', async (req,res)=>{
-
+console.log("we got triggered bro");
 const code = req.query.code;
 console.log(code);
 console.log(req);
