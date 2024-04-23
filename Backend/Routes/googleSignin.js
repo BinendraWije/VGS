@@ -26,7 +26,7 @@ redirectURL
 
 const authorizeURL = oAuth2Client.generateAuthUrl({
     access_type:'offline',
-    scope:'https://www.googleapis.com/auth/userinfo.email userinfo.profile  openid',
+    scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid',
     prompt:'consent' 
 })
 
