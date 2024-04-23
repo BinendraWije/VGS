@@ -37,7 +37,7 @@ try{
 
     const response = await oAuth2Client.getToken(code);
     await oAuth2Client.setCredentials(response.tokens);
-    console.log('Tokens acquired')
+    console.log(response.tokens);
     const user= oAuth2Client.credentials;
     console.log('credentials', user);
     const data = await getUserData(user.access_token)

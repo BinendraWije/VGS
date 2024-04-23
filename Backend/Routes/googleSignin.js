@@ -14,6 +14,7 @@ require('dotenv').config();
 
 export const googlesignInRouter = express.Router();
 googlesignInRouter.post('/googlesigninrequest', async (req,res)=>{
+res.header('Referrer-Policy', 'no-referrer-when-downgrade');
 
 const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
