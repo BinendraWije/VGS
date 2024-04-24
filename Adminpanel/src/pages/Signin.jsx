@@ -26,6 +26,7 @@ import {
   TableContainer,
   TablePagination,
 } from '@mui/material';
+import googleLoginHandler from '../utils/googleloginhandler';
 
 
 const LOGIN_URL = "/auth";
@@ -92,13 +93,7 @@ const handleGoogleLogin = async (e)=>{
   e.preventDefault();
 
   try {
-    const response = await axios.post(GOOGLE_LOGIN_URL,
-      {
-         withCredentials: true
-      })         
-    console.log(response);
-    window.location.href = response.data.url;
-    
+   googleLoginHandler();
   } catch (err) {
     if(!err?.response){
       setErrMsg('No server response');
