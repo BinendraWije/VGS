@@ -1,20 +1,16 @@
-// These lines make "require" available
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-
-const {OAuth2Client} =require('google-auth-library'); 
-
-require('dotenv').config();
+import { OAuth2Client } from "google-auth-library";
+import React from "react";
+import env from "react-dotenv";
 
 async function googleLoginHandler(){
 
 const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
-console.log(process.env.GOOGLE_CLIENT_ID);
+console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID);
 
 const oAuth2Client = new OAuth2Client(
-process.env.GOOGLE_CLIENT_ID,
-process.env.GOOGLE_CLIENT_SECRET,
+process.env.REACT_APP_GOOGLE_CLIENT_ID,
+process.env.REACT_APP_GOOGLE_CLIENT_SECRET,
 redirectURL 
 );
 
