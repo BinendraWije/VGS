@@ -89,9 +89,7 @@ const handleSubmit = async (e)=>{
   }
 
 }
-const handleGoogleLogin = async (e)=>{
-  e.preventDefault();
-
+const handleGoogleLogin = async ()=>{
   try {
    googleLoginHandler();
   } catch (err) {
@@ -144,9 +142,7 @@ useEffect(()=>{
             <label htmlFor='persist'> Trust This Device </label>
             </div> 
           </form>
-          <button className='btn' onClick={(e)=>{
-            handleGoogleLogin(e)
-          }} >Sign in with Google</button>
+          <a href={handleGoogleLogin()} >Sign in with Google</a>
           </Card>
          </div>
           </div>
