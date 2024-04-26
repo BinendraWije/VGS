@@ -31,6 +31,7 @@ import { editProductRouter } from "./Routes/editProducts.js";
 import { getMyprofileRouter } from "./Routes/checkUserdata.js";
 import { googlesignInRouter } from "./Routes/googleSignin.js";
 import { googleRedirectRouter } from "./Routes/googleRedirecthandling.js";
+import { newgoogleRedirectRouter } from "./Routes/newgoogleredirecthandling.js";
 
 const app = express();
 
@@ -63,8 +64,8 @@ app.use(getAllForumPostsRouter);
 
 // Adminpanel Routes
 app.use(signInRouter);
-app.use(googleRedirectRouter);
 app.use(googlesignInRouter);
+app.use(newgoogleRedirectRouter);
 app.use(refreshTokenRouter);
 app.use(signOutRouter);
 // app.use(verifyJWT);
