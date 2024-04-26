@@ -89,9 +89,10 @@ const handleSubmit = async (e)=>{
   }
 
 }
-const handleGoogleLogin = async ()=>{
+const handleGoogleLogin = async (e)=>{
+  e.preventDefault();
   try {
-   googleLoginHandler();
+   await googleLoginHandler();
   } catch (err) {
     if(!err?.response){
       setErrMsg('No server response');
