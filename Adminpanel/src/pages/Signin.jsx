@@ -68,11 +68,12 @@ const handleSubmit = async (e)=>{
         withCredentials: true
       })         
     const accessToken = response?.data?.accessToken;
-    const user_role = response?.data?.user_role;   
+    const user_role = response?.data?.user_role;
+    console.log(response)   
     setAuth({user, pwd, user_role, accessToken});
     setUser('')
     setPwd('')
-    navigate(from, {replace : true});
+    //navigate(from, {replace : true});
     
   } catch (err) {
     if(!err?.response){
