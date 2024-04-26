@@ -13,7 +13,7 @@ require('dotenv').config();
 const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
 export const newgoogleRedirectRouter = express.Router();
-googleRedirectRouter.get('/oauth', async (req,res)=>{
+newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
         // get the code from qs 
         const code = req.query.code
 
