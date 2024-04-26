@@ -15,31 +15,7 @@ const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:330
 
 export const newgoogleRedirectRouter = express.Router();
 newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
-    console.log(req);
-    const cookies = req.cookies;
-    console.log(cookies)
-    if(cookies){
-        const refreshToken = cookies.jwt
-        console.log(refreshToken);
-        jwt.verify(
-            refreshToken,
-            process.env.REFRESH_TOKEN_SECRET,
-            (err, decoded) => {
-                console.log(decoded);              
-                const accessToken = jwt.sign(
-                    {"UserInfo":{
-                        "user_name": decoded.user_name,
-                        "user_role": decoded.user_role
-                        }
-                    },
-                    process.env.ACCESS_TOKEN_SECRET,
-                    {expiresIn: '10s'}
-                );
-                res.json({ user_role, accessToken })
-                window.location.href = 'http://13.49.145.29:3000';    
-            })
-        
-    }else{
+    
         // get the code from qs 
         const code = req.query.code
 
@@ -155,7 +131,7 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
         
 
 
-    }
+    
 
 
 
