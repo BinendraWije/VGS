@@ -15,12 +15,13 @@ const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:330
 
 export const newgoogleRedirectRouter = express.Router();
 newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
+    console.log(req.body);
     const cookies = req.cookies;
     console.log(cookies)
     if(cookies){
 
         const refreshToken = cookies.jwt
-
+        console.log(refreshToken);
         jwt.verify(
             refreshToken,
             process.env.REFRESH_TOKEN_SECRET,
