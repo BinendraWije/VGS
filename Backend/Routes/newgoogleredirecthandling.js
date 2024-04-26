@@ -39,11 +39,90 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
                     Authorization: `Bearer ${id_token}`
                 }
             })
-            console.log(response2.data);   
+            const googleUser = response2.data;  
 
             //update the user data
-
-            //create access and refresh jwt tokens and set cookie
+            const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
+            db.query(findDuplicatesquery,[googleUser.name], async (err,results)=>{
+            if(err) return res.json(err);         
+            if(results.length !== 0 ){
+        
+            // evaluate password
+            const match = await bcrypt.compare(googleUser.email + googleUser.sub, results[0].user_pwd);
+            if(match){
+                // create JWT
+                // gettin the user role from the results
+                const user_role = results[0].user_role;
+    
+                const accessToken = jwt.sign(
+                    {"UserInfo": {
+                        "user_name": googleUser.name,
+                        "user_role" : user_role
+                        }
+                    },
+                    process.env.ACCESS_TOKEN_SECRET,
+                    {expiresIn: '10s'}
+                );
+    
+                const refreshToken = jwt.sign(
+                    {"user_name": googleUser.name},
+                    process.env.REFRESH_TOKEN_SECRET,
+                    {expiresIn: '40s'}
+                );
+            //Updating the refresh token to the current user's profile in DB
+    
+                const refreshtokenquery = "UPDATE vgsdb.users SET refresh_token = ? WHERE user_name = ?";
+          
+                db.query(refreshtokenquery,[refreshToken,googleUser.name], async (err,data)=>{
+                        if(err){ return res.json(err);}else{                    
+                        }
+                    });
+              
+              
+                    // IT SAYS THAT YOU CAN"T SET COOKIES FROM ONE DOMAIN TO ANOTHER UNLESS THE REQUEST COMES FROM THAT DOMAIN SO YOU MIGHT NEED TO DO ANOTHER REQUEST SOMEHOW
+              //OR YOU MIGHT WANT TO SPECIFY THE PATH ON THE COOKIE ITSELF
+              // FIRST TRY TO SEPARATE THEM INTO DIFFERENT PATHS IF THAT FAILS YOU NEED TO SOMEHOW GET THE REIRECT FROM THE FRONTEND
+              //A WAY TO DO THIS MIGHT BE TO SHIFT THE INTIIAL GOOGLE AUTH URL CREATER TO THE FRONTEND NOT AS A MIDDLEWARE BECAUSE THEN HOW DO YOU FIRE THE URL YES?
+              
+              
+              //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/',maxAge: 24 * 60 * 60 * 1000})
+              res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
+              res.json({ user_role, accessToken });
+              res.redirect('http://13.49.145.29:3000'); 
+            }else{
+                res.sendStatus(401);
+            }
+        }else{
+            // Create a new user      
+            // Checking if username exists
+    const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
+    db.query(findDuplicatesquery,[googleUser.name], async (err,results)=>{
+        if(err) return res.json(err);         
+        if(results.length > 0 ){
+            return res.sendStatus(409);    
+    
+        }
+    })
+    
+    const hash = await bcrypt.hash(googleUser.email + googleUser.sub,10);
+      // inserting into the database
+    
+    const q = "INSERT INTO vgsdb.users (`user_name`,`user_pwd`,`user_role`) VALUES(?)";
+    const values = [
+        googleUser.name,
+          hash,
+          "Admin",
+          ]
+    db.query(q,[values], async (err,data)=>{
+              if(err) return res.json(err);      
+              return res.redirect('http://13.49.145.29:3000/dashboard');
+      
+          })
+    
+    
+        }
+        
+        })
 
 
 
