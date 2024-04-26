@@ -89,8 +89,7 @@ const handleSubmit = async (e)=>{
   }
 
 }
-const handleGoogleLogin = async (e)=>{
-  e.preventDefault();
+const handleGoogleLogin = async ()=>{
   try {
    await googleLoginHandler();
   } catch (err) {
