@@ -24,7 +24,8 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
         jwt.verify(
             refreshToken,
             process.env.REFRESH_TOKEN_SECRET,
-            (err, decoded) => {              
+            (err, decoded) => {
+                console.log(decoded);              
                 const accessToken = jwt.sign(
                     {"UserInfo":{
                         "user_name": decoded.user_name,
