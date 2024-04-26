@@ -4,8 +4,7 @@ const rootUrl = "https://accounts.google.com/o/oauth2/v3/auth";
 
 const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
-console.log(import.meta.env.VITE_GOOGLE_CLIENT_ID);
-console.log(import.meta.env.MODE);
+
 const options = {
 client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
 redirect_uri:redirectURL,
@@ -18,8 +17,8 @@ scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com
 
 const qs = new URLSearchParams(options);
 
-console.log(qs);
-
+console.log(qs.toString());
+console.log(`${rootUrl}?${qs.toString()}`);
 return `${rootUrl}?${qs.toString()}`;
 
 };
