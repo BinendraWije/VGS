@@ -24,13 +24,11 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
         jwt.verify(
             refreshToken,
             process.env.REFRESH_TOKEN_SECRET,
-            (err, decoded) => {
-                if(err || results[0].user_name !== decoded.user_name ) return res.sendStatus(403); // Forbidden
-                const user_role = results[0].user_role;
+            (err, decoded) => {              
                 const accessToken = jwt.sign(
                     {"UserInfo":{
                         "user_name": decoded.user_name,
-                        "user_role": user_role
+                        "user_role": decoded.user_role
                         }
                     },
                     process.env.ACCESS_TOKEN_SECRET,
