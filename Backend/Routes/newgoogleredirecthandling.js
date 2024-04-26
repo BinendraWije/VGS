@@ -7,6 +7,7 @@ import qs from 'querystring'
 import { db } from '../Config/databaseconfig.js';
 import bcrypt from 'bcryptjs';
 import { error } from "console";
+import axios from 'axios';
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -28,11 +29,9 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
         };
         try{
             console.log("User Data is triggered")
-            const response = await fetch(url+qs.stringify(values),{headers:{'Content-Type':'application/x-www-form-urlencoded'},method: 'POST'});
-            const data = await response.json();
-            console.log('data', data);
-            return data
-
+            const response = await axios.post(url,qs.stringify(values),{headers:{'Content-Type':'application/x-www-form-urlencoded'}});
+            console.log(response.data);
+            
         }catch(err){
                 res.json(err);
         }
