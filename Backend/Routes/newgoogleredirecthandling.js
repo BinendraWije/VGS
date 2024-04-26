@@ -85,9 +85,9 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
               //A WAY TO DO THIS MIGHT BE TO SHIFT THE INTIIAL GOOGLE AUTH URL CREATER TO THE FRONTEND NOT AS A MIDDLEWARE BECAUSE THEN HOW DO YOU FIRE THE URL YES?
               
               
-              res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/',maxAge: 24 * 60 * 60 * 1000})
+              //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/',maxAge: 24 * 60 * 60 * 1000})
               //res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
-              //res.json({ user_role, accessToken });
+              res.json({ user_role, accessToken });
               res.redirect('http://13.49.145.29:3000'); 
             }else{
                 res.sendStatus(401);
