@@ -15,7 +15,6 @@ const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:330
 
 export const newgoogleRedirectRouter = express.Router();
 newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
-    
         // get the code from qs 
         const code = req.query.code
 
@@ -79,10 +78,10 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
                         }
                     });                                          
               
-              //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/dashboard',maxAge: 24 * 60 * 60 * 1000})
-              res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
+              res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/dashboard',maxAge: 24 * 60 * 60 * 1000})
+              //res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
               res.json({ user_role, accessToken });
-              location.href = 'http://13.49.145.29:3000';   
+              return res.redirect('http://13.49.145.29:3000'); 
             }else{
                 res.sendStatus(401);
             }
@@ -131,7 +130,7 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
         
 
 
-    
+
 
 
 
