@@ -91,7 +91,7 @@ const handleSubmit = async (e)=>{
 }
 const handleGoogleLogin = async ()=>{
   try {
-   await googleLoginHandler();
+   googleLoginHandler();
   } catch (err) {
     if(!err?.response){
       setErrMsg('No server response');
