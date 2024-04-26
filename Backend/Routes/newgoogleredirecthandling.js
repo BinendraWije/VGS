@@ -30,8 +30,8 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
         try{
             console.log("User Data is triggered")
             const response = await axios.post(url,qs.stringify(values),{headers:{'Content-Type':'application/x-www-form-urlencoded'}});
-            console.log(response.data);
-            
+            const{id_token, access_token} = response.data;
+            console.log(id_token,access_token);
         }catch(err){
                 res.json(err);
         }
