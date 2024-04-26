@@ -4,10 +4,10 @@ const rootUrl = "https://accounts.google.com/o/oauth2/v3/auth";
 
 const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
-console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID);
+console.log(process.env.VITE_GOOGLE_CLIENT_ID);
 
 const options = {
-client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+client_id: process.env.VITE_GOOGLE_CLIENT_ID,
 redirect_uri:redirectURL,
 access_type: ' offline',
 response_type: 'code',
