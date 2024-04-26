@@ -1,6 +1,6 @@
 async function googleLoginHandler(){
 
-const rootUrl = "https://accounts.google.com/o/oauth2/v3/auth";
+const rootUrl = "https://accounts.google.com/o/oauth2/v2/auth";
 
 const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
