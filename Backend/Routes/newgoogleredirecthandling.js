@@ -18,9 +18,28 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
     const cookies = req.cookies;
     console.log(cookies)
     if(cookies){
-        res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/dashboard',maxAge: 24 * 60 * 60 * 1000})
-        res.json({ user_role, accessToken });
-        res.redirect('http://13.49.145.29:3000'); 
+
+        const refreshToken = cookies.jwt
+
+        jwt.verify(
+            refreshToken,
+            process.env.REFRESH_TOKEN_SECRET,
+            (err, decoded) => {
+                if(err || results[0].user_name !== decoded.user_name ) return res.sendStatus(403); // Forbidden
+                const user_role = results[0].user_role;
+                const accessToken = jwt.sign(
+                    {"UserInfo":{
+                        "user_name": decoded.user_name,
+                        "user_role": user_role
+                        }
+                    },
+                    process.env.ACCESS_TOKEN_SECRET,
+                    {expiresIn: '10s'}
+                );
+                res.json({ user_role, accessToken })
+                res.redirect('http://13.49.145.29:3000');    
+            })
+        
     }else{
         // get the code from qs 
         const code = req.query.code
