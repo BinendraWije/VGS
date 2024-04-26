@@ -18,6 +18,8 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
     const cookies = req.cookies;
     console.log(cookies)
     if(cookies){
+        res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/dashboard',maxAge: 24 * 60 * 60 * 1000})
+        res.json({ user_role, accessToken });
         res.redirect('http://13.49.145.29:3000'); 
     }else{
         // get the code from qs 
