@@ -28,7 +28,7 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
         };
         try{
             console.log("User Data is triggered")
-            const response = await fetch(url,qs.stringify(values),{headers:{'Content-Type':'application/x-www-form-urlencoded'},method: 'POST'});
+            const response = await fetch(url+qs.stringify(values),{headers:{'Content-Type':'application/x-www-form-urlencoded'},method: 'POST'});
             const data = await response.json();
             console.log('data', data);
             return data
