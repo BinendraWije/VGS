@@ -82,7 +82,7 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
               //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/dashboard',maxAge: 24 * 60 * 60 * 1000})
               res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
               res.json({ user_role, accessToken });
-              window.location.href = 'http://13.49.145.29:3000';   
+              location.href = 'http://13.49.145.29:3000';   
             }else{
                 res.sendStatus(401);
             }
