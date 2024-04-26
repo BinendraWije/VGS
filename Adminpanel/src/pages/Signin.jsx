@@ -89,6 +89,25 @@ const handleSubmit = async (e)=>{
   }
 
 }
+const handleGoogleLogin = async (e)=>{
+  e.preventDefault();
+  try {
+   googleLoginHandler();
+  } catch (err) {
+    if(!err?.response){
+      setErrMsg('No server response');
+    }else if(err.response?.status === 400){
+      setErrMsg('Missing Username or Password');
+    }else if(err.response?.status === 401 ){
+      setErrMsg('Unauthorized');
+    }else{
+      setErrMsg('Login Failed');
+    }
+    errRef.current.focus();  
+
+  }
+
+}
 
 const togglePersist = () => {
   setPersist(prev => !prev);
@@ -124,7 +143,9 @@ useEffect(()=>{
             <label htmlFor='persist'> Trust This Device </label>
             </div> 
           </form>
-          <a href={googleLoginHandler()} >Sign in with Google</a>
+          <button className='btn' onClick={(e)=>{
+            handleGoogleLogin(e)
+          }} >Sign in with Google</button>
           </Card>
          </div>
           </div>

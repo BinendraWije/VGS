@@ -19,8 +19,7 @@ const qs = new URLSearchParams(options);
 
 console.log(qs.toString());
 console.log(`${rootUrl}?${qs.toString()}`);
-return `${rootUrl}?${qs.toString()}`;
-
+res.redirect(`${rootUrl}?${qs.toString()}`);
 };
 
 export default googleLoginHandler;
