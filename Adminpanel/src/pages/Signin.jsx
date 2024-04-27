@@ -5,7 +5,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../utils/adminpanel.css';
 import useAuth from '../hooks/useAuth';
 import axios from '../utils/axios';
-
+import Cookies from 'js-cookie';
 // @mui
 import {
   Card,
@@ -49,6 +49,13 @@ function Signin() {
 
   useEffect(()=>{
     userRef.current.focus();
+    const jwtt = Cookies.get('jwt')
+    if(jwtt){
+      console.log(jwtt)
+    }
+    else{
+      console.log("Didn't find any cookies")
+    }
   }, [ ])
 
     useEffect(()=>{
