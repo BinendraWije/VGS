@@ -143,9 +143,7 @@ useEffect(()=>{
             <label htmlFor='persist'> Trust This Device </label>
             </div> 
           </form>
-          <button className='btn' onClick={(e)=>{
-            handleGoogleLogin(e)
-          }} >Sign in with Google</button>
+          <a className='btn' href='http://13.49.145.29:3306/googlesigninrequest'>Sign in with Google</a>
           </Card>
          </div>
           </div>

@@ -65,7 +65,7 @@ app.use(getAllForumPostsRouter);
 // Adminpanel Routes
 app.use(signInRouter);
 app.use(googlesignInRouter);
-app.use(newgoogleRedirectRouter);
+app.use(googleRedirectRouter);
 app.use(refreshTokenRouter);
 app.use(signOutRouter);
 // app.use(verifyJWT);
