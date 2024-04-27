@@ -30,7 +30,7 @@ const code = req.query.code;
 console.log(code);
 
 try{
-    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
+    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000/dashboard';
 
     const oAuth2Client = new OAuth2Client(
     process.env.GOOGLE_CLIENT_ID,
@@ -87,9 +87,9 @@ try{
           
           
           //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/',maxAge: 24 * 60 * 60 * 1000})
-          //res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
+          res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
           res.json({ user_role, accessToken });
-          res.redirect('http://13.49.145.29:3000'); 
+          //res.redirect('http://13.49.145.29:3000'); 
         }else{
             res.sendStatus(401);
         }
