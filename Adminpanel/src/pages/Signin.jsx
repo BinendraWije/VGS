@@ -94,7 +94,7 @@ const handleGoogleLogin = async (e)=>{
   try {
    //googleLoginHandler();
    const response = await axios.post(GOOGLE_LOGIN_URL)
-   window.location.href = response.data
+   window.location.href = response.json().url
   } catch (err) {
     if(!err?.response){
       setErrMsg('No server response');
