@@ -30,6 +30,6 @@ const authorizeURL = oAuth2Client.generateAuthUrl({
     prompt:'consent' 
 })
 console.groupEnd("this fired bitch")
-res.redirect(authorizeURL);
+res.jes({url:authorizeURL});
 });
 
