@@ -30,7 +30,7 @@ const code = req.query.code;
 console.log(code);
 
 try{
-    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000/dashboard';
+    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000';
 
     const oAuth2Client = new OAuth2Client(
     process.env.GOOGLE_CLIENT_ID,
@@ -80,16 +80,15 @@ try{
                 });
           
           
-                // IT SAYS THAT YOU CAN"T SET COOKIES FROM ONE DOMAIN TO ANOTHER UNLESS THE REQUEST COMES FROM THAT DOMAIN SO YOU MIGHT NEED TO DO ANOTHER REQUEST SOMEHOW
-          //OR YOU MIGHT WANT TO SPECIFY THE PATH ON THE COOKIE ITSELF
-          // FIRST TRY TO SEPARATE THEM INTO DIFFERENT PATHS IF THAT FAILS YOU NEED TO SOMEHOW GET THE REIRECT FROM THE FRONTEND
-          //A WAY TO DO THIS MIGHT BE TO SHIFT THE INTIIAL GOOGLE AUTH URL CREATER TO THE FRONTEND NOT AS A MIDDLEWARE BECAUSE THEN HOW DO YOU FIRE THE URL YES?
+                    // SET EITHER A COOKIE WITH THE ACCESS TOKEN AND PULL IT FROM THE FRONT END OR SESSION DATA;
+                    // NEED TO CHANGE THE FRONT END TO LOGIN IN GOOGLES GUYS
+                    // MAYBE CHECK OUT HOW ALOT OF PEOPLE HANDLE THAT MAYBE SESSION DATA IS THE WAY TO GO 
           
           
           //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/',maxAge: 24 * 60 * 60 * 1000})
           res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
-          res.json({ user_role, accessToken });
-          //res.redirect('http://13.49.145.29:3000'); 
+          //res.json({ user_role, accessToken });
+          res.redirect('http://13.49.145.29:3000'); 
         }else{
             res.sendStatus(401);
         }
