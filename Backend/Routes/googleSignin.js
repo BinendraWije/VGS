@@ -29,9 +29,6 @@ const authorizeURL = oAuth2Client.generateAuthUrl({
     scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid',
     prompt:'consent' 
 })
-const tokens = jwt.decode(authorizeURL);
-console.log(tokens); 
 res.json({url:authorizeURL});
-
 });
 
