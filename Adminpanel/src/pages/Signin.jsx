@@ -92,7 +92,9 @@ const handleSubmit = async (e)=>{
 const handleGoogleLogin = async (e)=>{
   e.preventDefault();
   try {
-   googleLoginHandler();
+   //googleLoginHandler();
+   const response = await axios.post(GOOGLE_LOGIN_URL)
+   console.log(response);
   } catch (err) {
     if(!err?.response){
       setErrMsg('No server response');
@@ -143,7 +145,9 @@ useEffect(()=>{
             <label htmlFor='persist'> Trust This Device </label>
             </div> 
           </form>
-          <a className='btn' href='http://13.49.145.29:3306/googlesigninrequest'>Sign in with Google</a>
+          <button className='btn' onClick={(e)=>{
+            handleGoogleLogin(e)
+          }} >Sign in with Google</button>
           </Card>
          </div>
           </div>
