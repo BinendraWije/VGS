@@ -29,6 +29,7 @@ const authorizeURL = oAuth2Client.generateAuthUrl({
     scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid',
     prompt:'consent' 
 })
+console.groupEnd("this fired bitch")
 res.json({url:authorizeURL});
 });
 
