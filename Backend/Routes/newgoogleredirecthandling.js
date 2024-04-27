@@ -76,12 +76,16 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
                 db.query(refreshtokenquery,[refreshToken,googleUser.name], async (err,data)=>{
                         if(err){ return res.json(err);}else{                    
                         }
-                    });                                          
+                    });                      
+                    
+                    
+                    
+              // GO BACK AND CHECK THE SIGN IN OR AUTH FLOW OF HOW DAVE GRAYS SIGNIN WORKS AND TRY TO SET IT UP
+
               
               //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/dashboard',maxAge: 24 * 60 * 60 * 1000})
-              res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
-              res.redirect('http://13.49.145.29:3000'); 
-              return res.json({ user_role, accessToken });
+              res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});       
+              return res.json({url:'http://13.49.145.29:3000', user_role, accessToken });
               
             }else{
                 return res.sendStatus(401);
