@@ -89,6 +89,7 @@ try{
           res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
           //res.cookie('access', accessToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
           res.body({user_role, accessToken});
+          console.log(res.body);
           //res.json({ user_role, accessToken });
           res.redirect('http://13.49.145.29:3000'); 
         }else{
