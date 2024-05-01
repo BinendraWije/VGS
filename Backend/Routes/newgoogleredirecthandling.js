@@ -81,6 +81,7 @@ newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
                     
                     
               // GO BACK AND CHECK THE SIGN IN OR AUTH FLOW OF HOW DAVE GRAYS SIGNIN WORKS AND TRY TO SET IT UP
+              // SESSIONS ARE THE WAY TO GO
 
               
               //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/dashboard',maxAge: 24 * 60 * 60 * 1000})

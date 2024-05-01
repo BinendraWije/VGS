@@ -12,6 +12,7 @@ import {signOutRouter} from './Routes/Signout.js';
 import { refreshTokenRouter } from './Routes/refreshtoken.js';
 const bcrypt = require('bcryptjs');
 import { verifyJWT } from './Middleware/verifyJWT.js';
+import session from "express-session";
 const  cookieParser = require('cookie-parser');
 
 const express = require('express');
@@ -47,6 +48,16 @@ app.use(express.json());
 
 // middleware for cookies
 app.use(cookieParser());
+
+//middleware for sessions
+app.use(session({
+  secret: "yass queen",
+  saveUninitialized: false,
+  resave: false,
+  cookie:{
+    maxAge: 60000 * 60,  
+  }
+}));
 
 db.connect(function(err){
     if(err){
