@@ -15,7 +15,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth"
+    callbackURL: "http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000"
 },
 function(accessToken,refreshToken,profile, done){
   done(null,profile)
@@ -35,6 +35,6 @@ passport.deserializeUser((user,done)=>{
 
 export const passportauthRedirectrouter = express.Router();
 passportauthRedirectrouter.get('/passportgoogle', passport.authenticate('google', { scope: [ 'profile' ],
-    successRedirect: "http://13.49.145.29:3000/dashboard",
+    successRedirect: "http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth",
     failureRedirect: "http://13.49.145.29:3000/signin"
  }));
