@@ -82,7 +82,7 @@ app.use(getAllForumPostsRouter);
 // Adminpanel Routes
 app.use(signInRouter);
 app.use(googlesignInRouter);
-app.use(passportRedirectrouter);
+app.use(googleRedirectRouter);
 app.use(passportauthRedirectrouter);
 app.use(passportauthsuccessandfailureRedirectrouter)
 app.use(refreshTokenRouter);

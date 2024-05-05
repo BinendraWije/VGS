@@ -11,7 +11,7 @@ import axios from 'axios';
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
+const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000';
 
 export const newgoogleRedirectRouter = express.Router();
 newgoogleRedirectRouter.get('/oauth', async (req,res)=>{
