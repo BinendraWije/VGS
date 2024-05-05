@@ -14,7 +14,6 @@ const bcrypt = require('bcryptjs');
 import { verifyJWT } from './Middleware/verifyJWT.js';
 import session from "express-session";
 const  cookieParser = require('cookie-parser');
-const passport = require('passport');
 
 const express = require('express');
 const mysql = require('mysql');
@@ -34,12 +33,8 @@ import { getMyprofileRouter } from "./Routes/checkUserdata.js";
 import { googlesignInRouter } from "./Routes/googleSignin.js";
 import { googleRedirectRouter } from "./Routes/googleRedirecthandling.js";
 import { newgoogleRedirectRouter } from "./Routes/newgoogleredirecthandling.js";
-import { passportRedirectrouter } from "./Routes/passportgoogleauth.js";
-
 import cookieSession from "cookie-session";
-import { passportauthRedirectrouter } from "./Routes/passportauthrouter.js";
-import { passportauthsuccessandfailureRedirectrouter } from "./Routes/passportauthroutersuccessandfailure.js";
-
+const passport = require('passport');
 
 const app = express();
 
@@ -84,9 +79,7 @@ app.use(getAllForumPostsRouter);
 // Adminpanel Routes
 app.use(signInRouter);
 app.use(googlesignInRouter);
-app.use(passportRedirectrouter);
-app.use(passportauthsuccessandfailureRedirectrouter);
-app.use(passportauthRedirectrouter);
+app.use(googleRedirectRouter);
 app.use(refreshTokenRouter);
 app.use(signOutRouter);
 // app.use(verifyJWT);
