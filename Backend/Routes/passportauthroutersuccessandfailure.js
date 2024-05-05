@@ -11,7 +11,7 @@ require('dotenv').config();
 const passport = require('passport');
 
 export const passportauthsuccessandfailureRedirectrouter = express.Router();
-passportauthsuccessandfailureRedirectrouter.get('/successandfailpassportgoogle',passport.authenticate("google",{
+passportauthsuccessandfailureRedirectrouter.get('/successandfailpassportgoogle', passport.authenticate("google",{
     successRedirect: "http://13.49.145.29:3000/dashboard",
     failureRedirect: "http://13.49.145.29:3000/signin"
 

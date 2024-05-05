@@ -11,4 +11,4 @@ require('dotenv').config();
 const passport = require('passport');
 
 export const passportauthRedirectrouter = express.Router();
-passportauthRedirectrouter.get('/passportgoogle',passport.authenticate("google",{scope:["profile"]}));
+passportauthRedirectrouter.get('/passportgoogle', passport.authenticate("google", { scope: ["profile"] }));
