@@ -34,7 +34,7 @@ passport.deserializeUser((user,done)=>{
 
 
 export const passportauthRedirectrouter = express.Router();
-passportauthRedirectrouter.get('/passportgoogle', passport.authenticate('google', { scope: [ 'profile' ],
+passportauthRedirectrouter.get('/passportgoogle', passport.authenticate('google', { scope: [ 'profile', 'email' ],
     successRedirect: "http://13.49.145.29:3000/dashboard",
     failureRedirect: "http://13.49.145.29:3000/signin"
  }));
