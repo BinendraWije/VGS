@@ -23,6 +23,7 @@ passport.use(new GoogleStrategy({
 function(accessToken,refreshToken,profile, done){
   done(null,profile)
   // create jwttokens and save users 
+  console.log(profile)
 }
 
 ));
