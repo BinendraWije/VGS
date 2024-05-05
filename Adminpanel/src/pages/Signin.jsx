@@ -100,11 +100,11 @@ const handleGoogleLogin = async (e)=>{
   e.preventDefault();
   try {
    //googleLoginHandler();
-   const response = await axios.post(GOOGLE_LOGIN_URL)
-   console.log(response);
-   console.log(response.data);
-   console.log(response.data.url);
-   window.open(response.data.url, "_self")
+   //const response = await axios.post(GOOGLE_LOGIN_URL)
+   //console.log(response);
+   //console.log(response.data);
+   //console.log(response.data.url);
+   window.open('http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/passportgoogle', "_self");
   } catch (err) {
     if(!err?.response){
       setErrMsg('No server response');

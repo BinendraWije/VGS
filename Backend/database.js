@@ -34,6 +34,9 @@ import { googlesignInRouter } from "./Routes/googleSignin.js";
 import { googleRedirectRouter } from "./Routes/googleRedirecthandling.js";
 import { newgoogleRedirectRouter } from "./Routes/newgoogleredirecthandling.js";
 import cookieSession from "cookie-session";
+import { passportRedirectrouter } from "./Routes/passportgoogleauth.js";
+import { passportauthRedirectrouter } from "./Routes/passportauthrouter.js";
+import { passportauthsuccessandfailureRedirectrouter } from "./Routes/passportauthroutersuccessandfailure.js";
 const passport = require('passport');
 
 const app = express();
@@ -79,7 +82,9 @@ app.use(getAllForumPostsRouter);
 // Adminpanel Routes
 app.use(signInRouter);
 app.use(googlesignInRouter);
-app.use(googleRedirectRouter);
+app.use(passportRedirectrouter);
+app.use(passportauthRedirectrouter);
+app.use(passportauthsuccessandfailureRedirectrouter)
 app.use(refreshTokenRouter);
 app.use(signOutRouter);
 // app.use(verifyJWT);
