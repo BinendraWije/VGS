@@ -34,6 +34,10 @@ import { googlesignInRouter } from "./Routes/googleSignin.js";
 import { googleRedirectRouter } from "./Routes/googleRedirecthandling.js";
 import { newgoogleRedirectRouter } from "./Routes/newgoogleredirecthandling.js";
 
+import cookieSession from "cookie-session";
+const passport = require('passport');
+
+
 const app = express();
 
 //Setting Credentials
@@ -50,14 +54,15 @@ app.use(express.json());
 app.use(cookieParser());
 
 //middleware for sessions
-app.use(session({
-  secret: "yass queen",
-  saveUninitialized: false,
-  resave: false,
-  cookie:{
-    maxAge: 60000 * 60,  
-  }
-}));
+app.use(
+  cookieSession({
+    name:"session",
+    keys: ["lams"],
+    maxAge: 24*60*60*100
+  })
+)
+app.use(passport.initialize());
+app.use(passport.session());
 
 db.connect(function(err){
     if(err){

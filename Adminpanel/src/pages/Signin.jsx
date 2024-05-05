@@ -100,7 +100,8 @@ const handleGoogleLogin = async (e)=>{
   e.preventDefault();
   try {
    //googleLoginHandler();
-   const response = await axios.post(GOOGLE_LOGIN_URL)
+   //const response = await axios.post(GOOGLE_LOGIN_URL)
+   window.open("http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth","_self")
    console.log(response);
    console.log(response.data);
    console.log(response.data.url);
