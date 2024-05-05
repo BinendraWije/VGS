@@ -14,7 +14,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 export const passportRedirectrouter = express.Router();
 passportRedirectrouter.get('/oauth', async (req,res)=>{
-
+console.log("We're at the passport google strategy oauth");
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
