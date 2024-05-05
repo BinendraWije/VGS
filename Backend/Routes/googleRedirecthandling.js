@@ -51,6 +51,9 @@ try{
         console.log("found user")
         // evaluate password
         const match = await bcrypt.compare(data.email + data.sub, results[0].user_pwd);
+        console.log(data.email + data.sub);
+        console.log(results[0].user_pwd);
+        console.log(match);
         if(match){
             console.log("?MAtch")
             // create JWT
