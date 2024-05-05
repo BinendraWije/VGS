@@ -44,13 +44,15 @@ try{
         // Checking if email exists
         // username is the name of the user
         const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
+        console.log("starting user search")
         db.query(findDuplicatesquery,[data.name], async (err,results)=>{
         if(err) return res.json(err);         
         if(results.length !== 0 ){
-    
+        console.log("found user")
         // evaluate password
         const match = await bcrypt.compare(data.email + data.sub, results[0].user_pwd);
         if(match){
+            console.log("?MAtch")
             // create JWT
             // gettin the user role from the results
             const user_role = results[0].user_role;
@@ -85,17 +87,19 @@ try{
                     // MAYBE CHECK OUT HOW ALOT OF PEOPLE HANDLE THAT MAYBE SESSION DATA IS THE WAY TO GO 
           
           
-          res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/',maxAge: 24 * 60 * 60 * 1000})
-          //res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
+          //res.cookie('jwt', refreshToken, { domain:'13.49.145.29:3000', httpOnly:true, sameSite:'Lax', path:'/',maxAge: 24 * 60 * 60 * 1000})
+          res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
           //res.cookie('access', accessToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});     
           res.json({ user_role, accessToken });
           //res.redirect('http://13.49.145.29:3000'); 
         }else{
+            console.log(" not a MAtch")
             res.sendStatus(401);
         }
     }else{
         // Create a new user      
         // Checking if username exists
+        console.log("creating new user")
 const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
 db.query(findDuplicatesquery,[data.name], async (err,results)=>{
     if(err) return res.json(err);         
