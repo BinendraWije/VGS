@@ -30,7 +30,7 @@ const code = req.query.code;
 console.log(code);
 
 try{
-    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000';
+    const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
 
     const oAuth2Client = new OAuth2Client(
     process.env.GOOGLE_CLIENT_ID,
