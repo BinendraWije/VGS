@@ -27,6 +27,7 @@ import {
   TablePagination,
 } from '@mui/material';
 import googleLoginHandler from '../utils/googleloginhandler';
+import { GoogleLogin } from '@react-oauth/google';
 
 
 const LOGIN_URL = "/auth";
@@ -155,9 +156,14 @@ useEffect(()=>{
             <label htmlFor='persist'> Trust This Device </label>
             </div> 
           </form>
-          <button className='btn' onClick={(e)=>{
-            handleGoogleLogin(e)
-          }} >Sign in with Google</button>
+            <GoogleLogin
+                  onSuccess={credentialResponse => {
+                    console.log(credentialResponse);
+                  }}
+                  onError={() => {
+                    console.log('Login Failed');
+                        }}
+            />
           </Card>
          </div>
           </div>
