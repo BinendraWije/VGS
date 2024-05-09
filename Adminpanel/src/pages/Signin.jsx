@@ -49,6 +49,7 @@ function Signin() {
   const[errMsg, setErrMsg] = useState('');
 
   useEffect(()=>{
+    console.log(import.meta.env.VITE_GOOGLE_CLIENT_ID);
     userRef.current.focus();
     const jwtt = Cookies.get('jwt')
     if(jwtt){
@@ -158,7 +159,7 @@ useEffect(()=>{
           </form>
             <GoogleLogin
                   onSuccess={credentialResponse => {
-                    console.log(credentialResponse);
+                    console.log(credentialResponse);                    
                   }}
                   onError={() => {
                     console.log('Login Failed');
