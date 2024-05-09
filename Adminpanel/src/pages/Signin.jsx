@@ -163,8 +163,7 @@ useEffect(()=>{
                   }}
                   onError={() => {
                     console.log('Login Failed');
-                        }}
-                        useOneTap
+                        }}                    
             />
           </Card>
          </div>
