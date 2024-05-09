@@ -49,7 +49,6 @@ function Signin() {
   const[errMsg, setErrMsg] = useState('');
 
   useEffect(()=>{
-    console.log(import.meta.env.VITE_GOOGLE_CLIENT_ID);
     userRef.current.focus();
     const jwtt = Cookies.get('jwt')
     if(jwtt){
@@ -158,12 +157,14 @@ useEffect(()=>{
             </div> 
           </form>
             <GoogleLogin
+            //REferrer policy setting on the front end
                   onSuccess={credentialResponse => {
                     console.log(credentialResponse);                    
                   }}
                   onError={() => {
                     console.log('Login Failed');
                         }}
+                        use_fedcm_for_prompt
             />
           </Card>
          </div>
