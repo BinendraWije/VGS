@@ -28,7 +28,8 @@ export default defineConfig({
     }
   },
   server:{
-    host: 'hiawathaart.art',
-    port: 3000		
+    host: true,
+    port: 3000,
+    origin :'http://13.49.145.29:3000'
   } 
 })
