@@ -164,7 +164,7 @@ useEffect(()=>{
                   onError={() => {
                     console.log('Login Failed');
                         }}
-                        use_fedcm_for_prompt
+                        useOneTap
             />
           </Card>
          </div>
