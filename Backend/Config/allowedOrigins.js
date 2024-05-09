@@ -6,7 +6,10 @@ export const allowedOrigins = [
     'http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com',
     'http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3000',
     'http://www.hiawathaart.art',
-    'https://www.hiawathaart.art'
+    'https://www.hiawathaart.art',
+    'http://www.hiawathaart.art:3000',
+    'http://www.hiawathaart.art:3306'
+    
 
     
     
