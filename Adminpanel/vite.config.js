@@ -5,6 +5,7 @@ import nodePolyfills from 'vite-plugin-node-stdlib-browser'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: 'https://hiawathaart.art',
   define: {
     'process.env': process.env
   },
