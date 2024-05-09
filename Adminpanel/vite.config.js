@@ -29,6 +29,6 @@ export default defineConfig({
   },
   server:{
     host: 'hiawathaart.art',
-    port: 80		
+    port: 3000		
   } 
 })
