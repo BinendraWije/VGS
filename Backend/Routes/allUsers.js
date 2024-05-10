@@ -7,7 +7,7 @@ import { db } from '../Config/databaseconfig.js';
 import { verifyRoles } from '../Middleware/verifyRoles.js';
 
 export const getAllUsersRouter = express.Router();
-getAllUsersRouter.get('/users',(req,res)=>{
+getAllUsersRouter.get('//users',(req,res)=>{
     const sql = "SELECT * FROM vgsdb.users";
     db.query(sql,(err,data)=>{
         if(err) return res.json(err);
