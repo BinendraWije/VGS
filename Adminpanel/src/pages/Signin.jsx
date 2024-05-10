@@ -6,6 +6,7 @@ import '../utils/adminpanel.css';
 import useAuth from '../hooks/useAuth';
 import axios from '../utils/axios';
 import Cookies from 'js-cookie';
+import jwt_decode from 'jwt-decode';
 // @mui
 import {
   Card,
@@ -28,6 +29,7 @@ import {
 } from '@mui/material';
 import googleLoginHandler from '../utils/googleloginhandler';
 import { GoogleLogin } from '@react-oauth/google';
+import { decode } from 'jsonwebtoken';
 
 
 const LOGIN_URL = "/auth";
@@ -50,14 +52,7 @@ function Signin() {
 
   useEffect(()=>{
     userRef.current.focus();
-    const jwtt = Cookies.get('jwt')
-    if(jwtt){
-      console.log(jwtt)
-    }
-    else{
-      console.log("Didn't find any cookies")
-    }
-  }, [ ])
+      }, [ ])
 
     useEffect(()=>{
       setErrMsg('');
@@ -158,8 +153,8 @@ useEffect(()=>{
           </form>
             <GoogleLogin
             //REferrer policy setting on the front end
-                  onSuccess={res => {
-                    console.log("Current User is : " + res.profileObj);                    
+                  onSuccess={credentialResponse => {
+                    console.log(credentialResponse);                    
                   }}
                   onError={() => {
                     console.log('Login Failed');
