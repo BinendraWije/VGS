@@ -6,7 +6,6 @@ import '../utils/adminpanel.css';
 import useAuth from '../hooks/useAuth';
 import axios from '../utils/axios';
 import Cookies from 'js-cookie';
-import jwt_decode from 'jwt-decode';
 // @mui
 import {
   Card,
