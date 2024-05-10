@@ -95,7 +95,7 @@ const handleSubmit = async (e)=>{
 
 const googleSigninHandle = async (credentialResponse)=>{
  console.log(jwtDecode(credentialResponse.credential))
-  decodedgoogleuser = jwtDecode(credentialResponse.credential)
+ const decodedgoogleuser = jwtDecode(credentialResponse.credential)
   try {
     const response = await axios.post(GOOGLE_LOGIN_URL,
       JSON.stringify({ 
