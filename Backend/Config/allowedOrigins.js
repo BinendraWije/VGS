@@ -8,10 +8,9 @@ export const allowedOrigins = [
     'http://www.hiawathaart.art',
     'https://www.hiawathaart.art',
     'http://www.hiawathaart.art:3000',
-    'http://www.hiawathaart.art:3306'
-    
-
-    
+    'http://www.hiawathaart.art:3306',
+    'https://hiawathaart.art',
+    'http://hiawathaart.art'   
     
 ];
 
