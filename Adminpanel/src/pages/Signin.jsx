@@ -154,7 +154,7 @@ useEffect(()=>{
             <GoogleLogin
             //REferrer policy setting on the front end
                   onSuccess={credentialResponse => {
-                    console.log(jwtDecode(credentialResponse));                    
+                    console.log(jwtDecode(credentialResponse.credential));                    
                   }}
                   onError={() => {
                     console.log('Login Failed');
