@@ -158,8 +158,8 @@ useEffect(()=>{
           </form>
             <GoogleLogin
             //REferrer policy setting on the front end
-                  onSuccess={credentialResponse => {
-                    console.log(credentialResponse);                    
+                  onSuccess={res => {
+                    console.log("Current User is : " + res.profileObj);                    
                   }}
                   onError={() => {
                     console.log('Login Failed');
