@@ -93,9 +93,8 @@ const handleSubmit = async (e)=>{
 
 }
 
-const googleSigninHandle = async (credentialResponse, e)=>{
-  e.preventDefault();
-  console.log(jwtDecode(credentialResponse.credential))
+const googleSigninHandle = async (credentialResponse)=>{
+ console.log(jwtDecode(credentialResponse.credential))
   decodedgoogleuser = jwtDecode(credentialResponse.credential)
   try {
     const response = await axios.post(GOOGLE_LOGIN_URL,
@@ -165,7 +164,7 @@ useEffect(()=>{
             <GoogleLogin
             //REferrer policy setting on the front end
                   onSuccess={credentialResponse => {
-                    googleSigninHandle(credentialResponse, e)                    
+                    googleSigninHandle(credentialResponse)                    
                   }}
                   onError={() => {
                     console.log('Login Failed');
