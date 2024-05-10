@@ -33,7 +33,7 @@ import { decode } from 'jsonwebtoken';
 
 
 const LOGIN_URL = "/auth";
-const GOOGLE_LOGIN_URL = "/googlesignin";
+const GOOGLE_LOGIN_URL = "googlesignin";
 
 
 function Signin() {
