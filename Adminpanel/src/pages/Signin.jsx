@@ -93,7 +93,7 @@ const handleSubmit = async (e)=>{
 
 }
 
-const googleSigninHandle = async (credentialResponse,e)=>{
+const googleSigninHandle = async (credentialResponse, e)=>{
   e.preventDefault();
   console.log(jwtDecode(credentialResponse.credential))
   decodedgoogleuser = jwtDecode(credentialResponse.credential)
@@ -165,7 +165,7 @@ useEffect(()=>{
             <GoogleLogin
             //REferrer policy setting on the front end
                   onSuccess={credentialResponse => {
-                    googleSigninHandle(credentialResponse)                    
+                    googleSigninHandle(credentialResponse, e)                    
                   }}
                   onError={() => {
                     console.log('Login Failed');
