@@ -2,7 +2,7 @@
   "name": "mosaic-react",
   "version": "0.1.0",
   "scripts": {
-    "dev": "vite --host hiawathaart.art --port 80 ",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
