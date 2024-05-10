@@ -11,7 +11,7 @@ require('dotenv').config();
 
 
 export const googleSignInRouter = express.Router();
-googleSignInRouter.post('/googlesignin', async (req,res)=>{
+googleSignInRouter.post('//googlesignin', async (req,res)=>{
 if(!req.body.googlesigninbody)return res.status(400).json({'message':'Username and password are required.'});
 const userinfo = req.body.googlesigninbody;
 console.log(userinfo);
