@@ -33,7 +33,7 @@ import { decode } from 'jsonwebtoken';
 
 
 const LOGIN_URL = "/auth";
-const GOOGLE_LOGIN_URL = "/googlesigninrequest";
+const GOOGLE_LOGIN_URL = "/googlesignin";
 
 
 function Signin() {
@@ -92,15 +92,26 @@ const handleSubmit = async (e)=>{
   }
 
 }
-const handleGoogleLogin = async (e)=>{
+
+const googleSigninHandle = async (credentialResponse,e)=>{
   e.preventDefault();
+  console.log(jwtDecode(credentialResponse.credential))
+  decodedgoogleuser = jwtDecode(credentialResponse.credential)
   try {
-   //googleLoginHandler();
-   //const response = await axios.post(GOOGLE_LOGIN_URL)
-   //console.log(response);
-   //console.log(response.data);
-   //console.log(response.data.url);
-   window.open('http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/passportgoogle', "_self");
+    const response = await axios.post(GOOGLE_LOGIN_URL,
+      JSON.stringify({ 
+        googlesigninbody: decodedgoogleuser        
+      }),{
+        headers: {'Content-Type':'application/json'},
+        withCredentials: true
+      })         
+    const accessToken = response?.data?.accessToken;
+    const user_role = response?.data?.user_role;
+    setAuth({user, pwd, user_role, accessToken});
+    setUser('')
+    setPwd('')
+    navigate(from, {replace : true});
+    
   } catch (err) {
     if(!err?.response){
       setErrMsg('No server response');
@@ -154,7 +165,7 @@ useEffect(()=>{
             <GoogleLogin
             //REferrer policy setting on the front end
                   onSuccess={credentialResponse => {
-                    console.log(jwtDecode(credentialResponse.credential));                    
+                    googleSigninHandle(credentialResponse)                    
                   }}
                   onError={() => {
                     console.log('Login Failed');

@@ -2,34 +2,65 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-const {OAuth2Client} =require('google-auth-library'); 
-
 const express = require('express');
 import { db } from '../Config/databaseconfig.js';
 import bcrypt from 'bcryptjs';
-import { error } from "console";
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 
-export const googlesignInRouter = express.Router();
-googlesignInRouter.post('/googlesigninrequest', async (req,res)=>{
-res.header('Referrer-Policy', 'no-referrer-when-downgrade');
 
-const redirectURL ='http://ec2-13-49-145-29.eu-north-1.compute.amazonaws.com:3306/oauth';
+export const googleSignInRouter = express.Router();
+googleSignInRouter.post('/googlesignin', async (req,res)=>{
+if(!req.body.googlesigninbody)return res.status(400).json({'message':'Username and password are required.'});
+const userinfo = req.body.googlesigninbody;
+console.log(userinfo);
+// Checking if username exists
+const findDuplicatesquery = "SELECT * FROM vgsdb.users WHERE `user_name` = ?";
+db.query(findDuplicatesquery,[userinfo.name], async (err,results)=>{
+    if(err) return res.json(err);         
+    if(results.length == 0 ) return res.sendStatus(401); //Unauthorized
+    
+    // evaluate password
+    const match = await bcrypt.compare(userinfo.email + userinfo.sub, results[0].user_pwd);
+    if(match){
+        // create JWT
+        // gettin the user role from the results
+        const user_role = results[0].user_role;
 
-const oAuth2Client = new OAuth2Client(
-process.env.GOOGLE_CLIENT_ID,
-process.env.GOOGLE_CLIENT_SECRET,
-redirectURL 
-);
+        const accessToken = jwt.sign(
+            {"UserInfo": {
+                "user_name": userinfo.name,
+                "user_role" : user_role
+                }
+            },
+            process.env.ACCESS_TOKEN_SECRET,
+            {expiresIn: '10s'}
+        );
 
-const authorizeURL = oAuth2Client.generateAuthUrl({
-    access_type:'offline',
-    scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid',
-    prompt:'consent' 
+        const refreshToken = jwt.sign(
+            {"user_name": userinfo.name},
+            process.env.REFRESH_TOKEN_SECRET,
+            {expiresIn: '40s'}
+        );
+        //Updating the refresh token to the current user's profile in DB
+
+        const refreshtokenquery = "UPDATE vgsdb.users SET refresh_token = ? WHERE user_name = ?";
+      
+        db.query(refreshtokenquery,[refreshToken,userinfo.name], async (err,data)=>{
+                  if(err){ return res.json(err);}else{                    
+                }
+              });
+        
+        res.cookie('jwt', refreshToken, {httpOnly:true, sameSite:'Lax',  maxAge: 24 * 60 * 60 * 1000});
+        res.json({ user_role, accessToken }); 
+    }else{
+        res.sendStatus(401);
+    }
+
+    
 })
-console.log("this fired bitch")
-res.json({url:authorizeURL});
+
+
 });
 
