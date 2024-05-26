@@ -215,6 +215,7 @@ const editUser =  async (e, Product_Name) => {
     if(productresponse.data.Product_Image_1){
     setPic1(productresponse.data.Product_Image_1)
     setPic1preview(productresponse.data.Product_Image_1);
+    console.log(pic1);
     }
     if(productresponse.data.Product_Image_2){
     setPic2(productresponse.data.Product_Image_2)
